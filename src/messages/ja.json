@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "about": "私たちについて",
+    "menu": "メニュー",
+    "locations": "店舗",
+    "news": "ニュース",
+    "contact": "お問い合わせ"
+  },
+  "home": {
+    "hero_tagline": "エッグケーキ × お茶 × コーヒー",
+    "hero_philosophy": "美食を味わい、茶の韻を味わい、人生を味わう",
+    "menu_section_label": "おすすめ",
+    "menu_section_title": "メニュー",
+    "locations_section_label": "店舗を探す",
+    "locations_section_title": "店舗一覧",
+    "cta_title": "最寄りの品品カフェを探す",
+    "cta_subtitle": "台中から東京まで——次のエッグケーキの瞬間をお待ちしています。",
+    "view_locations": "店舗を見る",
+    "view_full_menu": "メニューを見る",
+    "philosophy_label": "私たちの理念",
+    "philosophy_title": "味わう、もう一度味わう",
+    "philosophy_body": "品品カフェでは、一口ごとにゆっくりと味わう招待状です。「品品」は味わい、そしてもう一度味わうこと——私たちがすべてのエッグケーキ、すべてのお茶、カフェで共有するすべての瞬間に注ぐ理念です。",
+    "instagram_label": "フォローする",
+    "instagram_title": "Instagram"
+  },
+  "menu": {
+    "filter_all": "すべて",
+    "filter_classic": "定番",
+    "filter_seasonal": "季節限定",
+    "filter_limited": "数量限定",
+    "from_price": "¥{price}〜",
+    "pairs_with": "おすすめの組み合わせ",
+    "eggcakes": "エッグケーキ",
+    "drinks": "ドリンク",
+    "seasonal": "季節限定",
+    "overview_label": "探す",
+    "overview_title": "メニュー",
+    "tea_collection": "お茶コレクション",
+    "coffee_selection": "コーヒーセレクション"
+  },
+  "locations": {
+    "taiwan": "台湾",
+    "japan": "日本",
+    "all": "すべて",
+    "coming_soon": "近日オープン",
+    "get_directions": "道順を見る",
+    "hours": "営業時間",
+    "page_label": "店舗を探す",
+    "page_title": "店舗一覧"
+  },
+  "news": {
+    "page_label": "最新",
+    "page_title": "ニュース",
+    "all": "すべて",
+    "new_flavor": "新フレーバー",
+    "store_opening": "新店舗",
+    "collaboration": "コラボレーション",
+    "event": "イベント",
+    "read_more": "続きを読む",
+    "related": "関連記事",
+    "share": "この記事をシェア"
+  },
+  "contact": {
+    "page_label": "お問い合わせ",
+    "page_title": "お問い合わせ",
+    "general": "一般のお問い合わせ",
+    "franchise": "フランチャイズのお問い合わせ",
+    "name": "お名前",
+    "email": "メールアドレス",
+    "subject": "件名",
+    "message": "メッセージ",
+    "submit": "送信する",
+    "submitting": "送信中...",
+    "success": "ありがとうございます！折り返しご連絡いたします。",
+    "error": "エラーが発生しました。もう一度お試しください。",
+    "company": "会社名",
+    "phone": "電話番号",
+    "country": "国",
+    "budget": "予算範囲"
+  },
+  "common": {
+    "scroll": "スクロール",
+    "read_more": "続きを読む",
+    "share": "シェア",
+    "follow_instagram": "@pinpin_eggcake をフォロー",
+    "back": "戻る",
+    "loading": "読み込み中...",
+    "not_found_title": "ページが見つかりません",
+    "not_found_body": "お探しのページは存在しません。",
+    "go_home": "ホームへ"
+  },
+  "footer": {
+    "rights": "© {year} 品品Café. All rights reserved.",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "tagline": "エッグケーキ × お茶 × コーヒー"
+  }
+}

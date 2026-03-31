@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream text-charcoal font-sans text-[15px] leading-relaxed antialiased;
+  }
+
+  ::selection {
+    @apply bg-warm-gold-light text-charcoal;
+  }
+
+  /* Global focus-visible styles for keyboard navigation */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-warm-gold;
+  }
+
+  /* Smooth scroll for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

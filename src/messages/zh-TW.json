@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "about": "關於我們",
+    "menu": "菜單",
+    "locations": "門市據點",
+    "news": "最新消息",
+    "contact": "聯絡我們"
+  },
+  "home": {
+    "hero_tagline": "雞蛋仔 × 茶 × 咖啡",
+    "hero_philosophy": "品嚐美食、品茶之韻、品味人生",
+    "menu_section_label": "招牌精選",
+    "menu_section_title": "我們的菜單",
+    "locations_section_label": "尋找我們",
+    "locations_section_title": "門市據點",
+    "cta_title": "尋找最近的品品 Café",
+    "cta_subtitle": "從台中到東京——您的下一個雞蛋仔時刻正在等待。",
+    "view_locations": "查看門市",
+    "view_full_menu": "查看完整菜單",
+    "philosophy_label": "我們的理念",
+    "philosophy_title": "品味、再品味",
+    "philosophy_body": "在品品 Café，每一口都是放慢腳步、細細品味的邀請。「品品」意為品嚐再品嚐——這是我們傾注於每一個雞蛋仔、每一杯茶、以及在咖啡館分享的每一刻的理念。",
+    "instagram_label": "追蹤我們",
+    "instagram_title": "Instagram"
+  },
+  "menu": {
+    "filter_all": "全部",
+    "filter_classic": "經典",
+    "filter_seasonal": "季節限定",
+    "filter_limited": "限量版",
+    "from_price": "NT${price} 起",
+    "pairs_with": "搭配推薦",
+    "eggcakes": "雞蛋仔",
+    "drinks": "飲品",
+    "seasonal": "季節限定",
+    "overview_label": "探索",
+    "overview_title": "我們的菜單",
+    "tea_collection": "茶飲系列",
+    "coffee_selection": "咖啡系列"
+  },
+  "locations": {
+    "taiwan": "台灣",
+    "japan": "日本",
+    "all": "全部",
+    "coming_soon": "即將開幕",
+    "get_directions": "取得路線",
+    "hours": "營業時間",
+    "page_label": "尋找我們",
+    "page_title": "門市據點"
+  },
+  "news": {
+    "page_label": "最新",
+    "page_title": "最新消息",
+    "all": "全部",
+    "new_flavor": "新口味",
+    "store_opening": "新店開幕",
+    "collaboration": "聯名合作",
+    "event": "活動",
+    "read_more": "閱讀更多",
+    "related": "相關文章",
+    "share": "分享此文章"
+  },
+  "contact": {
+    "page_label": "聯絡我們",
+    "page_title": "聯絡我們",
+    "general": "一般諮詢",
+    "franchise": "加盟諮詢",
+    "name": "姓名",
+    "email": "電子郵件",
+    "subject": "主旨",
+    "message": "訊息",
+    "submit": "送出訊息",
+    "submitting": "傳送中...",
+    "success": "感謝您！我們會盡快與您聯繫。",
+    "error": "發生錯誤，請再試一次。",
+    "company": "公司名稱",
+    "phone": "電話號碼",
+    "country": "國家",
+    "budget": "預算範圍"
+  },
+  "common": {
+    "scroll": "下滑",
+    "read_more": "閱讀更多",
+    "share": "分享",
+    "follow_instagram": "追蹤 @pinpin_eggcake",
+    "back": "返回",
+    "loading": "載入中...",
+    "not_found_title": "找不到頁面",
+    "not_found_body": "您尋找的頁面不存在。",
+    "go_home": "回首頁"
+  },
+  "footer": {
+    "rights": "© {year} 品品Café. 版權所有。",
+    "privacy": "隱私政策",
+    "terms": "使用條款",
+    "tagline": "雞蛋仔 × 茶 × 咖啡"
+  }
+}

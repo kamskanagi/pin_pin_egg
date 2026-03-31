@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "about": "About",
+    "menu": "Menu",
+    "locations": "Locations",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero_tagline": "Eggcake × Tea × Coffee",
+    "hero_philosophy": "Taste the food · Taste the tea · Taste the life",
+    "menu_section_label": "Signature selections",
+    "menu_section_title": "Our Menu",
+    "locations_section_label": "Find us",
+    "locations_section_title": "Our Locations",
+    "cta_title": "Find your nearest Pin Pin Café",
+    "cta_subtitle": "From Taichung to Tokyo — your next eggcake moment awaits.",
+    "view_locations": "View locations",
+    "view_full_menu": "View full menu",
+    "philosophy_label": "Our philosophy",
+    "philosophy_title": "Taste, and taste again",
+    "philosophy_body": "At Pin Pin Café, every bite is an invitation to slow down and savor. Our name \"品品\" means to taste and taste again — a philosophy we pour into every eggcake, every cup of tea, and every moment shared at our cafés.",
+    "instagram_label": "Follow along",
+    "instagram_title": "On Instagram"
+  },
+  "menu": {
+    "filter_all": "All",
+    "filter_classic": "Classic",
+    "filter_seasonal": "Seasonal",
+    "filter_limited": "Limited Edition",
+    "from_price": "From NT${price}",
+    "pairs_with": "Pairs well with",
+    "eggcakes": "Eggcakes",
+    "drinks": "Drinks",
+    "seasonal": "Seasonal",
+    "overview_label": "Explore",
+    "overview_title": "Our Menu",
+    "tea_collection": "Tea Collection",
+    "coffee_selection": "Coffee Selection"
+  },
+  "locations": {
+    "taiwan": "Taiwan",
+    "japan": "Japan",
+    "all": "All",
+    "coming_soon": "Coming soon",
+    "get_directions": "Get directions",
+    "hours": "Hours",
+    "page_label": "Find us",
+    "page_title": "Our Locations"
+  },
+  "news": {
+    "page_label": "Latest",
+    "page_title": "News & Updates",
+    "all": "All",
+    "new_flavor": "New Flavors",
+    "store_opening": "Store Openings",
+    "collaboration": "Collaborations",
+    "event": "Events",
+    "read_more": "Read more",
+    "related": "Related articles",
+    "share": "Share this article"
+  },
+  "contact": {
+    "page_label": "Get in touch",
+    "page_title": "Contact Us",
+    "general": "General inquiry",
+    "franchise": "Franchise inquiry",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "success": "Thank you! We'll be in touch.",
+    "error": "Something went wrong. Please try again.",
+    "company": "Company name",
+    "phone": "Phone number",
+    "country": "Country",
+    "budget": "Budget range"
+  },
+  "common": {
+    "scroll": "Scroll",
+    "read_more": "Read more",
+    "share": "Share",
+    "follow_instagram": "Follow @pinpin_eggcake on Instagram",
+    "back": "Back",
+    "loading": "Loading...",
+    "not_found_title": "Page not found",
+    "not_found_body": "The page you are looking for does not exist.",
+    "go_home": "Go home"
+  },
+  "footer": {
+    "rights": "© {year} 品品Café. All rights reserved.",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "tagline": "Eggcake × Tea × Coffee"
+  }
+}
