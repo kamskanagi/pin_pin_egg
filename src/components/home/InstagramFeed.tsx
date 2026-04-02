@@ -1,8 +1,18 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+
+const igImages = [
+  '/images/instagram/ig-01.jpg',
+  '/images/instagram/ig-02.jpg',
+  '/images/instagram/ig-03.jpg',
+  '/images/instagram/ig-04.jpg',
+  '/images/instagram/ig-05.jpg',
+  '/images/instagram/ig-06.jpg',
+];
 
 export function InstagramFeed() {
   const t = useTranslations('home');
@@ -20,12 +30,16 @@ export function InstagramFeed() {
 
         {/* Placeholder grid — replace with live feed in v2 */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {igImages.map((src, i) => (
             <ScrollReveal key={i} delay={i * 0.08}>
-              <div className="aspect-square rounded-lg bg-cream-dark overflow-hidden flex items-center justify-center group cursor-pointer">
-                <span className="font-serif-tc text-2xl text-charcoal-muted/15 group-hover:text-warm-gold/30 transition-colors duration-300">
-                  品
-                </span>
+              <div className="aspect-square rounded-lg bg-cream-dark overflow-hidden relative group cursor-pointer">
+                <Image
+                  src={src}
+                  alt={`Pin Pin Café Instagram ${i + 1}`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 33vw, 16vw"
+                />
               </div>
             </ScrollReveal>
           ))}

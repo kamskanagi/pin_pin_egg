@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 
 export function Hero() {
   const t = useTranslations('home');
@@ -13,8 +14,15 @@ export function Hero() {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-charcoal">
-        {/* Placeholder — replace with actual hero image */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/50 to-charcoal/90" />
+        <Image
+          src="/images/hero/hero-cafe.jpg"
+          alt="Pin Pin Café interior"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/80" />
       </div>
 
       {/* Content */}

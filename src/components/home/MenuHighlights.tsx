@@ -7,6 +7,13 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
+
+const highlightImages = [
+  '/images/menu/eggcake.jpg',
+  '/images/menu/matcha.jpg',
+  '/images/menu/coffee.jpg',
+];
 
 interface HighlightCard {
   titleEn: string;
@@ -103,11 +110,14 @@ export function MenuHighlights() {
                 }
                 transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
               >
-                {/* Placeholder image area */}
-                <div className="aspect-[4/3] rounded-xl bg-cream-dark mb-6 overflow-hidden flex items-center justify-center">
-                  <span className="font-serif-tc text-4xl text-charcoal-muted/20">
-                    品
-                  </span>
+                <div className="aspect-[4/3] rounded-xl bg-cream-dark mb-6 overflow-hidden relative">
+                  <Image
+                    src={highlightImages[i]}
+                    alt={getTitle(card)}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
 
                 <Badge variant={card.badge} className="mb-3">

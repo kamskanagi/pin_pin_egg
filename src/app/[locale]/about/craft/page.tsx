@@ -1,8 +1,16 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Button } from '@/components/ui/Button';
+
+const craftImages = [
+  '/images/about/craft-01.jpg',
+  '/images/about/craft-02.jpg',
+  '/images/about/craft-03.jpg',
+  '/images/about/craft-04.jpg',
+];
 
 export async function generateMetadata({
   params: { locale },
@@ -84,9 +92,14 @@ export default function CraftPage({
             {steps.map((step, i) => (
               <ScrollReveal key={step.step} delay={0.1}>
                 <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? 'md:direction-rtl' : ''}`}>
-                  {/* Image placeholder */}
-                  <div className={`aspect-square rounded-2xl bg-cream-dark flex items-center justify-center ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                    <span className="font-serif text-6xl text-charcoal-muted/10">{step.step}</span>
+                  <div className={`aspect-square rounded-2xl bg-cream-dark overflow-hidden relative ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+                    <Image
+                      src={craftImages[i]}
+                      alt={`Step ${step.step}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
 
                   {/* Text */}

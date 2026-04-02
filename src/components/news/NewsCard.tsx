@@ -2,10 +2,17 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import { Link } from '@/lib/i18n/navigation';
 import { Badge } from '@/components/ui/Badge';
 import type { PlaceholderNewsPost } from '@/lib/placeholder-data';
 import type { NewsCategory } from '@/types/news';
+
+const newsImages = [
+  '/images/news/news-01.jpg',
+  '/images/news/news-02.jpg',
+  '/images/news/news-03.jpg',
+];
 
 interface NewsCardProps {
   post: PlaceholderNewsPost;
@@ -43,9 +50,14 @@ export function NewsCard({ post }: NewsCardProps) {
         }
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
       >
-        {/* Placeholder image */}
-        <div className="aspect-[16/9] bg-cream-dark flex items-center justify-center">
-          <span className="font-serif-tc text-4xl text-charcoal-muted/15">品</span>
+        <div className="aspect-[16/9] bg-cream-dark relative overflow-hidden">
+          <Image
+            src={newsImages[post.slug.length % newsImages.length]}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
 
         <div className="p-7">

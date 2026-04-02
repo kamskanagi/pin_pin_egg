@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import { Badge } from '@/components/ui/Badge';
 import { PriceDisplay } from './PriceDisplay';
 import type { MenuBadge } from '@/types/menu';
@@ -16,6 +17,7 @@ interface MenuCardItem {
   priceTwd: number;
   priceJpy?: number;
   badges: MenuBadge[];
+  image?: string;
 }
 
 interface MenuCardProps {
@@ -48,11 +50,22 @@ export function MenuCard({ item }: MenuCardProps) {
       }
       transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
     >
-      {/* Placeholder image */}
-      <div className="aspect-[4/3] rounded-xl bg-cream-dark mb-5 overflow-hidden flex items-center justify-center group">
-        <span className="font-serif-tc text-4xl text-charcoal-muted/15 group-hover:scale-105 transition-transform duration-600">
-          品
-        </span>
+      <div className="aspect-[4/3] rounded-xl bg-cream-dark mb-5 overflow-hidden relative group">
+        {item.image ? (
+          <Image
+            src={item.image}
+            alt={name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="font-serif-tc text-4xl text-charcoal-muted/15 group-hover:scale-105 transition-transform duration-500">
+              品
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Badges */}

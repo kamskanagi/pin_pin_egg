@@ -34,6 +34,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 60,
     priceJpy: 300,
     badges: ['signature'],
+    image: '/images/menu/eggcake.jpg',
   },
   {
     nameZh: '巧克力雞蛋仔',
@@ -45,6 +46,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 70,
     priceJpy: 350,
     badges: ['signature'],
+    image: '/images/menu/eggcake.jpg',
   },
   {
     nameZh: '抹茶雞蛋仔',
@@ -56,6 +58,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 75,
     priceJpy: 380,
     badges: ['signature'],
+    image: '/images/menu/matcha.jpg',
   },
   {
     nameZh: '伯爵茶雞蛋仔',
@@ -103,6 +106,7 @@ export const teaItems: MenuCardItem[] = [
     priceTwd: 90,
     priceJpy: 450,
     badges: ['signature'],
+    image: '/images/menu/matcha.jpg',
   },
   {
     nameZh: '日月潭紅茶',
@@ -114,6 +118,7 @@ export const teaItems: MenuCardItem[] = [
     priceTwd: 85,
     priceJpy: 420,
     badges: ['signature'],
+    image: '/images/menu/matcha.jpg',
   },
   {
     nameZh: '宇治抹茶拿鐵',
@@ -125,6 +130,7 @@ export const teaItems: MenuCardItem[] = [
     priceTwd: 100,
     priceJpy: 500,
     badges: [],
+    image: '/images/menu/matcha.jpg',
   },
 ];
 
@@ -139,6 +145,7 @@ export const coffeeItems: MenuCardItem[] = [
     priceTwd: 100,
     priceJpy: 500,
     badges: ['signature'],
+    image: '/images/menu/coffee.jpg',
   },
   {
     nameZh: '手沖單品咖啡',
@@ -150,6 +157,7 @@ export const coffeeItems: MenuCardItem[] = [
     priceTwd: 120,
     priceJpy: 600,
     badges: [],
+    image: '/images/menu/coffee.jpg',
   },
   {
     nameZh: '冰釀咖啡',
@@ -161,6 +169,7 @@ export const coffeeItems: MenuCardItem[] = [
     priceTwd: 90,
     priceJpy: 450,
     badges: [],
+    image: '/images/menu/coffee.jpg',
   },
 ];
 

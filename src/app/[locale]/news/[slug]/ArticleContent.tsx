@@ -3,11 +3,18 @@
 import { useState, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import type { PlaceholderNewsPost } from '@/lib/placeholder-data';
 import type { NewsCategory } from '@/types/news';
+
+const newsImages = [
+  '/images/news/news-01.jpg',
+  '/images/news/news-02.jpg',
+  '/images/news/news-03.jpg',
+];
 
 interface ArticleContentProps {
   post: PlaceholderNewsPost;
@@ -58,10 +65,15 @@ export function ArticleContent({ post }: ArticleContentProps) {
           </Button>
         </ScrollReveal>
 
-        {/* Hero image placeholder */}
         <ScrollReveal>
-          <div className="aspect-[21/9] rounded-2xl bg-cream-dark mb-8 flex items-center justify-center">
-            <span className="font-serif-tc text-5xl text-charcoal-muted/15">品</span>
+          <div className="aspect-[21/9] rounded-2xl bg-cream-dark mb-8 overflow-hidden relative">
+            <Image
+              src={newsImages[post.slug.length % newsImages.length]}
+              alt={title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
           </div>
         </ScrollReveal>
 

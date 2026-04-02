@@ -1,8 +1,16 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import type { PlaceholderStore } from '@/lib/placeholder-data';
+
+const storeImages: Record<string, string> = {
+  'mitsui-outlet': '/images/locations/store-taichung.jpg',
+  'taichung-lalaport': '/images/locations/store-kaohsiung.jpg',
+  'nangang-lalaport': '/images/locations/store-osaka.jpg',
+  'tokyo-nakameguro': '/images/locations/store-tokyo.jpg',
+};
 
 interface StoreCardProps {
   store: PlaceholderStore;
@@ -25,9 +33,14 @@ export function StoreCard({ store }: StoreCardProps) {
         store.country === 'japan' && 'border border-warm-gold/30'
       )}
     >
-      {/* Placeholder image */}
-      <div className="aspect-[16/9] rounded-lg bg-cream-dark mb-5 flex items-center justify-center">
-        <span className="font-serif-tc text-3xl text-charcoal-muted/15">品</span>
+      <div className="aspect-[16/9] rounded-lg bg-cream-dark mb-5 overflow-hidden relative">
+        <Image
+          src={storeImages[store.id] || '/images/locations/store-taichung.jpg'}
+          alt={name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
       </div>
 
       {/* Country label */}
