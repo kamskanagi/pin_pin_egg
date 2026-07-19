@@ -13,15 +13,74 @@ export interface PlaceholderStore {
   country: Country;
   cityZh: string;
   cityEn: string;
+  cityJa: string;
   hoursZh: string;
   hoursEn: string;
+  hoursJa: string;
   transitZh?: string;
   transitEn?: string;
+  transitJa?: string;
   lat: number;
   lng: number;
   googleMapsUrl: string;
   instagramHandle?: string;
 }
+
+export interface MenuHighlight {
+  titleZh: string;
+  titleEn: string;
+  titleJa: string;
+  descriptionZh: string;
+  descriptionEn: string;
+  descriptionJa: string;
+  badge: 'signature' | 'seasonal' | 'new';
+  priceTwd: number;
+  priceJpy: number;
+  image: string;
+  href: string;
+}
+
+export const menuHighlights: MenuHighlight[] = [
+  {
+    titleZh: '雞蛋仔系列',
+    titleEn: 'Eggcakes',
+    titleJa: 'エッグケーキ',
+    descriptionZh: '外酥內軟QQ，招牌港式雞蛋仔，經典與季節限定口味。',
+    descriptionEn: 'Crispy outside, QQ soft inside. Our signature Hong Kong-style egg waffles in classic and seasonal flavors.',
+    descriptionJa: '外はカリッと、中はもちもち。定番から季節限定まで。',
+    badge: 'signature',
+    priceTwd: 60,
+    priceJpy: 300,
+    image: '/images/menu/eggcake.jpg',
+    href: '/menu/eggcakes',
+  },
+  {
+    titleZh: '茶飲系列',
+    titleEn: 'Tea Collection',
+    titleJa: 'お茶コレクション',
+    descriptionZh: '嚴選台灣頂級茶園散葉茶，從烏龍到抹茶，每一杯都有故事。',
+    descriptionEn: "Premium loose-leaf teas from Taiwan's finest gardens. From oolong to matcha, every cup tells a story.",
+    descriptionJa: '台湾最高峰の茶園から厳選した茶葉。烏龍から抹茶まで。',
+    badge: 'signature',
+    priceTwd: 80,
+    priceJpy: 400,
+    image: '/images/menu/matcha.jpg',
+    href: '/menu/drinks',
+  },
+  {
+    titleZh: '咖啡系列',
+    titleEn: 'Coffee',
+    titleJa: 'コーヒー',
+    descriptionZh: '單品與自家拼配咖啡，完美搭配我們的雞蛋仔。',
+    descriptionEn: 'Single-origin and house blends, crafted to pair perfectly with our eggcakes.',
+    descriptionJa: 'シングルオリジンとハウスブレンド、エッグケーキとの相性抜群。',
+    badge: 'signature',
+    priceTwd: 90,
+    priceJpy: 450,
+    image: '/images/menu/coffee.jpg',
+    href: '/menu/drinks',
+  },
+];
 
 export const eggcakeItems: MenuCardItem[] = [
   {
@@ -81,6 +140,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 85,
     priceJpy: 420,
     badges: ['seasonal'],
+    image: '/images/menu/strawberry.jpg',
   },
   {
     nameZh: '黑糖珍珠雞蛋仔',
@@ -211,10 +271,13 @@ export const storeLocations: PlaceholderStore[] = [
     country: 'taiwan',
     cityZh: '台中',
     cityEn: 'Taichung',
+    cityJa: '台中',
     hoursZh: '11:00–21:30',
     hoursEn: '11:00–21:30',
+    hoursJa: '11:00–21:30',
     transitZh: '台中港站',
     transitEn: 'Taichung Port Station',
+    transitJa: '台中港駅',
     lat: 24.2564,
     lng: 120.5202,
     googleMapsUrl: 'https://maps.google.com/?q=Mitsui+Outlet+Park+Taichung',
@@ -230,10 +293,13 @@ export const storeLocations: PlaceholderStore[] = [
     country: 'taiwan',
     cityZh: '台中',
     cityEn: 'Taichung',
+    cityJa: '台中',
     hoursZh: '11:00–22:00',
     hoursEn: '11:00–22:00',
+    hoursJa: '11:00–22:00',
     transitZh: '大慶站',
     transitEn: 'Daqing Station',
+    transitJa: '大慶駅',
     lat: 24.1296,
     lng: 120.6874,
     googleMapsUrl: 'https://maps.google.com/?q=LaLaport+Taichung',
@@ -249,10 +315,13 @@ export const storeLocations: PlaceholderStore[] = [
     country: 'taiwan',
     cityZh: '台北',
     cityEn: 'Taipei',
+    cityJa: '台北',
     hoursZh: '11:00–21:30',
     hoursEn: '11:00–21:30',
+    hoursJa: '11:00–21:30',
     transitZh: '南港站',
     transitEn: 'Nangang Station',
+    transitJa: '南港駅',
     lat: 25.0554,
     lng: 121.6169,
     googleMapsUrl: 'https://maps.google.com/?q=LaLaport+Nangang',
@@ -268,10 +337,13 @@ export const storeLocations: PlaceholderStore[] = [
     country: 'japan',
     cityZh: '東京',
     cityEn: 'Tokyo',
+    cityJa: '東京',
     hoursZh: '11:00–20:00',
     hoursEn: '11:00–20:00',
+    hoursJa: '11:00–20:00',
     transitZh: '中目黒駅',
     transitEn: 'Nakameguro Station',
+    transitJa: '中目黒駅',
     lat: 35.6440,
     lng: 139.6989,
     googleMapsUrl: 'https://maps.google.com/?q=Nakameguro+Tokyo',

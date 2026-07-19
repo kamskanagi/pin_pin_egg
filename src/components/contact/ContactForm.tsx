@@ -12,6 +12,9 @@ export function ContactForm() {
   const t = useTranslations('contact');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
+  // Zod messages are keys under contact.errors (see src/lib/schemas/contact.ts)
+  const tError = (key?: string) => (key ? t(`errors.${key}`) : '');
+
   const {
     register,
     handleSubmit,
@@ -60,7 +63,7 @@ export function ContactForm() {
             errors.name ? 'border-accent-coral' : 'border-charcoal/15 focus:border-warm-gold'
           )}
         />
-        {errors.name && <p className="mt-1 text-xs text-accent-coral">{errors.name.message}</p>}
+        {errors.name && <p className="mt-1 text-xs text-accent-coral">{tError(errors.name.message)}</p>}
       </div>
 
       <div>
@@ -76,7 +79,7 @@ export function ContactForm() {
             errors.email ? 'border-accent-coral' : 'border-charcoal/15 focus:border-warm-gold'
           )}
         />
-        {errors.email && <p className="mt-1 text-xs text-accent-coral">{errors.email.message}</p>}
+        {errors.email && <p className="mt-1 text-xs text-accent-coral">{tError(errors.email.message)}</p>}
       </div>
 
       <div>
@@ -92,7 +95,7 @@ export function ContactForm() {
             errors.subject ? 'border-accent-coral' : 'border-charcoal/15 focus:border-warm-gold'
           )}
         />
-        {errors.subject && <p className="mt-1 text-xs text-accent-coral">{errors.subject.message}</p>}
+        {errors.subject && <p className="mt-1 text-xs text-accent-coral">{tError(errors.subject.message)}</p>}
       </div>
 
       <div>
@@ -108,7 +111,7 @@ export function ContactForm() {
             errors.message ? 'border-accent-coral' : 'border-charcoal/15 focus:border-warm-gold'
           )}
         />
-        {errors.message && <p className="mt-1 text-xs text-accent-coral">{errors.message.message}</p>}
+        {errors.message && <p className="mt-1 text-xs text-accent-coral">{tError(errors.message.message)}</p>}
       </div>
 
       {status === 'error' && (

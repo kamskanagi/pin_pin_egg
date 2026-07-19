@@ -1,16 +1,9 @@
 'use client';
 
 import { useLocale, useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
 import type { PlaceholderStore } from '@/lib/placeholder-data';
-
-const storeImages: Record<string, string> = {
-  'mitsui-outlet': '/images/locations/store-taichung.jpg',
-  'taichung-lalaport': '/images/locations/store-kaohsiung.jpg',
-  'nangang-lalaport': '/images/locations/store-osaka.jpg',
-  'tokyo-nakameguro': '/images/locations/store-tokyo.jpg',
-};
 
 interface StoreCardProps {
   store: PlaceholderStore;
@@ -22,9 +15,9 @@ export function StoreCard({ store }: StoreCardProps) {
 
   const name = locale === 'ja' ? store.nameJa : locale === 'en' ? store.nameEn : store.nameZh;
   const address = locale === 'ja' ? store.addressJa : locale === 'en' ? store.addressEn : store.addressZh;
-  const city = locale === 'en' ? store.cityEn : store.cityZh;
-  const hours = locale === 'en' ? store.hoursEn : store.hoursZh;
-  const transit = locale === 'en' ? store.transitEn : store.transitZh;
+  const city = locale === 'ja' ? store.cityJa : locale === 'en' ? store.cityEn : store.cityZh;
+  const hours = locale === 'ja' ? store.hoursJa : locale === 'en' ? store.hoursEn : store.hoursZh;
+  const transit = locale === 'ja' ? store.transitJa : locale === 'en' ? store.transitEn : store.transitZh;
 
   return (
     <div
@@ -34,11 +27,12 @@ export function StoreCard({ store }: StoreCardProps) {
       )}
     >
       <div className="aspect-[16/9] rounded-lg bg-cream-dark mb-5 overflow-hidden relative">
-        <Image
-          src={storeImages[store.id] || '/images/locations/store-taichung.jpg'}
+        <ImageWithFallback
+          src={`/images/locations/${store.id}.jpg`}
           alt={name}
           fill
           className="object-cover"
+          fallbackClassName="absolute inset-0"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
@@ -57,7 +51,27 @@ export function StoreCard({ store }: StoreCardProps) {
           {hours}
         </p>
         {transit && (
-          <p className="text-xs">🚇 {transit}</p>
+          <p className="flex items-center gap-1.5 text-xs">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="shrink-0 text-warm-gold-dark"
+            >
+              <rect x="5" y="3" width="14" height="14" rx="3" />
+              <line x1="5" y1="11" x2="19" y2="11" />
+              <circle cx="9" cy="14" r="0.5" />
+              <circle cx="15" cy="14" r="0.5" />
+              <path d="M8 20l-1.5 2M16 20l1.5 2" />
+            </svg>
+            {transit}
+          </p>
         )}
         {store.instagramHandle && (
           <p className="text-xs text-warm-gold">{store.instagramHandle}</p>

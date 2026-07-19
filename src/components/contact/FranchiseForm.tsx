@@ -12,6 +12,9 @@ export function FranchiseForm() {
   const t = useTranslations('contact');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
+  // Zod messages are keys under contact.errors (see src/lib/schemas/contact.ts)
+  const tError = (key?: string) => (key ? t(`errors.${key}`) : '');
+
   const {
     register,
     handleSubmit,
@@ -59,7 +62,7 @@ export function FranchiseForm() {
             {t('company')}
           </label>
           <input id="companyName" type="text" {...register('companyName')} className={inputClass(!!errors.companyName)} />
-          {errors.companyName && <p className="mt-1 text-xs text-accent-coral">{errors.companyName.message}</p>}
+          {errors.companyName && <p className="mt-1 text-xs text-accent-coral">{tError(errors.companyName.message)}</p>}
         </div>
 
         <div>
@@ -67,7 +70,7 @@ export function FranchiseForm() {
             {t('name')}
           </label>
           <input id="contactPerson" type="text" {...register('contactPerson')} className={inputClass(!!errors.contactPerson)} />
-          {errors.contactPerson && <p className="mt-1 text-xs text-accent-coral">{errors.contactPerson.message}</p>}
+          {errors.contactPerson && <p className="mt-1 text-xs text-accent-coral">{tError(errors.contactPerson.message)}</p>}
         </div>
       </div>
 
@@ -77,7 +80,7 @@ export function FranchiseForm() {
             {t('email')}
           </label>
           <input id="franchise-email" type="email" {...register('email')} className={inputClass(!!errors.email)} />
-          {errors.email && <p className="mt-1 text-xs text-accent-coral">{errors.email.message}</p>}
+          {errors.email && <p className="mt-1 text-xs text-accent-coral">{tError(errors.email.message)}</p>}
         </div>
 
         <div>
@@ -85,7 +88,7 @@ export function FranchiseForm() {
             {t('phone')}
           </label>
           <input id="phone" type="tel" {...register('phone')} className={inputClass(!!errors.phone)} />
-          {errors.phone && <p className="mt-1 text-xs text-accent-coral">{errors.phone.message}</p>}
+          {errors.phone && <p className="mt-1 text-xs text-accent-coral">{tError(errors.phone.message)}</p>}
         </div>
       </div>
 
@@ -95,7 +98,7 @@ export function FranchiseForm() {
             {t('country')}
           </label>
           <input id="country" type="text" {...register('country')} className={inputClass(!!errors.country)} />
-          {errors.country && <p className="mt-1 text-xs text-accent-coral">{errors.country.message}</p>}
+          {errors.country && <p className="mt-1 text-xs text-accent-coral">{tError(errors.country.message)}</p>}
         </div>
 
         <div>
@@ -116,7 +119,7 @@ export function FranchiseForm() {
           {...register('message')}
           className={cn(inputClass(!!errors.message), 'resize-y')}
         />
-        {errors.message && <p className="mt-1 text-xs text-accent-coral">{errors.message.message}</p>}
+        {errors.message && <p className="mt-1 text-xs text-accent-coral">{tError(errors.message.message)}</p>}
       </div>
 
       {status === 'error' && (

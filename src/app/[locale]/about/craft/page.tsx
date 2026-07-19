@@ -18,7 +18,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   return {
-    title: locale === 'zh-TW' ? '職人工藝 | 品品Café' : locale === 'ja' ? '職人の技 | 品品Café' : 'Craftsmanship | 品品Café',
+    title: locale === 'zh-TW' ? '職人工藝' : locale === 'ja' ? '職人の技' : 'Craftsmanship',
   };
 }
 

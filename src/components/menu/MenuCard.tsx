@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/Badge';
@@ -24,15 +24,16 @@ interface MenuCardProps {
   item: MenuCardItem;
 }
 
-const badgeLabels: Record<MenuBadge, string> = {
-  signature: 'Signature',
-  seasonal: 'Seasonal',
-  new: 'New',
-  limited: 'Limited',
+const badgeKeys: Record<MenuBadge, string> = {
+  signature: 'badge_signature',
+  seasonal: 'badge_seasonal',
+  new: 'badge_new',
+  limited: 'badge_limited',
 };
 
 export function MenuCard({ item }: MenuCardProps) {
   const locale = useLocale();
+  const t = useTranslations('menu');
   const prefersReducedMotion = useReducedMotion();
 
   const name = locale === 'ja' ? item.nameJa : locale === 'en' ? item.nameEn : item.nameZh;
@@ -73,7 +74,7 @@ export function MenuCard({ item }: MenuCardProps) {
         <div className="flex gap-2 mb-3">
           {item.badges.map((badge) => (
             <Badge key={badge} variant={badge}>
-              {badgeLabels[badge]}
+              {t(badgeKeys[badge])}
             </Badge>
           ))}
         </div>

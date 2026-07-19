@@ -10,7 +10,7 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'nav' });
-  return { title: `${t('about')} | 品品Café` };
+  return { title: t('about') };
 }
 
 const timeline = [

@@ -4,11 +4,13 @@
     "menu": "Menu",
     "locations": "Locations",
     "news": "News",
-    "contact": "Contact"
+    "contact": "Contact",
+    "find_store": "Find a store"
   },
   "home": {
     "hero_tagline": "Eggcake × Tea × Coffee",
     "hero_philosophy": "Taste the food · Taste the tea · Taste the life",
+    "hero_image_alt": "Inside a Pin Pin Café store",
     "menu_section_label": "Signature selections",
     "menu_section_title": "Our Menu",
     "locations_section_label": "Find us",
@@ -36,7 +38,21 @@
     "overview_label": "Explore",
     "overview_title": "Our Menu",
     "tea_collection": "Tea Collection",
-    "coffee_selection": "Coffee Selection"
+    "coffee_selection": "Coffee Selection",
+    "badge_signature": "Signature",
+    "badge_seasonal": "Seasonal",
+    "badge_new": "New",
+    "badge_limited": "Limited",
+    "view_eggcakes": "See eggcake menu",
+    "view_drinks": "See drinks menu",
+    "view_seasonal": "See seasonal menu",
+    "eggcakes_tagline": "Crispy outside, QQ soft inside: Hong Kong-style egg waffles, the Pin Pin way.",
+    "drinks_tagline": "High-mountain Taiwanese teas and specialty coffee, one cup at a time.",
+    "seasonal_tagline": "Strawberry, sakura, and mango: flavors that follow the seasons.",
+    "meta_description": "The Pin Pin Café menu: signature eggcakes, Taiwanese teas, and specialty coffee, plus seasonal surprises.",
+    "eggcakes_meta": "Our signature Hong Kong-style eggcakes: original, chocolate, matcha, and more.",
+    "drinks_meta": "High Mountain Oolong, Sun Moon Lake black tea, and house-roasted coffee.",
+    "seasonal_meta": "Limited seasonal items: strawberry eggcake, sakura latte, mango eggcake."
   },
   "locations": {
     "taiwan": "Taiwan",
@@ -46,7 +62,8 @@
     "get_directions": "Get directions",
     "hours": "Hours",
     "page_label": "Find us",
-    "page_title": "Our Locations"
+    "page_title": "Our Locations",
+    "meta_description": "Pin Pin Café locations in Taichung, Taipei, and Tokyo: addresses, hours, and directions."
   },
   "news": {
     "page_label": "Latest",
@@ -58,7 +75,8 @@
     "event": "Events",
     "read_more": "Read more",
     "related": "Related articles",
-    "share": "Share this article"
+    "share": "Share this article",
+    "meta_description": "News from Pin Pin Café: new flavors, store openings, and collaborations."
   },
   "contact": {
     "page_label": "Get in touch",
@@ -76,13 +94,27 @@
     "company": "Company name",
     "phone": "Phone number",
     "country": "Country",
-    "budget": "Budget range"
+    "budget": "Budget range",
+    "social": "Social",
+    "meta_description": "Contact Pin Pin Café: general questions and franchise inquiries.",
+    "errors": {
+      "name_required": "Please enter your name",
+      "email_invalid": "Please enter a valid email address",
+      "subject_required": "Please enter a subject",
+      "message_min": "Message must be at least 10 characters",
+      "company_required": "Please enter your company name",
+      "contact_required": "Please enter a contact person",
+      "phone_required": "Please enter a phone number",
+      "country_required": "Please enter your country",
+      "too_long": "This field is too long"
+    }
   },
   "common": {
     "scroll": "Scroll",
     "read_more": "Read more",
     "share": "Share",
     "follow_instagram": "Follow @pinpin_eggcake on Instagram",
+    "follow_line": "Add us on LINE",
     "back": "Back",
     "loading": "Loading...",
     "not_found_title": "Page not found",

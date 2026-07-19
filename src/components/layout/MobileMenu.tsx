@@ -79,7 +79,14 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               ))}
             </nav>
 
-            <div className="mt-auto">
+            <div className="mt-auto space-y-6">
+              <Link
+                href="/locations"
+                onClick={onClose}
+                className="block rounded-sm bg-warm-gold px-5 py-3 text-center text-[13px] tracking-[1.5px] uppercase font-sans font-medium text-white transition-colors hover:bg-warm-gold-dark"
+              >
+                {t('find_store')}
+              </Link>
               <LanguageSwitcher scrolled />
             </div>
           </motion.div>

@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 export function Hero() {
   const t = useTranslations('home');
+  const tCommon = useTranslations('common');
   const prefersReducedMotion = useReducedMotion();
 
   const animate = !prefersReducedMotion;
@@ -16,7 +17,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-charcoal">
         <Image
           src="/images/hero/hero-cafe.jpg"
-          alt="Pin Pin Café interior"
+          alt={t('hero_image_alt')}
           fill
           className="object-cover"
           priority
@@ -70,7 +71,7 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 1.4 }}
       >
         <span className="text-[10px] tracking-[3px] uppercase text-white/40 font-sans" aria-hidden="true">
-          {t('hero_tagline')}
+          {tCommon('scroll')}
         </span>
         <motion.div
           className="w-px h-8 bg-white/30"

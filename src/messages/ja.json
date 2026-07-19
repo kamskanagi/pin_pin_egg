@@ -4,11 +4,13 @@
     "menu": "メニュー",
     "locations": "店舗",
     "news": "ニュース",
-    "contact": "お問い合わせ"
+    "contact": "お問い合わせ",
+    "find_store": "店舗を探す"
   },
   "home": {
     "hero_tagline": "エッグケーキ × お茶 × コーヒー",
     "hero_philosophy": "美食を味わい、茶の韻を味わい、人生を味わう",
+    "hero_image_alt": "品品カフェの店内",
     "menu_section_label": "おすすめ",
     "menu_section_title": "メニュー",
     "locations_section_label": "店舗を探す",
@@ -36,7 +38,21 @@
     "overview_label": "探す",
     "overview_title": "メニュー",
     "tea_collection": "お茶コレクション",
-    "coffee_selection": "コーヒーセレクション"
+    "coffee_selection": "コーヒーセレクション",
+    "badge_signature": "看板",
+    "badge_seasonal": "季節限定",
+    "badge_new": "新作",
+    "badge_limited": "数量限定",
+    "view_eggcakes": "エッグケーキメニューを見る",
+    "view_drinks": "ドリンクメニューを見る",
+    "view_seasonal": "季節限定を見る",
+    "eggcakes_tagline": "外はカリッと、中はもちもち。香港式エッグケーキの台湾流。",
+    "drinks_tagline": "台湾高山茶とスペシャルティコーヒーを一杯ずつ丁寧に。",
+    "seasonal_tagline": "いちご、桜、マンゴー。季節とともに変わる限定の味。",
+    "meta_description": "品品カフェのメニュー:看板エッグケーキ、台湾茶、スペシャルティコーヒー、季節限定も。",
+    "eggcakes_meta": "看板の香港式エッグケーキ:オリジナル、チョコレート、抹茶など。",
+    "drinks_meta": "高山ウーロン茶、日月潭紅茶、自家焙煎コーヒー。",
+    "seasonal_meta": "季節限定メニュー:いちごエッグケーキ、桜ラテ、マンゴーエッグケーキ。"
   },
   "locations": {
     "taiwan": "台湾",
@@ -46,7 +62,8 @@
     "get_directions": "道順を見る",
     "hours": "営業時間",
     "page_label": "店舗を探す",
-    "page_title": "店舗一覧"
+    "page_title": "店舗一覧",
+    "meta_description": "品品カフェの店舗一覧:台中、台北、東京の住所・営業時間・アクセス。"
   },
   "news": {
     "page_label": "最新",
@@ -58,7 +75,8 @@
     "event": "イベント",
     "read_more": "続きを読む",
     "related": "関連記事",
-    "share": "この記事をシェア"
+    "share": "この記事をシェア",
+    "meta_description": "品品カフェのニュース:新フレーバー、新店舗、コラボ情報。"
   },
   "contact": {
     "page_label": "お問い合わせ",
@@ -76,13 +94,27 @@
     "company": "会社名",
     "phone": "電話番号",
     "country": "国",
-    "budget": "予算範囲"
+    "budget": "予算範囲",
+    "social": "SNS",
+    "meta_description": "品品カフェへのお問い合わせ:一般・フランチャイズのご相談。",
+    "errors": {
+      "name_required": "お名前を入力してください",
+      "email_invalid": "有効なメールアドレスを入力してください",
+      "subject_required": "件名を入力してください",
+      "message_min": "メッセージは10文字以上で入力してください",
+      "company_required": "会社名を入力してください",
+      "contact_required": "ご担当者名を入力してください",
+      "phone_required": "電話番号を入力してください",
+      "country_required": "国を入力してください",
+      "too_long": "入力内容が長すぎます"
+    }
   },
   "common": {
     "scroll": "スクロール",
     "read_more": "続きを読む",
     "share": "シェア",
     "follow_instagram": "@pinpin_eggcake をフォロー",
+    "follow_line": "LINEで友だち追加",
     "back": "戻る",
     "loading": "読み込み中...",
     "not_found_title": "ページが見つかりません",

@@ -4,11 +4,13 @@
     "menu": "菜單",
     "locations": "門市據點",
     "news": "最新消息",
-    "contact": "聯絡我們"
+    "contact": "聯絡我們",
+    "find_store": "找門市"
   },
   "home": {
     "hero_tagline": "雞蛋仔 × 茶 × 咖啡",
     "hero_philosophy": "品嚐美食、品茶之韻、品味人生",
+    "hero_image_alt": "品品 Café 店內一景",
     "menu_section_label": "招牌精選",
     "menu_section_title": "我們的菜單",
     "locations_section_label": "尋找我們",
@@ -36,7 +38,21 @@
     "overview_label": "探索",
     "overview_title": "我們的菜單",
     "tea_collection": "茶飲系列",
-    "coffee_selection": "咖啡系列"
+    "coffee_selection": "咖啡系列",
+    "badge_signature": "招牌",
+    "badge_seasonal": "季節限定",
+    "badge_new": "新品",
+    "badge_limited": "限量",
+    "view_eggcakes": "看雞蛋仔菜單",
+    "view_drinks": "看飲品菜單",
+    "view_seasonal": "看季節限定",
+    "eggcakes_tagline": "外酥內軟QQ，港式雞蛋仔的台灣新滋味。",
+    "drinks_tagline": "台灣高山茶與精品咖啡，一杯一風景。",
+    "seasonal_tagline": "跟著季節走，草莓、櫻花與芒果的限定風味。",
+    "meta_description": "品品 Café 菜單——招牌雞蛋仔、台灣高山茶與精品咖啡，還有季節限定驚喜。",
+    "eggcakes_meta": "品品招牌港式雞蛋仔：原味、巧克力、抹茶等口味，外酥內軟QQ。",
+    "drinks_meta": "嚴選台灣高山茶、日月潭紅茶與自家烘焙咖啡。",
+    "seasonal_meta": "季節限定菜單：草莓雞蛋仔、櫻花拿鐵、芒果雞蛋仔。"
   },
   "locations": {
     "taiwan": "台灣",
@@ -46,7 +62,8 @@
     "get_directions": "取得路線",
     "hours": "營業時間",
     "page_label": "尋找我們",
-    "page_title": "門市據點"
+    "page_title": "門市據點",
+    "meta_description": "品品 Café 門市據點——台中、台北與東京，查詢地址、營業時間與交通方式。"
   },
   "news": {
     "page_label": "最新",
@@ -58,7 +75,8 @@
     "event": "活動",
     "read_more": "閱讀更多",
     "related": "相關文章",
-    "share": "分享此文章"
+    "share": "分享此文章",
+    "meta_description": "品品 Café 最新消息——新口味、新店開幕與聯名活動。"
   },
   "contact": {
     "page_label": "聯絡我們",
@@ -76,13 +94,27 @@
     "company": "公司名稱",
     "phone": "電話號碼",
     "country": "國家",
-    "budget": "預算範圍"
+    "budget": "預算範圍",
+    "social": "社群媒體",
+    "meta_description": "聯絡品品 Café——一般諮詢與加盟合作洽詢。",
+    "errors": {
+      "name_required": "請輸入姓名",
+      "email_invalid": "請輸入有效的電子郵件",
+      "subject_required": "請輸入主旨",
+      "message_min": "訊息至少需要 10 個字",
+      "company_required": "請輸入公司名稱",
+      "contact_required": "請輸入聯絡人姓名",
+      "phone_required": "請輸入電話號碼",
+      "country_required": "請輸入國家",
+      "too_long": "內容過長"
+    }
   },
   "common": {
     "scroll": "下滑",
     "read_more": "閱讀更多",
     "share": "分享",
     "follow_instagram": "追蹤 @pinpin_eggcake",
+    "follow_line": "加入 LINE 好友",
     "back": "返回",
     "loading": "載入中...",
     "not_found_title": "找不到頁面",

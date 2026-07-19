@@ -8,64 +8,15 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { menuHighlights, type MenuHighlight } from '@/lib/placeholder-data';
 
-const highlightImages = [
-  '/images/menu/eggcake.jpg',
-  '/images/menu/matcha.jpg',
-  '/images/menu/coffee.jpg',
-];
+const cardTints = ['bg-warm-gold/5', 'bg-accent-matcha/5', 'bg-accent-coffee/5'];
 
-interface HighlightCard {
-  titleEn: string;
-  titleZh: string;
-  titleJa: string;
-  descriptionEn: string;
-  descriptionZh: string;
-  descriptionJa: string;
-  badge: 'signature' | 'seasonal' | 'new';
-  badgeLabelEn: string;
-  price: string;
-  bgColor: string;
-}
-
-const highlights: HighlightCard[] = [
-  {
-    titleEn: 'Eggcakes',
-    titleZh: '雞蛋仔系列',
-    titleJa: 'エッグケーキ',
-    descriptionEn: 'Crispy outside, QQ soft inside. Our signature Hong Kong-style egg waffles in classic and seasonal flavors.',
-    descriptionZh: '外酥內軟QQ，招牌港式雞蛋仔，經典與季節限定口味。',
-    descriptionJa: '外はカリッと、中はもちもち。定番から季節限定まで。',
-    badge: 'signature',
-    badgeLabelEn: 'Signature',
-    price: '60',
-    bgColor: 'bg-warm-gold/5',
-  },
-  {
-    titleEn: 'Tea Collection',
-    titleZh: '茶飲系列',
-    titleJa: 'お茶コレクション',
-    descriptionEn: 'Premium loose-leaf teas from Taiwan\'s finest gardens. From oolong to matcha, every cup tells a story.',
-    descriptionZh: '嚴選台灣頂級茶園散葉茶，從烏龍到抹茶，每一杯都有故事。',
-    descriptionJa: '台湾最高峰の茶園から厳選した茶葉。烏龍から抹茶まで。',
-    badge: 'signature',
-    badgeLabelEn: 'Signature',
-    price: '80',
-    bgColor: 'bg-accent-matcha/5',
-  },
-  {
-    titleEn: 'Coffee',
-    titleZh: '咖啡系列',
-    titleJa: 'コーヒー',
-    descriptionEn: 'Single-origin and house blends, crafted to pair perfectly with our eggcakes.',
-    descriptionZh: '單品與自家拼配咖啡，完美搭配我們的雞蛋仔。',
-    descriptionJa: 'シングルオリジンとハウスブレンド、エッグケーキとの相性抜群。',
-    badge: 'signature',
-    badgeLabelEn: 'Signature',
-    price: '90',
-    bgColor: 'bg-accent-coffee/5',
-  },
-];
+const badgeKeys = {
+  signature: 'badge_signature',
+  seasonal: 'badge_seasonal',
+  new: 'badge_new',
+} as const;
 
 export function MenuHighlights() {
   const t = useTranslations('home');
@@ -73,13 +24,13 @@ export function MenuHighlights() {
   const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
-  const getTitle = (card: HighlightCard) => {
+  const getTitle = (card: MenuHighlight) => {
     if (locale === 'ja') return card.titleJa;
     if (locale === 'en') return card.titleEn;
     return card.titleZh;
   };
 
-  const getDescription = (card: HighlightCard) => {
+  const getDescription = (card: MenuHighlight) => {
     if (locale === 'ja') return card.descriptionJa;
     if (locale === 'en') return card.descriptionEn;
     return card.descriptionZh;
@@ -96,12 +47,12 @@ export function MenuHighlights() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {highlights.map((card, i) => (
+          {menuHighlights.map((card, i) => (
             <ScrollReveal key={card.titleEn} delay={i * 0.15}>
               <motion.div
                 className={cn(
                   'rounded-2xl p-7 transition-shadow duration-500 ease-out-expo',
-                  card.bgColor
+                  cardTints[i % cardTints.length]
                 )}
                 whileHover={
                   prefersReducedMotion
@@ -112,7 +63,7 @@ export function MenuHighlights() {
               >
                 <div className="aspect-[4/3] rounded-xl bg-cream-dark mb-6 overflow-hidden relative">
                   <Image
-                    src={highlightImages[i]}
+                    src={card.image}
                     alt={getTitle(card)}
                     fill
                     className="object-cover"
@@ -121,29 +72,29 @@ export function MenuHighlights() {
                 </div>
 
                 <Badge variant={card.badge} className="mb-3">
-                  {card.badgeLabelEn}
+                  {tMenu(badgeKeys[card.badge])}
                 </Badge>
 
                 <h3 className="font-serif text-2xl font-normal mb-1">
-                  {locale === 'zh-TW' ? card.titleZh : card.titleEn}
+                  {locale === 'zh-TW' ? card.titleZh : getTitle(card)}
                 </h3>
-                {locale !== 'zh-TW' && (
-                  <p className="font-serif-tc text-sm text-charcoal-muted mb-3">
-                    {card.titleZh}
-                  </p>
-                )}
-                {locale === 'zh-TW' && (
-                  <p className="font-serif text-sm text-charcoal-muted mb-3">
-                    {card.titleEn}
-                  </p>
-                )}
+                <p
+                  className={cn(
+                    'text-sm text-charcoal-muted mb-3',
+                    locale === 'zh-TW' ? 'font-serif' : 'font-serif-tc'
+                  )}
+                >
+                  {locale === 'zh-TW' ? card.titleEn : card.titleZh}
+                </p>
 
                 <p className="text-charcoal-muted text-sm leading-relaxed mb-4">
                   {getDescription(card)}
                 </p>
 
                 <p className="text-sm tracking-wide font-medium text-warm-gold-dark">
-                  {tMenu('from_price', { price: card.price })}
+                  {tMenu('from_price', {
+                    price: locale === 'ja' ? card.priceJpy : card.priceTwd,
+                  })}
                 </p>
               </motion.div>
             </ScrollReveal>

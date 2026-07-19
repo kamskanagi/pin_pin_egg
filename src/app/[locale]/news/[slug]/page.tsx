@@ -20,7 +20,7 @@ export async function generateMetadata({
   const description = locale === 'ja' ? post.excerptJa : locale === 'en' ? post.excerptEn : post.excerptZh;
 
   return {
-    title: `${title} | 品品Café`,
+    title: title,
     description,
   };
 }

@@ -1,40 +1,38 @@
-'use client';
-
-import { useState } from 'react';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
+import type { Metadata } from 'next';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { CategoryFilter } from '@/components/menu/CategoryFilter';
-import { MenuGrid } from '@/components/menu/MenuGrid';
-import { eggcakeItems } from '@/lib/placeholder-data';
+import { EggcakesMenu } from '@/components/menu/EggcakesMenu';
 
-export default function EggcakesPage() {
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'menu' });
+  return {
+    title: t('eggcakes'),
+    description: t('eggcakes_meta'),
+  };
+}
+
+export default function EggcakesPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
   const t = useTranslations('menu');
-  const [filter, setFilter] = useState('all');
-
-  const categories = [
-    { key: 'all', label: t('filter_all') },
-    { key: 'classic', label: t('filter_classic') },
-    { key: 'seasonal', label: t('filter_seasonal') },
-    { key: 'limited', label: t('filter_limited') },
-  ];
-
-  const filtered = filter === 'all'
-    ? eggcakeItems
-    : eggcakeItems.filter((item) => {
-        if (filter === 'classic') return item.badges.includes('signature') || item.badges.length === 0;
-        return item.badges.includes(filter as 'seasonal' | 'limited');
-      });
 
   return (
     <div className="pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-content mx-auto">
         <ScrollReveal>
-          <SectionHeader label={t('eggcakes')} title={t('eggcakes')} />
+          <SectionHeader label={t('overview_title')} title={t('eggcakes')} />
         </ScrollReveal>
 
-        <CategoryFilter categories={categories} active={filter} onChange={setFilter} />
-        <MenuGrid items={filtered} />
+        <EggcakesMenu />
       </div>
     </div>
   );

@@ -54,6 +54,14 @@ export function Footer() {
           <div>
             <div className="flex flex-col gap-3">
               <a
+                href="https://line.me/R/ti/p/@pinpincafe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[13px] text-white/60 hover:text-warm-gold transition-colors"
+              >
+                LINE
+              </a>
+              <a
                 href="https://www.instagram.com/pinpin_eggcake/"
                 target="_blank"
                 rel="noopener noreferrer"

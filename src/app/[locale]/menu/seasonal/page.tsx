@@ -1,12 +1,29 @@
-'use client';
-
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
+import type { Metadata } from 'next';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { MenuGrid } from '@/components/menu/MenuGrid';
 import { seasonalItems } from '@/lib/placeholder-data';
 
-export default function SeasonalPage() {
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: 'menu' });
+  return {
+    title: t('seasonal'),
+    description: t('seasonal_meta'),
+  };
+}
+
+export default function SeasonalPage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
   const t = useTranslations('menu');
 
   return (

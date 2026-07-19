@@ -53,6 +53,17 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-8">
           <NavbarLinks scrolled={showDark} />
           <LanguageSwitcher scrolled={showDark} />
+          <Link
+            href="/locations"
+            className={cn(
+              'rounded-sm px-5 py-2 text-xs tracking-[1.5px] uppercase font-sans font-medium transition-colors duration-300',
+              showDark
+                ? 'bg-warm-gold text-white hover:bg-warm-gold-dark'
+                : 'border border-white/50 text-white hover:bg-white hover:text-charcoal'
+            )}
+          >
+            {t('find_store')}
+          </Link>
         </div>
 
         <button
