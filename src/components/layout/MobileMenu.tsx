@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/lib/i18n/navigation';
+import { isOrderingEnabled } from '@/lib/order/flag';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface MobileMenuProps {
@@ -19,8 +20,14 @@ const navItems = [
   { href: '/contact', key: 'contact' },
 ] as const;
 
+const orderingEnabled = isOrderingEnabled();
+
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const t = useTranslations('nav');
+  const tOrder = useTranslations('order');
+
+  const ctaHref = orderingEnabled ? '/order' : '/locations';
+  const ctaLabel = orderingEnabled ? tOrder('nav_cta') : t('find_store');
 
   useEffect(() => {
     if (open) {
@@ -81,11 +88,11 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
 
             <div className="mt-auto space-y-6">
               <Link
-                href="/locations"
+                href={ctaHref}
                 onClick={onClose}
                 className="block rounded-sm bg-warm-gold px-5 py-3 text-center text-[13px] tracking-[1.5px] uppercase font-sans font-medium text-white transition-colors hover:bg-warm-gold-dark"
               >
-                {t('find_store')}
+                {ctaLabel}
               </Link>
               <LanguageSwitcher scrolled />
             </div>

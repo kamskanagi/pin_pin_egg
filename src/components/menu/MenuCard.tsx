@@ -6,8 +6,10 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/Badge';
 import { PriceDisplay } from './PriceDisplay';
 import type { MenuBadge } from '@/types/menu';
+import type { OptionGroup } from '@/types/order';
 
 interface MenuCardItem {
+  id: string;
   nameZh: string;
   nameEn: string;
   nameJa: string;
@@ -18,6 +20,8 @@ interface MenuCardItem {
   priceJpy?: number;
   badges: MenuBadge[];
   image?: string;
+  /** Present only for orderable drinks (size/sweetness/ice/toppings); absent items are order-as-is. */
+  optionGroups?: OptionGroup[];
 }
 
 interface MenuCardProps {

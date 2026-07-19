@@ -5,15 +5,22 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/lib/i18n/navigation';
 import { cn } from '@/lib/utils';
+import { isOrderingEnabled } from '@/lib/order/flag';
 import { NavbarLinks } from './NavbarLinks';
 import { MobileMenu } from './MobileMenu';
 import { LanguageSwitcher } from './LanguageSwitcher';
+
+const orderingEnabled = isOrderingEnabled();
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const t = useTranslations('nav');
+  const tOrder = useTranslations('order');
   const pathname = usePathname();
+
+  const ctaHref = orderingEnabled ? '/order' : '/locations';
+  const ctaLabel = orderingEnabled ? tOrder('nav_cta') : t('find_store');
 
   // Only use transparent/white navbar on the homepage (which has a dark hero)
   const isHomepage = pathname === '/' || pathname === '/en' || pathname === '/ja';
@@ -54,7 +61,7 @@ export function Navbar() {
           <NavbarLinks scrolled={showDark} />
           <LanguageSwitcher scrolled={showDark} />
           <Link
-            href="/locations"
+            href={ctaHref}
             className={cn(
               'rounded-sm px-5 py-2 text-xs tracking-[1.5px] uppercase font-sans font-medium transition-colors duration-300',
               showDark
@@ -62,7 +69,7 @@ export function Navbar() {
                 : 'border border-white/50 text-white hover:bg-white hover:text-charcoal'
             )}
           >
-            {t('find_store')}
+            {ctaLabel}
           </Link>
         </div>
 

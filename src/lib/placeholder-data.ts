@@ -1,6 +1,65 @@
 import type { MenuCardItem } from '@/components/menu/MenuCard';
 import type { Country } from '@/types/location';
 import type { NewsCategory } from '@/types/news';
+import type { OptionGroup } from '@/types/order';
+
+// Reusable drink customization groups (Taiwanese tea-shop convention).
+// Eggcakes intentionally have no optionGroups — they're ordered as-is.
+const sizeGroup: OptionGroup = {
+  key: 'size',
+  labelZh: '份量',
+  labelEn: 'Size',
+  labelJa: 'サイズ',
+  required: true,
+  multiple: false,
+  choices: [
+    { key: 'regular', labelZh: '中杯', labelEn: 'Regular', labelJa: 'レギュラー' },
+    { key: 'large', labelZh: '大杯', labelEn: 'Large', labelJa: 'ラージ', priceDeltaTwd: 15 },
+  ],
+};
+
+const sweetnessGroup: OptionGroup = {
+  key: 'sweetness',
+  labelZh: '甜度',
+  labelEn: 'Sweetness',
+  labelJa: '甘さ',
+  required: true,
+  multiple: false,
+  choices: [
+    { key: 'full', labelZh: '正常糖', labelEn: 'Full sugar', labelJa: '通常' },
+    { key: 'half', labelZh: '半糖', labelEn: 'Half sugar', labelJa: '半糖' },
+    { key: 'light', labelZh: '微糖', labelEn: 'Light sugar', labelJa: '微糖' },
+    { key: 'none', labelZh: '無糖', labelEn: 'No sugar', labelJa: '無糖' },
+  ],
+};
+
+const iceGroup: OptionGroup = {
+  key: 'ice',
+  labelZh: '冰塊',
+  labelEn: 'Ice',
+  labelJa: '氷',
+  required: true,
+  multiple: false,
+  choices: [
+    { key: 'regular', labelZh: '正常冰', labelEn: 'Regular ice', labelJa: '通常' },
+    { key: 'light', labelZh: '少冰', labelEn: 'Light ice', labelJa: '少なめ' },
+    { key: 'none', labelZh: '去冰', labelEn: 'No ice', labelJa: '氷なし' },
+    { key: 'hot', labelZh: '熱', labelEn: 'Hot', labelJa: 'ホット' },
+  ],
+};
+
+const toppingsGroup: OptionGroup = {
+  key: 'toppings',
+  labelZh: '加料',
+  labelEn: 'Toppings',
+  labelJa: 'トッピング',
+  required: false,
+  multiple: true,
+  choices: [
+    { key: 'boba', labelZh: '黑糖珍珠', labelEn: 'Brown sugar boba', labelJa: '黒糖タピオカ', priceDeltaTwd: 15 },
+    { key: 'pudding', labelZh: '布丁', labelEn: 'Pudding', labelJa: 'プリン', priceDeltaTwd: 15 },
+  ],
+};
 
 export interface PlaceholderStore {
   id: string;
@@ -84,6 +143,7 @@ export const menuHighlights: MenuHighlight[] = [
 
 export const eggcakeItems: MenuCardItem[] = [
   {
+    id: 'eggcake-original',
     nameZh: '原味雞蛋仔',
     nameEn: 'Original Eggcake',
     nameJa: 'オリジナルエッグケーキ',
@@ -96,6 +156,7 @@ export const eggcakeItems: MenuCardItem[] = [
     image: '/images/menu/eggcake.jpg',
   },
   {
+    id: 'eggcake-chocolate',
     nameZh: '巧克力雞蛋仔',
     nameEn: 'Chocolate Eggcake',
     nameJa: 'チョコレートエッグケーキ',
@@ -108,6 +169,7 @@ export const eggcakeItems: MenuCardItem[] = [
     image: '/images/menu/eggcake.jpg',
   },
   {
+    id: 'eggcake-matcha',
     nameZh: '抹茶雞蛋仔',
     nameEn: 'Matcha Eggcake',
     nameJa: '抹茶エッグケーキ',
@@ -120,6 +182,7 @@ export const eggcakeItems: MenuCardItem[] = [
     image: '/images/menu/matcha.jpg',
   },
   {
+    id: 'eggcake-earlgrey',
     nameZh: '伯爵茶雞蛋仔',
     nameEn: 'Earl Grey Eggcake',
     nameJa: 'アールグレイエッグケーキ',
@@ -131,6 +194,7 @@ export const eggcakeItems: MenuCardItem[] = [
     badges: [],
   },
   {
+    id: 'eggcake-strawberry',
     nameZh: '草莓季節限定雞蛋仔',
     nameEn: 'Strawberry Eggcake',
     nameJa: 'いちごエッグケーキ',
@@ -143,6 +207,7 @@ export const eggcakeItems: MenuCardItem[] = [
     image: '/images/menu/strawberry.jpg',
   },
   {
+    id: 'eggcake-brownsugar-boba',
     nameZh: '黑糖珍珠雞蛋仔',
     nameEn: 'Brown Sugar Boba Eggcake',
     nameJa: '黒糖タピオカエッグケーキ',
@@ -157,6 +222,7 @@ export const eggcakeItems: MenuCardItem[] = [
 
 export const teaItems: MenuCardItem[] = [
   {
+    id: 'tea-oolong',
     nameZh: '高山烏龍茶',
     nameEn: 'High Mountain Oolong',
     nameJa: '高山ウーロン茶',
@@ -167,8 +233,10 @@ export const teaItems: MenuCardItem[] = [
     priceJpy: 450,
     badges: ['signature'],
     image: '/images/menu/matcha.jpg',
+    optionGroups: [sizeGroup, sweetnessGroup, iceGroup],
   },
   {
+    id: 'tea-sun-moon-lake',
     nameZh: '日月潭紅茶',
     nameEn: 'Sun Moon Lake Black Tea',
     nameJa: '日月潭紅茶',
@@ -179,8 +247,10 @@ export const teaItems: MenuCardItem[] = [
     priceJpy: 420,
     badges: ['signature'],
     image: '/images/menu/matcha.jpg',
+    optionGroups: [sizeGroup, sweetnessGroup, iceGroup],
   },
   {
+    id: 'tea-uji-matcha-latte',
     nameZh: '宇治抹茶拿鐵',
     nameEn: 'Uji Matcha Latte',
     nameJa: '宇治抹茶ラテ',
@@ -191,11 +261,13 @@ export const teaItems: MenuCardItem[] = [
     priceJpy: 500,
     badges: [],
     image: '/images/menu/matcha.jpg',
+    optionGroups: [sizeGroup, sweetnessGroup, iceGroup, toppingsGroup],
   },
 ];
 
 export const coffeeItems: MenuCardItem[] = [
   {
+    id: 'coffee-signature-latte',
     nameZh: '品品招牌拿鐵',
     nameEn: 'Pin Pin Signature Latte',
     nameJa: '品品シグネチャーラテ',
@@ -206,8 +278,10 @@ export const coffeeItems: MenuCardItem[] = [
     priceJpy: 500,
     badges: ['signature'],
     image: '/images/menu/coffee.jpg',
+    optionGroups: [sizeGroup, iceGroup],
   },
   {
+    id: 'coffee-pour-over',
     nameZh: '手沖單品咖啡',
     nameEn: 'Pour-Over Single Origin',
     nameJa: 'ハンドドリップシングルオリジン',
@@ -218,8 +292,10 @@ export const coffeeItems: MenuCardItem[] = [
     priceJpy: 600,
     badges: [],
     image: '/images/menu/coffee.jpg',
+    optionGroups: [sizeGroup],
   },
   {
+    id: 'coffee-cold-brew',
     nameZh: '冰釀咖啡',
     nameEn: 'Cold Brew',
     nameJa: 'コールドブリュー',
@@ -230,12 +306,14 @@ export const coffeeItems: MenuCardItem[] = [
     priceJpy: 450,
     badges: [],
     image: '/images/menu/coffee.jpg',
+    optionGroups: [sizeGroup],
   },
 ];
 
 export const seasonalItems: MenuCardItem[] = [
   eggcakeItems[4], // Strawberry
   {
+    id: 'drink-sakura-latte',
     nameZh: '櫻花拿鐵',
     nameEn: 'Sakura Latte',
     nameJa: '桜ラテ',
@@ -245,8 +323,10 @@ export const seasonalItems: MenuCardItem[] = [
     priceTwd: 110,
     priceJpy: 550,
     badges: ['seasonal', 'limited'],
+    optionGroups: [sizeGroup, iceGroup],
   },
   {
+    id: 'eggcake-mango',
     nameZh: '芒果雞蛋仔',
     nameEn: 'Mango Eggcake',
     nameJa: 'マンゴーエッグケーキ',
@@ -258,6 +338,13 @@ export const seasonalItems: MenuCardItem[] = [
     badges: ['seasonal'],
   },
 ];
+
+/** Flat catalog of every orderable item, keyed by id, for the online-ordering flow. Dedupes seasonalItems overlap. */
+export const orderableItems: MenuCardItem[] = Array.from(
+  new Map(
+    [...eggcakeItems, ...teaItems, ...coffeeItems, ...seasonalItems].map((item) => [item.id, item])
+  ).values()
+);
 
 export const storeLocations: PlaceholderStore[] = [
   {
