@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Link } from '@/lib/i18n/navigation';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { cn } from '@/lib/utils';
 
 export async function generateMetadata({
   params: { locale },
@@ -26,7 +27,6 @@ const categories = [
     ctaKey: 'view_eggcakes',
     titleZh: '雞蛋仔',
     image: '/images/menu/eggcake.jpg',
-    feature: true,
   },
   {
     href: '/menu/drinks',
@@ -35,7 +35,6 @@ const categories = [
     ctaKey: 'view_drinks',
     titleZh: '茶 × 咖啡',
     image: '/images/menu/matcha.jpg',
-    feature: false,
   },
   {
     href: '/menu/seasonal',
@@ -44,7 +43,6 @@ const categories = [
     ctaKey: 'view_seasonal',
     titleZh: '季節限定',
     image: '/images/menu/seasonal.jpg',
-    feature: false,
   },
 ] as const;
 
@@ -63,55 +61,59 @@ export default function MenuOverviewPage({
           <SectionHeader label={t('overview_label')} title={t('overview_title')} />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {categories.map((cat, i) => (
-            <ScrollReveal
-              key={cat.titleKey}
-              delay={i * 0.15}
-              className={cat.feature ? 'md:col-span-2' : undefined}
-            >
-              <Link
-                href={cat.href}
-                className={`group relative block overflow-hidden rounded-2xl bg-charcoal ${
-                  cat.feature ? 'aspect-[16/10] md:aspect-[21/9]' : 'aspect-[4/3]'
-                }`}
-              >
-                <Image
-                  src={cat.image}
-                  alt={t(cat.titleKey)}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes={cat.feature ? '(max-width: 768px) 100vw, 1100px' : '(max-width: 768px) 100vw, 50vw'}
-                  priority={cat.feature}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
-
-                <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
-                  {locale !== 'zh-TW' && (
-                    <p className="font-serif-tc text-sm tracking-[3px] text-warm-gold-light mb-2">
-                      {cat.titleZh}
-                    </p>
-                  )}
-                  <h3
-                    className={`font-serif text-white ${
-                      cat.feature ? 'text-4xl md:text-5xl' : 'text-3xl'
-                    }`}
+        <div className="border-t border-warm-gold/15 divide-y divide-warm-gold/15">
+          {categories.map((cat, i) => {
+            const imageFirst = i % 2 === 0;
+            return (
+              <ScrollReveal key={cat.titleKey} delay={i * 0.1}>
+                <Link
+                  href={cat.href}
+                  className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center py-16 md:py-20"
+                >
+                  <div
+                    className={cn(
+                      'relative aspect-[4/3] md:aspect-[3/2] overflow-hidden rounded-2xl bg-charcoal md:col-span-7',
+                      imageFirst ? 'md:order-1' : 'md:order-2'
+                    )}
                   >
-                    {t(cat.titleKey)}
-                  </h3>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-white/75">
-                    {t(cat.taglineKey)}
-                  </p>
-                  <p className="mt-5 inline-flex items-center gap-2 text-[13px] tracking-[1.5px] uppercase text-white transition-colors duration-300 group-hover:text-warm-gold-light">
-                    {t(cat.ctaKey)}
-                    <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
-                      →
+                    <Image
+                      src={cat.image}
+                      alt={t(cat.titleKey)}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 700px"
+                      priority={i === 0}
+                    />
+                  </div>
+
+                  <div
+                    className={cn(
+                      'md:col-span-5',
+                      imageFirst ? 'md:order-2' : 'md:order-1'
+                    )}
+                  >
+                    {locale !== 'zh-TW' && (
+                      <p className="font-serif-tc text-sm tracking-[3px] text-warm-gold mb-3">
+                        {cat.titleZh}
+                      </p>
+                    )}
+                    <h3 className="font-serif text-4xl md:text-5xl font-normal mb-5">
+                      {t(cat.titleKey)}
+                    </h3>
+                    <p className="text-charcoal-muted leading-relaxed mb-7 max-w-sm">
+                      {t(cat.taglineKey)}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-[13px] tracking-[1.5px] uppercase text-charcoal underline decoration-dotted decoration-warm-gold/50 underline-offset-8 transition-colors duration-300 group-hover:text-warm-gold group-hover:decoration-warm-gold">
+                      {t(cat.ctaKey)}
+                      <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
                     </span>
-                  </p>
-                </div>
-              </Link>
-            </ScrollReveal>
-          ))}
+                  </div>
+                </Link>
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </div>
