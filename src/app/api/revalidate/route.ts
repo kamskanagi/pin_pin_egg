@@ -1,10 +1,18 @@
+import { timingSafeEqual } from 'node:crypto';
 import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 
+function isValidSecret(provided: string | null): boolean {
+  const expected = process.env.SANITY_REVALIDATE_SECRET;
+  if (!expected || !provided) return false;
+  const a = Buffer.from(provided);
+  const b = Buffer.from(expected);
+  return a.length === b.length && timingSafeEqual(a, b);
+}
+
 export async function POST(request: Request) {
   try {
-    const secret = request.headers.get('x-sanity-secret');
-    if (secret !== process.env.SANITY_REVALIDATE_SECRET) {
+    if (!isValidSecret(request.headers.get('x-sanity-secret'))) {
       return NextResponse.json({ error: 'Invalid secret' }, { status: 401 });
     }
 

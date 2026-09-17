@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { PlaceholderStore } from '@/lib/placeholder-data';
+import { colors } from '@/lib/theme';
 
 interface StoreMapProps {
   stores: PlaceholderStore[];
@@ -9,6 +11,8 @@ interface StoreMapProps {
 }
 
 export function StoreMap({ stores, activeCountry }: StoreMapProps) {
+  const t = useTranslations('locations');
+  const tCommon = useTranslations('common');
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapError, setMapError] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -42,9 +46,9 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
           center: bounds.getCenter(),
           zoom: 6,
           styles: [
-            { featureType: 'all', elementType: 'labels.text.fill', stylers: [{ color: '#7A756F' }] },
-            { featureType: 'water', elementType: 'geometry.fill', stylers: [{ color: '#E8D5B0' }] },
-            { featureType: 'landscape', elementType: 'geometry.fill', stylers: [{ color: '#FAF6F0' }] },
+            { featureType: 'all', elementType: 'labels.text.fill', stylers: [{ color: colors.charcoal.muted }] },
+            { featureType: 'water', elementType: 'geometry.fill', stylers: [{ color: colors['warm-gold'].light }] },
+            { featureType: 'landscape', elementType: 'geometry.fill', stylers: [{ color: colors.cream.DEFAULT }] },
           ],
           disableDefaultUI: true,
           zoomControl: true,
@@ -57,8 +61,8 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
           pin.style.width = '16px';
           pin.style.height = '16px';
           pin.style.borderRadius = '50%';
-          pin.style.backgroundColor = '#C8A96E';
-          pin.style.border = '3px solid #FFFFFF';
+          pin.style.backgroundColor = colors['warm-gold'].DEFAULT;
+          pin.style.border = '3px solid white';
           pin.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
 
           new (markerLib as { AdvancedMarkerElement: new (opts: Record<string, unknown>) => unknown }).AdvancedMarkerElement({
@@ -85,7 +89,7 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
         <div className="text-center">
           <span className="font-serif-tc text-4xl text-charcoal-muted/20 block mb-2">📍</span>
           <p className="text-sm text-charcoal-muted">
-            {filteredStores.length} locations
+            {t('map_store_count', { count: filteredStores.length })}
           </p>
         </div>
       </div>
@@ -100,7 +104,7 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
       />
       {!mapLoaded && (
         <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-cream-dark">
-          <span className="text-sm text-charcoal-muted animate-pulse">Loading map...</span>
+          <span className="text-sm text-charcoal-muted animate-pulse">{tCommon('loading')}</span>
         </div>
       )}
     </div>

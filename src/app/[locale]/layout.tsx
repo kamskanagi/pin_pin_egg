@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Cormorant_Garamond, Noto_Serif_TC, DM_Sans } from 'next/font/google';
 import type { Metadata } from 'next';
 import { locales, type Locale } from '@/lib/i18n/config';
+import { colors } from '@/lib/theme';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import '@/styles/globals.css';
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     alternateLocale: ['en_US', 'ja_JP'],
   },
   other: {
-    'theme-color': '#2C2C2C',
+    'theme-color': colors.charcoal.DEFAULT,
   },
 };
 
@@ -69,6 +70,7 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const t = await getTranslations('common');
 
   return (
     <html
@@ -81,7 +83,7 @@ export default async function LocaleLayout({
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-warm-gold focus:text-white focus:rounded-sm"
           >
-            Skip to content
+            {t('skip_to_content')}
           </a>
           <Navbar />
           <main id="main-content">{children}</main>

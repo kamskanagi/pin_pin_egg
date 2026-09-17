@@ -3,7 +3,9 @@ import { z } from 'zod';
 import { checkoutSchema } from '@/lib/schemas/order';
 import { storeLocations } from '@/lib/placeholder-data';
 import { findOrderableItem } from '@/lib/order/catalog';
-import { computeUnitPriceTwd, isOptionsComplete } from '@/lib/order/pricing';
+import { computeUnitPriceTwd, isOptionsValid } from '@/lib/order/pricing';
+import { isOrderingEnabled } from '@/lib/order/flag';
+import { isSlotBookable } from '@/lib/order/slots';
 import { newOrderToken, nextPickupNumber, saveOrder } from '@/lib/order/server-store';
 import { processPayment } from '@/lib/order/payment';
 import type { CartItem, Order } from '@/types/order';
@@ -26,6 +28,10 @@ const createOrderSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  if (!isOrderingEnabled()) {
+    return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  }
+
   try {
     const body = await request.json();
     const result = createOrderSchema.safeParse(body);
@@ -43,6 +49,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Unknown or unsupported store' }, { status: 400 });
     }
 
+    if (!isSlotBookable(store, slot, new Date())) {
+      return NextResponse.json({ error: 'Pickup slot unavailable' }, { status: 409 });
+    }
+
     // Recompute pricing and item existence server-side — never trust client-supplied prices.
     const resolvedItems: CartItem[] = [];
     for (const line of items) {
@@ -50,9 +60,9 @@ export async function POST(request: Request) {
       if (!catalogItem) {
         return NextResponse.json({ error: `Unknown item: ${line.itemId}` }, { status: 400 });
       }
-      if (!isOptionsComplete(catalogItem, line.options)) {
+      if (!isOptionsValid(catalogItem, line.options)) {
         return NextResponse.json(
-          { error: `Missing required options for item: ${line.itemId}` },
+          { error: `Invalid options for item: ${line.itemId}` },
           { status: 400 }
         );
       }

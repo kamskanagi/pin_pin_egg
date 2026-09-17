@@ -63,7 +63,8 @@
     "hours": "Hours",
     "page_label": "Find us",
     "page_title": "Our Locations",
-    "meta_description": "Pin Pin Café locations in Taichung, Taipei, and Tokyo: addresses, hours, and directions."
+    "meta_description": "Pin Pin Café locations in Taichung, Taipei, and Tokyo: addresses, hours, and directions.",
+    "map_store_count": "{count, plural, one {# location} other {# locations}}"
   },
   "news": {
     "page_label": "Latest",
@@ -175,7 +176,8 @@
     "loading": "Loading...",
     "not_found_title": "Page not found",
     "not_found_body": "The page you are looking for does not exist.",
-    "go_home": "Go home"
+    "go_home": "Go home",
+    "skip_to_content": "Skip to content"
   },
   "footer": {
     "rights": "© {year} 品品Café. All rights reserved.",

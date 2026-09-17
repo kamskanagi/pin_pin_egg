@@ -63,7 +63,8 @@
     "hours": "營業時間",
     "page_label": "尋找我們",
     "page_title": "門市據點",
-    "meta_description": "品品 Café 門市據點——台中、台北與東京，查詢地址、營業時間與交通方式。"
+    "meta_description": "品品 Café 門市據點——台中、台北與東京，查詢地址、營業時間與交通方式。",
+    "map_store_count": "{count} 間門市"
   },
   "news": {
     "page_label": "最新",
@@ -175,7 +176,8 @@
     "loading": "載入中...",
     "not_found_title": "找不到頁面",
     "not_found_body": "您尋找的頁面不存在。",
-    "go_home": "回首頁"
+    "go_home": "回首頁",
+    "skip_to_content": "跳至主要內容"
   },
   "footer": {
     "rights": "© {year} 品品Café. 版權所有。",

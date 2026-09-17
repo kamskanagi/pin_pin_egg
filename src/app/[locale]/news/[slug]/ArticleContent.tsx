@@ -27,6 +27,19 @@ const categoryBadgeVariant: Record<NewsCategory, 'signature' | 'seasonal' | 'new
   event: 'limited',
 };
 
+/** Renders `**bold**` spans as React elements — text is never injected as HTML. */
+function renderInlineBold(text: string) {
+  return text.split(/(\*\*.*?\*\*)/g).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**') && part.length > 4 ? (
+      <strong key={i} className="text-charcoal font-medium">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      part
+    )
+  );
+}
+
 export function ArticleContent({ post }: ArticleContentProps) {
   const locale = useLocale();
   const t = useTranslations('news');
@@ -96,14 +109,9 @@ export function ArticleContent({ post }: ArticleContentProps) {
         <ScrollReveal>
           <div className="prose prose-lg max-w-none">
             {body.split('\n\n').map((paragraph, i) => (
-              <p
-                key={i}
-                className="text-charcoal-muted leading-relaxed mb-6"
-                dangerouslySetInnerHTML={{
-                  __html: paragraph
-                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-charcoal font-medium">$1</strong>'),
-                }}
-              />
+              <p key={i} className="text-charcoal-muted leading-relaxed mb-6">
+                {renderInlineBold(paragraph)}
+              </p>
             ))}
           </div>
         </ScrollReveal>

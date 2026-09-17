@@ -1,4 +1,5 @@
 import type { Order } from '@/types/order';
+import { storeDateKey } from '@/lib/order/slots';
 
 /**
  * In-memory order store for development/demo only — a module-level Map does not
@@ -18,7 +19,7 @@ export function getOrder(token: string): Order | undefined {
 }
 
 export function nextPickupNumber(storeId: string): string {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = storeDateKey(new Date());
   const key = `${storeId}:${today}`;
   const next = (pickupCounters.get(key) ?? 0) + 1;
   pickupCounters.set(key, next);

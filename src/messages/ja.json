@@ -63,7 +63,8 @@
     "hours": "営業時間",
     "page_label": "店舗を探す",
     "page_title": "店舗一覧",
-    "meta_description": "品品カフェの店舗一覧:台中、台北、東京の住所・営業時間・アクセス。"
+    "meta_description": "品品カフェの店舗一覧:台中、台北、東京の住所・営業時間・アクセス。",
+    "map_store_count": "{count}店舗"
   },
   "news": {
     "page_label": "最新",
@@ -175,7 +176,8 @@
     "loading": "読み込み中...",
     "not_found_title": "ページが見つかりません",
     "not_found_body": "お探しのページは存在しません。",
-    "go_home": "ホームへ"
+    "go_home": "ホームへ",
+    "skip_to_content": "本文へスキップ"
   },
   "footer": {
     "rights": "© {year} 品品Café. All rights reserved.",
