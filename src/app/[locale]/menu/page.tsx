@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Link } from '@/lib/i18n/navigation';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { TextLinkLabel } from '@/components/ui/TextLink';
 import { cn } from '@/lib/utils';
 
 export async function generateMetadata({
@@ -103,12 +104,7 @@ export default function MenuOverviewPage({
                     <p className="text-charcoal-muted leading-relaxed mb-7 max-w-sm">
                       {t(cat.taglineKey)}
                     </p>
-                    <span className="inline-flex items-center gap-2 text-[13px] tracking-[1.5px] uppercase text-charcoal underline decoration-dotted decoration-warm-gold/50 underline-offset-8 transition-colors duration-300 group-hover:text-warm-gold group-hover:decoration-warm-gold">
-                      {t(cat.ctaKey)}
-                      <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
-                        →
-                      </span>
-                    </span>
+                    <TextLinkLabel>{t(cat.ctaKey)}</TextLinkLabel>
                   </div>
                 </Link>
               </ScrollReveal>

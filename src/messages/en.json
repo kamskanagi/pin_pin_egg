@@ -23,7 +23,8 @@
     "philosophy_title": "Taste, and taste again",
     "philosophy_body": "At Pin Pin Café, every bite is an invitation to slow down and savor. Our name \"品品\" means to taste and taste again — a philosophy we pour into every eggcake, every cup of tea, and every moment shared at our cafés.",
     "instagram_label": "Follow along",
-    "instagram_title": "On Instagram"
+    "instagram_title": "On Instagram",
+    "explore_category": "Explore {category}"
   },
   "menu": {
     "filter_all": "All",
@@ -52,7 +53,11 @@
     "meta_description": "The Pin Pin Café menu: signature eggcakes, Taiwanese teas, and specialty coffee, plus seasonal surprises.",
     "eggcakes_meta": "Our signature Hong Kong-style eggcakes: original, chocolate, matcha, and more.",
     "drinks_meta": "High Mountain Oolong, Sun Moon Lake black tea, and house-roasted coffee.",
-    "seasonal_meta": "Limited seasonal items: strawberry eggcake, sakura latte, mango eggcake."
+    "seasonal_meta": "Limited seasonal items: strawberry eggcake, sakura latte, mango eggcake.",
+    "explore_drinks": "Explore our drinks",
+    "customize_title": "Make it yours",
+    "tea_short": "Tea",
+    "coffee_short": "Coffee"
   },
   "locations": {
     "taiwan": "Taiwan",
@@ -184,5 +189,13 @@
     "privacy": "Privacy policy",
     "terms": "Terms of use",
     "tagline": "Eggcake × Tea × Coffee"
+  },
+  "about": {
+    "taste_label": "品品",
+    "taste_title": "Taste the food,\ntaste the tea,\ntaste the life",
+    "taste_body_1": "The characters \"品品\" mean to taste, and taste again. We believe every bite of food deserves to be savored slowly, every cup of tea carries the rhythm of culture, and every moment spent at our café is an opportunity to taste life itself.",
+    "taste_body_2": "From our first store in Taichung to Nakameguro in Tokyo, we insist on using the finest ingredients, made to order, delivering crispy-outside, QQ-soft-inside eggcakes to every guest.",
+    "craft_link": "Our craft",
+    "journey_title": "Our Journey"
   }
 }

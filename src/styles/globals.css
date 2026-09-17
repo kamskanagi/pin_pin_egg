@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  /* Subtle paper grain over the cream background (inline SVG noise — not expressible as a Tailwind token) */
+  .bg-paper {
+    background-color: theme('colors.cream.DEFAULT');
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 0 0.12 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
 @layer base {
   body {
     @apply bg-cream text-charcoal font-sans text-[15px] leading-relaxed antialiased;
@@ -14,6 +22,12 @@
   /* Global focus-visible styles for keyboard navigation */
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-warm-gold;
+  }
+
+  /* CJK scripts have no true italic; avoid browser-synthesized slanting */
+  :lang(zh-TW) .italic,
+  :lang(ja) .italic {
+    font-style: normal;
   }
 
   /* Smooth scroll for anchor links */

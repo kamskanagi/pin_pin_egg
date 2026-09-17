@@ -23,7 +23,8 @@
     "philosophy_title": "品味、再品味",
     "philosophy_body": "在品品 Café，每一口都是放慢腳步、細細品味的邀請。「品品」意為品嚐再品嚐——這是我們傾注於每一個雞蛋仔、每一杯茶、以及在咖啡館分享的每一刻的理念。",
     "instagram_label": "追蹤我們",
-    "instagram_title": "Instagram"
+    "instagram_title": "Instagram",
+    "explore_category": "探索{category}"
   },
   "menu": {
     "filter_all": "全部",
@@ -52,7 +53,11 @@
     "meta_description": "品品 Café 菜單——招牌雞蛋仔、台灣高山茶與精品咖啡，還有季節限定驚喜。",
     "eggcakes_meta": "品品招牌港式雞蛋仔：原味、巧克力、抹茶等口味，外酥內軟QQ。",
     "drinks_meta": "嚴選台灣高山茶、日月潭紅茶與自家烘焙咖啡。",
-    "seasonal_meta": "季節限定菜單：草莓雞蛋仔、櫻花拿鐵、芒果雞蛋仔。"
+    "seasonal_meta": "季節限定菜單：草莓雞蛋仔、櫻花拿鐵、芒果雞蛋仔。",
+    "explore_drinks": "探索我們的飲品",
+    "customize_title": "客製你的一杯",
+    "tea_short": "茶",
+    "coffee_short": "咖啡"
   },
   "locations": {
     "taiwan": "台灣",
@@ -184,5 +189,13 @@
     "privacy": "隱私政策",
     "terms": "使用條款",
     "tagline": "雞蛋仔 × 茶 × 咖啡"
+  },
+  "about": {
+    "taste_label": "Pin Pin",
+    "taste_title": "品嚐美食、\n品茶之韻、\n品味人生",
+    "taste_body_1": "「品品」二字，意為品嚐再品嚐。我們相信每一口食物都值得細細品味，每一杯茶都承載著文化的韻味，每一個在咖啡館度過的時刻都是品味人生的機會。",
+    "taste_body_2": "從台中的第一家店到東京中目黒，我們堅持使用最好的食材，現點現做，將外酥內軟QQ的雞蛋仔帶給每一位客人。",
+    "craft_link": "我們的工藝",
+    "journey_title": "我們的旅程"
   }
 }
