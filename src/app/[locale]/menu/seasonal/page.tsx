@@ -1,9 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import type { Metadata } from 'next';
-import { SectionHeader } from '@/components/ui/SectionHeader';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { MenuGrid } from '@/components/menu/MenuGrid';
+import { MenuPageLayout } from '@/components/menu/MenuPageLayout';
+import { MenuPriceList } from '@/components/menu/MenuPriceList';
 import { seasonalItems } from '@/lib/placeholder-data';
 
 export async function generateMetadata({
@@ -26,15 +25,26 @@ export default function SeasonalPage({
   setRequestLocale(locale);
   const t = useTranslations('menu');
 
-  return (
-    <div className="pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-content mx-auto">
-        <ScrollReveal>
-          <SectionHeader label={t('filter_seasonal')} title={t('seasonal')} />
-        </ScrollReveal>
+  // Seasonal items mix eggcakes and drinks; ids are prefixed by product line.
+  const seasonalEggcakes = seasonalItems.filter((item) => item.id.startsWith('eggcake-'));
+  const seasonalDrinks = seasonalItems.filter((item) => !seasonalEggcakes.includes(item));
 
-        <MenuGrid items={seasonalItems} />
-      </div>
-    </div>
+  return (
+    <MenuPageLayout
+      label={t('seasonal')}
+      title={t('explore_seasonal')}
+      tagline={t('seasonal_tagline')}
+      image="/images/menu/seasonal.jpg"
+      imageAlt={t('seasonal')}
+    >
+      <MenuPriceList
+        showDescriptions
+        hiddenBadges={['seasonal']}
+        sections={[
+          { title: t('eggcakes'), items: seasonalEggcakes },
+          { title: t('drinks'), items: seasonalDrinks },
+        ]}
+      />
+    </MenuPageLayout>
   );
 }

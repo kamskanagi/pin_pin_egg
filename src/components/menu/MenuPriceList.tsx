@@ -8,8 +8,12 @@ import type { MenuCardItem } from '@/components/menu/MenuCard';
 import type { MenuBadge } from '@/types/menu';
 import type { OptionGroup } from '@/types/order';
 
-interface DrinkPriceListProps {
+interface MenuPriceListProps {
   sections: { title: string; items: MenuCardItem[] }[];
+  /** Show each item's description under its name. */
+  showDescriptions?: boolean;
+  /** Badges to omit, e.g. `seasonal` on the seasonal page where every item has it. */
+  hiddenBadges?: MenuBadge[];
 }
 
 const badgeKeys: Record<MenuBadge, string> = {
@@ -32,26 +36,29 @@ function collectOptionGroups(items: MenuCardItem[]): OptionGroup[] {
   return Array.from(groups.values());
 }
 
-export function DrinkPriceList({ sections }: DrinkPriceListProps) {
+export function MenuPriceList({ sections, showDescriptions = false, hiddenBadges = [] }: MenuPriceListProps) {
   const locale = useLocale();
   const t = useTranslations('menu');
 
   const label = (obj: Labeled) => (locale === 'ja' ? obj.labelJa : locale === 'en' ? obj.labelEn : obj.labelZh);
-  const optionGroups = collectOptionGroups(sections.flatMap((s) => s.items));
+  const visibleSections = sections.filter((s) => s.items.length > 0);
+  const optionGroups = collectOptionGroups(visibleSections.flatMap((s) => s.items));
   // Option surcharges are only priced in TWD; don't show them against yen menu prices.
   const showDeltas = locale !== 'ja';
 
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-14">
-        {sections.map((section) => (
+        {visibleSections.map((section) => (
           <ScrollReveal key={section.title}>
             <section>
               <h2 className="font-serif italic text-3xl font-normal mb-6">{section.title}</h2>
               <ul className="space-y-5">
                 {section.items.map((item) => {
                   const name = locale === 'ja' ? item.nameJa : locale === 'en' ? item.nameEn : item.nameZh;
-                  const featuredBadges = item.badges.filter((b) => b !== 'seasonal');
+                  const description =
+                    locale === 'ja' ? item.descriptionJa : locale === 'en' ? item.descriptionEn : item.descriptionZh;
+                  const featuredBadges = item.badges.filter((b) => !hiddenBadges.includes(b));
                   return (
                     <li key={item.id}>
                       <div className="flex items-baseline gap-3">
@@ -70,6 +77,9 @@ export function DrinkPriceList({ sections }: DrinkPriceListProps) {
                             </Badge>
                           ))}
                         </div>
+                      )}
+                      {showDescriptions && (
+                        <p className="mt-2 text-sm leading-relaxed text-charcoal-muted">{description}</p>
                       )}
                     </li>
                   );

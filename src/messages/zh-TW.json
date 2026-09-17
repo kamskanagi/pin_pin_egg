@@ -57,7 +57,10 @@
     "explore_drinks": "探索我們的飲品",
     "customize_title": "客製你的一杯",
     "tea_short": "茶",
-    "coffee_short": "咖啡"
+    "coffee_short": "咖啡",
+    "explore_eggcakes": "探索我們的雞蛋仔",
+    "explore_seasonal": "當季限定風味",
+    "eggcakes_special": "新品與季節限定"
   },
   "locations": {
     "taiwan": "台灣",

@@ -57,7 +57,10 @@
     "explore_drinks": "ドリンクを見る",
     "customize_title": "お好みにカスタマイズ",
     "tea_short": "お茶",
-    "coffee_short": "コーヒー"
+    "coffee_short": "コーヒー",
+    "explore_eggcakes": "エッグケーキを見る",
+    "explore_seasonal": "季節の味わい",
+    "eggcakes_special": "新作・季節限定"
   },
   "locations": {
     "taiwan": "台湾",

@@ -1,9 +1,9 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import type { Metadata } from 'next';
-import { SectionHeader } from '@/components/ui/SectionHeader';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { EggcakesMenu } from '@/components/menu/EggcakesMenu';
+import { MenuPageLayout } from '@/components/menu/MenuPageLayout';
+import { MenuPriceList } from '@/components/menu/MenuPriceList';
+import { eggcakeItems } from '@/lib/placeholder-data';
 
 export async function generateMetadata({
   params: { locale },
@@ -25,15 +25,25 @@ export default function EggcakesPage({
   setRequestLocale(locale);
   const t = useTranslations('menu');
 
-  return (
-    <div className="pt-32 pb-24 px-6 md:px-12">
-      <div className="max-w-content mx-auto">
-        <ScrollReveal>
-          <SectionHeader label={t('overview_title')} title={t('eggcakes')} />
-        </ScrollReveal>
+  // Signature and unbadged flavors are the year-round lineup; everything else is new, seasonal, or limited.
+  const classic = eggcakeItems.filter((item) => item.badges.length === 0 || item.badges.includes('signature'));
+  const special = eggcakeItems.filter((item) => !classic.includes(item));
 
-        <EggcakesMenu />
-      </div>
-    </div>
+  return (
+    <MenuPageLayout
+      label={t('eggcakes')}
+      title={t('explore_eggcakes')}
+      tagline={t('eggcakes_tagline')}
+      image="/images/menu/eggcake.jpg"
+      imageAlt={t('eggcakes')}
+    >
+      <MenuPriceList
+        showDescriptions
+        sections={[
+          { title: t('filter_classic'), items: classic },
+          { title: t('eggcakes_special'), items: special },
+        ]}
+      />
+    </MenuPageLayout>
   );
 }

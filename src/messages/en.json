@@ -57,7 +57,10 @@
     "explore_drinks": "Explore our drinks",
     "customize_title": "Make it yours",
     "tea_short": "Tea",
-    "coffee_short": "Coffee"
+    "coffee_short": "Coffee",
+    "explore_eggcakes": "Explore our eggcakes",
+    "explore_seasonal": "Flavors of the season",
+    "eggcakes_special": "New & seasonal"
   },
   "locations": {
     "taiwan": "Taiwan",
