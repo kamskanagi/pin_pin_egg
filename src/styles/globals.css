@@ -12,7 +12,7 @@
 
 @layer base {
   body {
-    @apply bg-cream text-charcoal font-sans text-[15px] leading-relaxed antialiased;
+    @apply bg-paper text-charcoal font-sans text-[15px] leading-relaxed antialiased;
   }
 
   ::selection {

@@ -85,7 +85,7 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
   if (mapError) {
     // Graceful fallback without API key
     return (
-      <div className="aspect-[21/9] rounded-2xl bg-cream-dark flex items-center justify-center mb-12">
+      <div className="aspect-[21/9] rounded-sm bg-cream-dark flex items-center justify-center mb-12">
         <div className="text-center">
           <span className="font-serif-tc text-4xl text-charcoal-muted/20 block mb-2">📍</span>
           <p className="text-sm text-charcoal-muted">
@@ -100,10 +100,10 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
     <div className="relative mb-12">
       <div
         ref={mapRef}
-        className="aspect-[21/9] rounded-2xl overflow-hidden bg-cream-dark"
+        className="aspect-[21/9] rounded-sm overflow-hidden bg-cream-dark"
       />
       {!mapLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-cream-dark">
+        <div className="absolute inset-0 flex items-center justify-center rounded-sm bg-cream-dark">
           <span className="text-sm text-charcoal-muted animate-pulse">{tCommon('loading')}</span>
         </div>
       )}

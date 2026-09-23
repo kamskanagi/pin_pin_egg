@@ -15,7 +15,7 @@ interface MenuPageLayoutProps {
 /** Menu sub-page shell: sticky intro column with image on the left, price list on the right. */
 export function MenuPageLayout({ label, title, tagline, image, imageAlt, children }: MenuPageLayoutProps) {
   return (
-    <div className="bg-paper pt-32 pb-24 px-6 md:px-12">
+    <div className="pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-content mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <aside className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">

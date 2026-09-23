@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
+import { Link } from '@/lib/i18n/navigation';
+import { MaskedHeading } from '@/components/ui/MaskedHeading';
+import { ParallaxImage } from '@/components/ui/ParallaxImage';
+import { WavyDivider } from '@/components/ui/WavyDivider';
 import type { PlaceholderNewsPost } from '@/lib/placeholder-data';
-import type { NewsCategory } from '@/types/news';
 
 const newsImages = [
   '/images/news/news-01.jpg',
@@ -20,12 +19,6 @@ interface ArticleContentProps {
   post: PlaceholderNewsPost;
 }
 
-const categoryBadgeVariant: Record<NewsCategory, 'signature' | 'seasonal' | 'new' | 'limited'> = {
-  'new-flavor': 'new',
-  'store-opening': 'signature',
-  collaboration: 'seasonal',
-  event: 'limited',
-};
 
 /** Renders `**bold**` spans as React elements — text is never injected as HTML. */
 function renderInlineBold(text: string) {
@@ -43,8 +36,6 @@ function renderInlineBold(text: string) {
 export function ArticleContent({ post }: ArticleContentProps) {
   const locale = useLocale();
   const t = useTranslations('news');
-  const tCommon = useTranslations('common');
-  const pathname = usePathname();
 
   const title = locale === 'ja' ? post.titleJa : locale === 'en' ? post.titleEn : post.titleZh;
   const body = locale === 'zh-TW' ? post.bodyZh : post.bodyEn;
@@ -60,9 +51,11 @@ export function ArticleContent({ post }: ArticleContentProps) {
     setShareUrl(window.location.href);
   }, []);
 
+  const [copied, setCopied] = useState(false);
   const handleCopyLink = async () => {
     try {
       await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
     } catch {
       // Silently fail
     }
@@ -72,38 +65,33 @@ export function ArticleContent({ post }: ArticleContentProps) {
     <article className="pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-3xl mx-auto">
         {/* Back link */}
-        <ScrollReveal>
-          <Button href="/news" variant="outline" size="sm" className="mb-8">
-            ← {tCommon('back')}
-          </Button>
-        </ScrollReveal>
-
-        <ScrollReveal>
-          <div className="aspect-[21/9] rounded-2xl bg-cream-dark mb-8 overflow-hidden relative">
-            <Image
-              src={newsImages[post.slug.length % newsImages.length]}
-              alt={title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 768px"
-            />
-          </div>
-        </ScrollReveal>
+        <Link
+          href="/news"
+          className="inline-flex mb-10 text-[13px] tracking-[1.5px] uppercase text-charcoal-muted underline decoration-dotted decoration-warm-gold/50 underline-offset-8 transition-colors hover:text-warm-gold"
+        >
+          ← {t('back_to_news')}
+        </Link>
 
         {/* Meta */}
-        <ScrollReveal>
-          <div className="flex items-center gap-3 mb-4">
-            <Badge variant={categoryBadgeVariant[post.category]}>
-              {categoryLabel}
-            </Badge>
-            <span className="text-xs text-charcoal-muted">{date}</span>
-          </div>
-        </ScrollReveal>
+        <p className="text-[11px] tracking-[3px] uppercase text-warm-gold mb-4">
+          {categoryLabel} · <time dateTime={post.publishedAt}>{date}</time>
+        </p>
 
         {/* Title */}
-        <ScrollReveal>
-          <h1 className="font-serif text-3xl md:text-4xl mb-8">{title}</h1>
-        </ScrollReveal>
+        <MaskedHeading
+          as="h1"
+          text={title}
+          className="font-serif italic text-4xl md:text-5xl font-light leading-tight [:lang(ja)_&]:leading-[1.4] [:lang(zh-TW)_&]:leading-[1.4] mb-10"
+        />
+
+        <ParallaxImage
+          src={newsImages[post.slug.length % newsImages.length]}
+          alt={title}
+          aspect="aspect-[16/9]"
+          sizes="(max-width: 768px) 100vw, 768px"
+          priority
+          className="rounded-sm mb-12"
+        />
 
         {/* Body */}
         <ScrollReveal>
@@ -118,11 +106,12 @@ export function ArticleContent({ post }: ArticleContentProps) {
 
         {/* Share buttons */}
         <ScrollReveal>
-          <div className="border-t border-warm-gold/15 mt-12 pt-8">
-            <p className="text-xs tracking-[3px] uppercase text-warm-gold mb-4">
+          <div className="mt-12">
+            <WavyDivider className="mb-8" />
+            <p className="font-serif italic text-2xl mb-4">
               {t('share')}
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-x-8 gap-y-2">
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
@@ -140,10 +129,12 @@ export function ArticleContent({ post }: ArticleContentProps) {
                 LINE
               </a>
               <button
+                type="button"
                 onClick={handleCopyLink}
                 className="text-sm text-charcoal-muted hover:text-charcoal transition-colors"
+                aria-live="polite"
               >
-                Copy link
+                {copied ? t('link_copied') : t('copy_link')}
               </button>
             </div>
           </div>

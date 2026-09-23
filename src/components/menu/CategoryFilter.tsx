@@ -2,25 +2,32 @@
 
 import { cn } from '@/lib/utils';
 
-interface CategoryFilterProps {
-  categories: { key: string; label: string }[];
-  active: string;
-  onChange: (key: string) => void;
+interface CategoryFilterProps<K extends string> {
+  categories: { key: K; label: string }[];
+  active: K;
+  onChange: (key: K) => void;
 }
 
-export function CategoryFilter({ categories, active, onChange }: CategoryFilterProps) {
+/** Editorial text tab: uppercase label, dotted gold underline when active. */
+export function filterTabClassName(active: boolean) {
+  return cn(
+    'py-2 text-[13px] tracking-[1.5px] uppercase font-sans underline-offset-8 transition-colors duration-300',
+    active
+      ? 'text-charcoal underline decoration-warm-gold decoration-dotted'
+      : 'text-charcoal-muted hover:text-charcoal'
+  );
+}
+
+export function CategoryFilter<K extends string>({ categories, active, onChange }: CategoryFilterProps<K>) {
   return (
-    <div className="flex flex-wrap gap-2 justify-center mb-12">
+    <div className="flex flex-wrap gap-x-8 gap-y-2 mb-12">
       {categories.map((cat) => (
         <button
           key={cat.key}
+          type="button"
+          aria-pressed={active === cat.key}
           onClick={() => onChange(cat.key)}
-          className={cn(
-            'px-5 py-2 text-[13px] tracking-[1.5px] uppercase font-sans rounded-sm transition-all duration-300',
-            active === cat.key
-              ? 'bg-charcoal text-white'
-              : 'text-charcoal-muted hover:text-charcoal border border-charcoal/10 hover:border-charcoal/30'
-          )}
+          className={filterTabClassName(active === cat.key)}
         >
           {cat.label}
         </button>

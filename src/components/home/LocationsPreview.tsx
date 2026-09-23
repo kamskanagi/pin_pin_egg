@@ -1,64 +1,17 @@
-'use client';
-
 import { useTranslations, useLocale } from 'next-intl';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
-
-interface PreviewStore {
-  nameEn: string;
-  nameZh: string;
-  nameJa: string;
-  addressEn: string;
-  addressZh: string;
-  country: 'taiwan' | 'japan';
-}
-
-const stores: PreviewStore[] = [
-  {
-    nameEn: 'Mitsui Outlet Park',
-    nameZh: '台中港三井 Outlet',
-    nameJa: '三井アウトレットパーク台中',
-    addressEn: 'Taichung Mitsui Outlet Park',
-    addressZh: '台中市梧棲區台灣大道十段168號',
-    country: 'taiwan',
-  },
-  {
-    nameEn: 'Taichung LaLaport',
-    nameZh: '台中 LaLaport 南館1F',
-    nameJa: '台中ららぽーと南館1F',
-    addressEn: 'Taichung LaLaport South Building 1F',
-    addressZh: '台中市東區進德路600號',
-    country: 'taiwan',
-  },
-  {
-    nameEn: 'Nangang LaLaport',
-    nameZh: '南港 LaLaport B1',
-    nameJa: '南港ららぽーとB1',
-    addressEn: 'Nangang LaLaport B1 Food Court',
-    addressZh: '台北市南港區經貿二路188號',
-    country: 'taiwan',
-  },
-  {
-    nameEn: 'Tokyo Nakameguro',
-    nameZh: '東京中目黒店',
-    nameJa: '東京中目黒店',
-    addressEn: 'Nakameguro, Tokyo',
-    addressZh: '東京都目黒區中目黒',
-    country: 'japan',
-  },
-];
+import { TextLink } from '@/components/ui/TextLink';
+import { storeLocations, type PlaceholderStore } from '@/lib/placeholder-data';
 
 export function LocationsPreview() {
   const t = useTranslations('home');
   const tLoc = useTranslations('locations');
   const locale = useLocale();
 
-  const getName = (store: PreviewStore) => {
-    if (locale === 'ja') return store.nameJa;
-    if (locale === 'en') return store.nameEn;
-    return store.nameZh;
+  const localized = (store: PlaceholderStore, field: 'name' | 'address' | 'city') => {
+    const key = `${field}${locale === 'ja' ? 'Ja' : locale === 'en' ? 'En' : 'Zh'}` as const;
+    return store[key];
   };
 
   return (
@@ -72,34 +25,28 @@ export function LocationsPreview() {
           />
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {stores.map((store, i) => (
-            <ScrollReveal key={store.nameEn} delay={i * 0.1}>
-              <div
-                className={cn(
-                  'rounded-xl p-6 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10',
-                  store.country === 'japan' && 'border border-warm-gold/30'
-                )}
-              >
-                <p className="text-[10px] tracking-[3px] uppercase text-warm-gold-light mb-3">
-                  {store.country === 'japan' ? tLoc('japan') : tLoc('taiwan')}
-                </p>
-                <h3 className="font-serif text-lg text-white mb-2">
-                  {getName(store)}
-                </h3>
-                <p className="text-xs text-white/50 leading-relaxed">
-                  {locale === 'zh-TW' ? store.addressZh : store.addressEn}
-                </p>
-              </div>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
+          {storeLocations.map((store, i) => (
+            <ScrollReveal key={store.id} delay={i * 0.1}>
+              <li>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-serif text-xl text-white">{localized(store, 'name')}</span>
+                  <span aria-hidden="true" className="flex-1 min-w-4 border-b border-dotted border-warm-gold-light/30" />
+                  <span className="text-[11px] tracking-[2px] uppercase text-warm-gold-light">
+                    {store.country === 'japan' ? tLoc('japan') : tLoc('taiwan')}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm text-white/50 leading-relaxed">{localized(store, 'address')}</p>
+              </li>
             </ScrollReveal>
           ))}
-        </div>
+        </ul>
 
         <ScrollReveal>
-          <div className="text-center mt-12">
-            <Button href="/locations" variant="white" size="sm">
+          <div className="text-center mt-14">
+            <TextLink href="/locations" tone="light">
               {t('view_locations')}
-            </Button>
+            </TextLink>
           </div>
         </ScrollReveal>
       </div>

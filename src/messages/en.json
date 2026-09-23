@@ -5,7 +5,11 @@
     "locations": "Locations",
     "news": "News",
     "contact": "Contact",
-    "find_store": "Find a store"
+    "find_store": "Find a store",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "main_nav": "Main navigation",
+    "mobile_nav": "Site navigation"
   },
   "home": {
     "hero_tagline": "Eggcake × Tea × Coffee",
@@ -24,7 +28,8 @@
     "philosophy_body": "At Pin Pin Café, every bite is an invitation to slow down and savor. Our name \"品品\" means to taste and taste again — a philosophy we pour into every eggcake, every cup of tea, and every moment shared at our cafés.",
     "instagram_label": "Follow along",
     "instagram_title": "On Instagram",
-    "explore_category": "Explore {category}"
+    "explore_category": "Explore {category}",
+    "philosophy_link": "Our story"
   },
   "menu": {
     "filter_all": "All",
@@ -72,7 +77,8 @@
     "page_label": "Find us",
     "page_title": "Our Locations",
     "meta_description": "Pin Pin Café locations in Taichung, Taipei, and Tokyo: addresses, hours, and directions.",
-    "map_store_count": "{count, plural, one {# location} other {# locations}}"
+    "map_store_count": "{count, plural, one {# location} other {# locations}}",
+    "intro": "From Taichung to Tokyo. Find the Pin Pin Café nearest you."
   },
   "news": {
     "page_label": "Latest",
@@ -85,7 +91,12 @@
     "read_more": "Read more",
     "related": "Related articles",
     "share": "Share this article",
-    "meta_description": "News from Pin Pin Café: new flavors, store openings, and collaborations."
+    "meta_description": "News from Pin Pin Café: new flavors, store openings, and collaborations.",
+    "copy_link": "Copy link",
+    "link_copied": "Link copied",
+    "empty": "No articles found.",
+    "back_to_news": "All news",
+    "intro": "New flavors, store openings, and collaborations from Pin Pin Café."
   },
   "contact": {
     "page_label": "Get in touch",
@@ -116,7 +127,8 @@
       "phone_required": "Please enter a phone number",
       "country_required": "Please enter your country",
       "too_long": "This field is too long"
-    }
+    },
+    "intro": "Questions, feedback, or interest in bringing Pin Pin Café to your city — we would love to hear from you."
   },
   "order": {
     "nav_cta": "Order online",
@@ -172,7 +184,13 @@
       "phone_required": "Please enter a mobile number",
       "phone_invalid": "Please enter a valid mobile number",
       "einvoice_value_required": "Please enter your carrier or tax ID number"
-    }
+    },
+    "store_intro": "Freshly made for pickup at our Taiwan stores. Choose where you will collect your order, then choose what.",
+    "menu_intro": "Tap an item to choose its options and add it to your cart.",
+    "jump_to": "On the menu",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "quantity": "Quantity"
   },
   "common": {
     "scroll": "Scroll",
@@ -191,7 +209,13 @@
     "rights": "© {year} 品品Café. All rights reserved.",
     "privacy": "Privacy policy",
     "terms": "Terms of use",
-    "tagline": "Eggcake × Tea × Coffee"
+    "tagline": "Eggcake × Tea × Coffee",
+    "explore": "Explore",
+    "follow": "Follow along",
+    "visit": "Visit us",
+    "visit_body": "Stores in Taichung, Taipei, and Tokyo.",
+    "nav_label": "Footer navigation",
+    "find_store": "Find a store"
   },
   "about": {
     "taste_label": "品品",
@@ -200,5 +224,45 @@
     "taste_body_2": "From our first store in Taichung to Nakameguro in Tokyo, we insist on using the finest ingredients, made to order, delivering crispy-outside, QQ-soft-inside eggcakes to every guest.",
     "craft_link": "Our craft",
     "journey_title": "Our Journey"
+  },
+  "craft": {
+    "label": "Craftsmanship",
+    "title": "The making of an eggcake",
+    "intro": "Every Pin Pin eggcake is a work of art, made to order. From batter to finish, we insist on the warmth and quality of handcrafted perfection.",
+    "step": "Step {number}",
+    "steps": {
+      "batter": {
+        "title": "The batter",
+        "body": "Our batter is made fresh daily using premium flour, free-range eggs, and our secret blend of ingredients perfected over years. The precise ratio creates our signature crispy-outside, QQ-soft-inside texture."
+      },
+      "pour": {
+        "title": "The pour",
+        "body": "Each mold is carefully preheated to the perfect temperature. The batter is poured with practiced precision — not too much, not too little — ensuring every egg in the waffle is perfectly formed."
+      },
+      "flip": {
+        "title": "The flip",
+        "body": "Timing is everything. Our artisans flip the mold at exactly the right moment, distributing the batter evenly and creating that characteristic golden color on both sides."
+      },
+      "finish": {
+        "title": "The finish",
+        "body": "Served hot and fresh, each eggcake is torn from the mold revealing the perfect honeycomb structure inside. Best enjoyed within minutes, when the contrast between crisp shell and soft center is at its peak."
+      }
+    },
+    "promise_title": "Our quality promise",
+    "promises": {
+      "low_sugar": {
+        "title": "Low sugar",
+        "body": "Reduced sugar without sacrificing flavor. Sweetness from quality ingredients, not excess sugar."
+      },
+      "made_to_order": {
+        "title": "Made to order",
+        "body": "Every eggcake is made fresh when you order. No pre-made, no reheated — just fresh."
+      },
+      "ingredients": {
+        "title": "Premium ingredients",
+        "body": "Free-range eggs, high-grade flour, and carefully sourced flavor ingredients from around the world."
+      }
+    },
+    "cta": "Explore the eggcake menu"
   }
 }

@@ -1,3 +1,4 @@
+import { MaskedHeading } from '@/components/ui/MaskedHeading';
 import { cn } from '@/lib/utils';
 
 interface SectionHeaderProps {
@@ -5,6 +6,7 @@ interface SectionHeaderProps {
   title: string;
   alignment?: 'center' | 'left';
   theme?: 'light' | 'dark';
+  as?: 'h1' | 'h2';
 }
 
 export function SectionHeader({
@@ -12,6 +14,7 @@ export function SectionHeader({
   title,
   alignment = 'center',
   theme = 'light',
+  as = 'h2',
 }: SectionHeaderProps) {
   return (
     <div
@@ -28,14 +31,14 @@ export function SectionHeader({
       >
         {label}
       </p>
-      <h2
+      <MaskedHeading
+        as={as}
+        text={title}
         className={cn(
-          'font-serif text-4xl font-normal',
+          'font-serif italic text-4xl md:text-5xl font-light',
           theme === 'dark' && 'text-white'
         )}
-      >
-        {title}
-      </h2>
+      />
     </div>
   );
 }

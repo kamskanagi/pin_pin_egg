@@ -1,13 +1,15 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { MaskedHeading } from '@/components/ui/MaskedHeading';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { TextLink } from '@/components/ui/TextLink';
 
 export function PhilosophyStrip() {
   const t = useTranslations('home');
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-white">
+    <section className="py-24 px-6 md:px-12 bg-cream-dark/50">
       <div className="max-w-content mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
         {/* Giant 品 character */}
         <ScrollReveal direction="left">
@@ -19,19 +21,21 @@ export function PhilosophyStrip() {
         </ScrollReveal>
 
         {/* Brand story */}
-        <ScrollReveal delay={0.15}>
-          <div>
-            <p className="text-xs tracking-[4px] uppercase text-warm-gold mb-4">
-              {t('philosophy_label')}
-            </p>
-            <h2 className="font-serif text-3xl md:text-4xl font-normal mb-6">
-              {t('philosophy_title')}
-            </h2>
-            <p className="text-charcoal-muted leading-relaxed">
+        <div>
+          <p className="text-xs tracking-[4px] uppercase text-warm-gold mb-4">
+            {t('philosophy_label')}
+          </p>
+          <MaskedHeading
+            text={t('philosophy_title')}
+            className="font-serif italic text-4xl md:text-5xl font-light mb-6"
+          />
+          <ScrollReveal delay={0.15}>
+            <p className="text-charcoal-muted leading-relaxed mb-8">
               {t('philosophy_body')}
             </p>
-          </div>
-        </ScrollReveal>
+            <TextLink href="/about">{t('philosophy_link')}</TextLink>
+          </ScrollReveal>
+        </div>
       </div>
     </section>
   );

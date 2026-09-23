@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { FranchiseForm } from '@/components/contact/FranchiseForm';
-import { cn } from '@/lib/utils';
+import { filterTabClassName } from '@/components/menu/CategoryFilter';
 
 export function ContactTabs() {
   const t = useTranslations('contact');
@@ -14,17 +14,12 @@ export function ContactTabs() {
   return (
     <div>
       {/* Tab switcher */}
-      <div className="flex gap-2 mb-8" role="tablist">
+      <div className="flex flex-wrap gap-x-8 gap-y-2 mb-10" role="tablist">
         <button
           role="tab"
           aria-selected={activeTab === 'general'}
           onClick={() => setActiveTab('general')}
-          className={cn(
-            'px-5 py-2 text-[13px] tracking-[1.5px] uppercase font-sans rounded-sm transition-all duration-300',
-            activeTab === 'general'
-              ? 'bg-charcoal text-white'
-              : 'text-charcoal-muted hover:text-charcoal border border-charcoal/10'
-          )}
+          className={filterTabClassName(activeTab === 'general')}
         >
           {t('general')}
         </button>
@@ -32,19 +27,14 @@ export function ContactTabs() {
           role="tab"
           aria-selected={activeTab === 'franchise'}
           onClick={() => setActiveTab('franchise')}
-          className={cn(
-            'px-5 py-2 text-[13px] tracking-[1.5px] uppercase font-sans rounded-sm transition-all duration-300',
-            activeTab === 'franchise'
-              ? 'bg-charcoal text-white'
-              : 'text-charcoal-muted hover:text-charcoal border border-charcoal/10'
-          )}
+          className={filterTabClassName(activeTab === 'franchise')}
         >
           {t('franchise')}
         </button>
       </div>
 
       <ScrollReveal>
-        <div className="rounded-2xl bg-white p-8">
+        <div>
           {activeTab === 'general' ? <ContactForm /> : <FranchiseForm />}
         </div>
       </ScrollReveal>

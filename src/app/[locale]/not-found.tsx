@@ -1,24 +1,23 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Button } from '@/components/ui/Button';
+import { MaskedHeading } from '@/components/ui/MaskedHeading';
+import { TextLink } from '@/components/ui/TextLink';
+import { WavyDivider } from '@/components/ui/WavyDivider';
 
 export default function NotFound() {
   const t = useTranslations('common');
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-6">
-      <div className="text-center">
-        <span className="font-serif-tc text-[120px] font-light text-warm-gold-light/40 leading-none block">
+    <div className="min-h-[70vh] flex items-center justify-center px-6 pt-32 pb-24">
+      <div className="text-center max-w-md w-full">
+        <span aria-hidden="true" className="font-serif italic text-[140px] font-light text-warm-gold-light leading-none block">
           404
         </span>
-        <h1 className="font-serif text-2xl mt-4 mb-2">{t('not_found_title')}</h1>
-        <p className="text-charcoal-muted mb-8">
-          {t('not_found_body')}
-        </p>
-        <Button href="/" variant="outline">
-          {t('go_home')}
-        </Button>
+        <MaskedHeading as="h1" text={t('not_found_title')} className="font-serif italic text-4xl font-light mt-4 mb-4" />
+        <p className="text-charcoal-muted mb-8">{t('not_found_body')}</p>
+        <WavyDivider className="mb-8" />
+        <TextLink href="/">{t('go_home')}</TextLink>
       </div>
     </div>
   );

@@ -5,7 +5,11 @@
     "locations": "門市據點",
     "news": "最新消息",
     "contact": "聯絡我們",
-    "find_store": "找門市"
+    "find_store": "找門市",
+    "open_menu": "開啟選單",
+    "close_menu": "關閉選單",
+    "main_nav": "主要導覽",
+    "mobile_nav": "網站導覽"
   },
   "home": {
     "hero_tagline": "雞蛋仔 × 茶 × 咖啡",
@@ -24,7 +28,8 @@
     "philosophy_body": "在品品 Café，每一口都是放慢腳步、細細品味的邀請。「品品」意為品嚐再品嚐——這是我們傾注於每一個雞蛋仔、每一杯茶、以及在咖啡館分享的每一刻的理念。",
     "instagram_label": "追蹤我們",
     "instagram_title": "Instagram",
-    "explore_category": "探索{category}"
+    "explore_category": "探索{category}",
+    "philosophy_link": "品牌故事"
   },
   "menu": {
     "filter_all": "全部",
@@ -72,7 +77,8 @@
     "page_label": "尋找我們",
     "page_title": "門市據點",
     "meta_description": "品品 Café 門市據點——台中、台北與東京，查詢地址、營業時間與交通方式。",
-    "map_store_count": "{count} 間門市"
+    "map_store_count": "{count} 間門市",
+    "intro": "從台中到東京，找到離你最近的品品 Café。"
   },
   "news": {
     "page_label": "最新",
@@ -85,7 +91,12 @@
     "read_more": "閱讀更多",
     "related": "相關文章",
     "share": "分享此文章",
-    "meta_description": "品品 Café 最新消息——新口味、新店開幕與聯名活動。"
+    "meta_description": "品品 Café 最新消息——新口味、新店開幕與聯名活動。",
+    "copy_link": "複製連結",
+    "link_copied": "已複製連結",
+    "empty": "目前沒有文章。",
+    "back_to_news": "所有消息",
+    "intro": "品品 Café 的新口味、新門市與合作消息。"
   },
   "contact": {
     "page_label": "聯絡我們",
@@ -116,7 +127,8 @@
       "phone_required": "請輸入電話號碼",
       "country_required": "請輸入國家",
       "too_long": "內容過長"
-    }
+    },
+    "intro": "無論是問題、建議，或是想將品品 Café 帶到你的城市，我們都期待你的來信。"
   },
   "order": {
     "nav_cta": "線上訂購",
@@ -172,7 +184,13 @@
       "phone_required": "請輸入手機號碼",
       "phone_invalid": "請輸入有效的手機號碼",
       "einvoice_value_required": "請輸入載具或統編號碼"
-    }
+    },
+    "store_intro": "台灣門市現做取餐。先選擇取餐門市，再挑選餐點。",
+    "menu_intro": "點選品項即可選擇客製選項並加入購物車。",
+    "jump_to": "菜單分類",
+    "decrease": "減少數量",
+    "increase": "增加數量",
+    "quantity": "數量"
   },
   "common": {
     "scroll": "下滑",
@@ -191,7 +209,13 @@
     "rights": "© {year} 品品Café. 版權所有。",
     "privacy": "隱私政策",
     "terms": "使用條款",
-    "tagline": "雞蛋仔 × 茶 × 咖啡"
+    "tagline": "雞蛋仔 × 茶 × 咖啡",
+    "explore": "探索",
+    "follow": "追蹤我們",
+    "visit": "造訪門市",
+    "visit_body": "台中、台北與東京門市。",
+    "nav_label": "頁尾導覽",
+    "find_store": "找門市"
   },
   "about": {
     "taste_label": "Pin Pin",
@@ -200,5 +224,45 @@
     "taste_body_2": "從台中的第一家店到東京中目黒，我們堅持使用最好的食材，現點現做，將外酥內軟QQ的雞蛋仔帶給每一位客人。",
     "craft_link": "我們的工藝",
     "journey_title": "我們的旅程"
+  },
+  "craft": {
+    "label": "職人工藝",
+    "title": "雞蛋仔的誕生",
+    "intro": "每一個品品雞蛋仔都是現點現做的藝術品。從麵糊調配到完美出爐，我們堅持手工製作的溫度與品質。",
+    "step": "步驟 {number}",
+    "steps": {
+      "batter": {
+        "title": "麵糊調配",
+        "body": "每日新鮮調配麵糊，使用頂級麵粉、放牧雞蛋，以及歷經多年完善的秘方配比。精確的比例創造出我們招牌的外酥內軟QQ口感。"
+      },
+      "pour": {
+        "title": "注入模具",
+        "body": "每個模具都精確預熱至完美溫度。以純熟的手法注入麵糊——不多不少——確保每一顆蛋仔都完美成形。"
+      },
+      "flip": {
+        "title": "翻轉烘烤",
+        "body": "時機就是一切。我們的師傅在最佳時刻翻轉模具，使麵糊均勻分布，兩面都呈現出特有的金黃色澤。"
+      },
+      "finish": {
+        "title": "完美出爐",
+        "body": "熱騰騰新鮮出爐，從模具中取出的每一個雞蛋仔都展現完美的蜂巢結構。最佳品嘗時間是出爐數分鐘內，此時外酥內軟的對比最為極致。"
+      }
+    },
+    "promise_title": "品質承諾",
+    "promises": {
+      "low_sugar": {
+        "title": "低糖配方",
+        "body": "減糖不減美味。甜度來自優質食材，而非過多糖分。"
+      },
+      "made_to_order": {
+        "title": "現點現做",
+        "body": "每一份都是現點現做。沒有預製、沒有回溫——只有新鮮。"
+      },
+      "ingredients": {
+        "title": "頂級食材",
+        "body": "放牧雞蛋、高級麵粉，以及來自世界各地嚴選的風味食材。"
+      }
+    },
+    "cta": "探索雞蛋仔菜單"
   }
 }

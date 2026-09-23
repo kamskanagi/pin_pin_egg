@@ -29,7 +29,7 @@ export default function OrderCheckoutPage() {
     <div className="pt-32 pb-24 px-6 md:px-12">
       <div className="mx-auto max-w-[640px]">
         <ScrollReveal>
-          <SectionHeader label={t('page_label')} title={t('checkout_title')} />
+          <SectionHeader as="h1" label={t('page_label')} title={t('checkout_title')} />
         </ScrollReveal>
         <OrderContextBar />
         <CheckoutForm />

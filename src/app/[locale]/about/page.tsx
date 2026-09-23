@@ -2,7 +2,8 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import type { Metadata } from 'next';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-import { Button } from '@/components/ui/Button';
+import { PageIntro } from '@/components/ui/PageIntro';
+import { TextLink } from '@/components/ui/TextLink';
 import { EditorialSplit } from '@/components/ui/EditorialSplit';
 import { MaskedHeading } from '@/components/ui/MaskedHeading';
 
@@ -33,25 +34,18 @@ export default function AboutPage({
 
   return (
     <div className="pt-32 pb-24">
-      {/* Hero */}
-      <section className="px-6 md:px-12 mb-24">
-        <div className="max-w-content mx-auto text-center">
-          <ScrollReveal>
-            <p className="text-xs tracking-[4px] uppercase text-warm-gold mb-4">
-              {t('philosophy_label')}
-            </p>
-            <h1 className="font-serif text-4xl md:text-5xl mb-6">
-              {t('philosophy_title')}
-            </h1>
-            <p className="text-charcoal-muted max-w-2xl mx-auto leading-relaxed text-lg">
-              {t('philosophy_body')}
-            </p>
-          </ScrollReveal>
+      <section className="px-6 md:px-12">
+        <div className="max-w-content mx-auto">
+          <PageIntro
+            label={t('philosophy_label')}
+            title={t('philosophy_title')}
+            intro={t('philosophy_body')}
+          />
         </div>
       </section>
 
       {/* Brand 品 section */}
-      <section className="px-6 md:px-12 mb-24 bg-white">
+      <section className="px-6 md:px-12 mb-24 bg-cream-dark/50">
         <div className="max-w-content mx-auto">
           <EditorialSplit
             label={tAbout('taste_label')}
@@ -70,37 +64,34 @@ export default function AboutPage({
         <div className="max-w-3xl mx-auto">
           <MaskedHeading
             text={tAbout('journey_title')}
-            className="font-serif text-3xl text-center mb-16"
+            className="font-serif italic text-4xl md:text-5xl font-light text-center mb-16"
           />
 
-          <div className="space-y-12">
+          <ol className="space-y-10">
             {timeline.map((item, i) => (
               <ScrollReveal key={item.year} delay={i * 0.1}>
-                <div className="flex gap-8">
-                  <div className="flex-shrink-0 w-20">
-                    <span className="font-serif text-2xl text-warm-gold">{item.year}</span>
-                  </div>
-                  <div className="border-l border-warm-gold/20 pl-8 pb-4">
-                    <h3 className="font-serif text-xl mb-2">
+                <li>
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-serif italic text-3xl text-warm-gold-dark">{item.year}</span>
+                    <span aria-hidden="true" className="flex-1 min-w-4 border-b border-dotted border-warm-gold/40" />
+                    <h3 className="text-[13px] tracking-[1.5px] uppercase text-charcoal text-right">
                       {locale === 'ja' ? item.titleJa : locale === 'en' ? item.titleEn : item.titleZh}
                     </h3>
-                    <p className="text-charcoal-muted text-sm leading-relaxed">
-                      {locale === 'ja' ? item.descJa : locale === 'en' ? item.descEn : item.descZh}
-                    </p>
                   </div>
-                </div>
+                  <p className="mt-2 text-charcoal-muted text-sm leading-relaxed">
+                    {locale === 'ja' ? item.descJa : locale === 'en' ? item.descEn : item.descZh}
+                  </p>
+                </li>
               </ScrollReveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
       {/* CTA */}
       <section className="px-6 md:px-12 text-center">
         <ScrollReveal>
-          <Button href="/menu" variant="outline">
-            {t('view_full_menu')}
-          </Button>
+          <TextLink href="/menu">{t('view_full_menu')}</TextLink>
         </ScrollReveal>
       </section>
     </div>

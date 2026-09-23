@@ -1,8 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import type { Metadata } from 'next';
-import { SectionHeader } from '@/components/ui/SectionHeader';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { PageIntro } from '@/components/ui/PageIntro';
 import { NewsListing } from '@/components/news/NewsListing';
 
 export async function generateMetadata({
@@ -28,9 +27,7 @@ export default function NewsPage({
   return (
     <div className="pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-content mx-auto">
-        <ScrollReveal>
-          <SectionHeader label={t('page_label')} title={t('page_title')} />
-        </ScrollReveal>
+        <PageIntro label={t('page_label')} title={t('page_title')} intro={t('intro')} />
 
         <NewsListing />
       </div>

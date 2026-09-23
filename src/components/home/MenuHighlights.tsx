@@ -23,7 +23,7 @@ export function MenuHighlights() {
   };
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-cream">
+    <section className="py-24 px-6 md:px-12">
       <div className="max-w-content mx-auto">
         <ScrollReveal>
           <SectionHeader

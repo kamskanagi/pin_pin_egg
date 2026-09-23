@@ -1,8 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import type { Metadata } from 'next';
-import { SectionHeader } from '@/components/ui/SectionHeader';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { PageIntro } from '@/components/ui/PageIntro';
 import { LocationsContent } from '@/components/locations/LocationsContent';
 import { storeLocations } from '@/lib/placeholder-data';
 
@@ -57,9 +56,7 @@ export default function LocationsPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="max-w-content mx-auto">
-        <ScrollReveal>
-          <SectionHeader label={t('page_label')} title={t('page_title')} />
-        </ScrollReveal>
+        <PageIntro label={t('page_label')} title={t('page_title')} intro={t('intro')} />
 
         <LocationsContent />
       </div>

@@ -38,58 +38,64 @@ export function Navbar() {
   const showDark = scrolled || !isHomepage;
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-400',
-        showDark
-          ? 'bg-cream/88 backdrop-blur-xl border-b border-warm-gold/15'
-          : 'bg-transparent'
-      )}
-    >
-      <nav aria-label="Main navigation" className="flex items-center justify-between px-6 md:px-12 py-4 max-w-content mx-auto">
-        <Link
-          href="/"
-          className={cn(
-            'font-serif text-2xl tracking-[3px] transition-colors duration-300',
-            showDark ? 'text-charcoal' : 'text-white'
-          )}
-        >
-          品品 Café
-        </Link>
-
-        <div className="hidden md:flex items-center gap-8">
-          <NavbarLinks scrolled={showDark} />
-          <LanguageSwitcher scrolled={showDark} />
+    <>
+      <header
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-400',
+          showDark
+            ? 'bg-cream/90 backdrop-blur-xl border-b border-dotted border-warm-gold/40'
+            : 'bg-transparent'
+        )}
+      >
+        <nav aria-label={t('main_nav')} className="flex items-center justify-between px-6 md:px-12 py-4 max-w-content mx-auto">
           <Link
-            href={ctaHref}
+            href="/"
             className={cn(
-              'rounded-sm px-5 py-2 text-xs tracking-[1.5px] uppercase font-sans font-medium transition-colors duration-300',
-              showDark
-                ? 'bg-warm-gold text-white hover:bg-warm-gold-dark'
-                : 'border border-white/50 text-white hover:bg-white hover:text-charcoal'
+              'flex items-baseline gap-2 transition-colors duration-300',
+              showDark ? 'text-charcoal' : 'text-white'
             )}
           >
-            {ctaLabel}
+            <span className="font-serif-tc text-2xl tracking-[4px]">品品</span>
+            <span className="font-serif italic text-2xl font-light">Café</span>
           </Link>
-        </div>
 
-        <button
-          className={cn(
-            'md:hidden p-2 transition-colors',
-            showDark ? 'text-charcoal' : 'text-white'
-          )}
-          onClick={() => setMobileOpen(true)}
-          aria-label={t('menu')}
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-          </svg>
-        </button>
-      </nav>
+          <div className="hidden md:flex items-center gap-8">
+            <NavbarLinks scrolled={showDark} />
+            <LanguageSwitcher scrolled={showDark} />
+            <Link
+              href={ctaHref}
+              className={cn(
+                'group inline-flex items-center gap-2 rounded-full border px-5 py-2 text-xs tracking-[1.5px] uppercase font-sans font-medium transition-colors duration-300',
+                showDark
+                  ? 'border-charcoal/30 text-charcoal hover:border-charcoal hover:bg-charcoal hover:text-white'
+                  : 'border-white/50 text-white hover:bg-white hover:text-charcoal'
+              )}
+            >
+              {ctaLabel}
+              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+            </Link>
+          </div>
 
+          <button
+            className={cn(
+              'md:hidden p-2 transition-colors',
+              showDark ? 'text-charcoal' : 'text-white'
+            )}
+            onClick={() => setMobileOpen(true)}
+            aria-label={t('open_menu')}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      {/* Rendered outside <header>: its backdrop-filter would otherwise become the
+          containing block for the menu's `position: fixed` panel and clip it to the bar. */}
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
-    </header>
+    </>
   );
 }

@@ -30,7 +30,7 @@ export default function OrderCartPage() {
       <div className="pt-32 pb-24 px-6 md:px-12">
         <div className="max-w-content mx-auto text-center">
           <ScrollReveal>
-            <SectionHeader label={t('page_label')} title={t('cart_title')} />
+            <SectionHeader as="h1" label={t('page_label')} title={t('cart_title')} />
             <p className="font-serif text-xl mb-2">{t('cart_empty')}</p>
             <p className="text-charcoal-muted mb-8">{t('cart_empty_body')}</p>
             <Button href="/order/menu" variant="gold">
@@ -46,7 +46,7 @@ export default function OrderCartPage() {
     <div className="pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-content mx-auto">
         <ScrollReveal>
-          <SectionHeader label={t('page_label')} title={t('cart_title')} />
+          <SectionHeader as="h1" label={t('page_label')} title={t('cart_title')} />
         </ScrollReveal>
         <OrderContextBar />
 
