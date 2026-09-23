@@ -75,12 +75,12 @@ export function Footer() {
             {t('footer.rights', { year: String(year) })}
           </p>
           <div className="flex gap-6">
-            <a href="/privacy" className="text-[11px] text-white/40 tracking-wide hover:text-white/70 transition-colors">
+            <Link href="/privacy" className="text-[11px] text-white/40 tracking-wide hover:text-white/70 transition-colors">
               {t('footer.privacy')}
-            </a>
-            <a href="/terms" className="text-[11px] text-white/40 tracking-wide hover:text-white/70 transition-colors">
+            </Link>
+            <Link href="/terms" className="text-[11px] text-white/40 tracking-wide hover:text-white/70 transition-colors">
               {t('footer.terms')}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -264,5 +264,82 @@
       }
     },
     "cta": "Explore the eggcake menu"
+  },
+  "legal": {
+    "label": "Legal",
+    "last_updated": "Last updated {date}",
+    "contact_line": "Questions about this page? Write to us at",
+    "privacy": {
+      "title": "Privacy policy",
+      "intro": "How Pin Pin Café collects, uses, and protects the information you share with us through this website.",
+      "sections": [
+        {
+          "title": "What we collect",
+          "body": "When you send us a message through the contact form, we receive your name, email address, subject, and message. Franchise inquiries also include your company name, contact person, phone number, country, and budget range.\n\nWhen online pickup ordering is available and you place an order, we receive your name, mobile number, the items and options you chose, your pickup store and time, and the e-invoice details you provide.\n\nWe do not ask for information we do not need, and we never sell your information."
+        },
+        {
+          "title": "How we use it",
+          "body": "We use contact details to reply to your message and, for franchise inquiries, to discuss opening a store with you.\n\nWe use order details to prepare your order, hand it to you at the right store and time, and issue the electronic invoice that Taiwanese law requires."
+        },
+        {
+          "title": "What is stored on your device",
+          "body": "This site does not use advertising cookies or third-party tracking.\n\nIf you start a pickup order, your basket, chosen store, and pickup time are saved in your own browser so they survive a page reload. Clearing your browser data removes them."
+        },
+        {
+          "title": "Who else handles your information",
+          "body": "This website is hosted by Vercel. Messages from the contact form are delivered by Resend, our email provider. The store map is served by Google Maps when it is enabled, which means Google receives the request that loads the map.\n\nWhen online payment launches, payments will be processed by ECPay. Card details go directly to the payment provider; we never see or store them."
+        },
+        {
+          "title": "How long we keep it",
+          "body": "We keep inquiry messages for as long as we need them to answer you and to keep a record of our conversation.\n\nWe keep order and invoice records for as long as Taiwanese tax and accounting rules require, and then delete them."
+        },
+        {
+          "title": "Your choices",
+          "body": "You can ask us what information we hold about you, ask us to correct it, or ask us to delete it. Email us and we will respond as quickly as we can."
+        },
+        {
+          "title": "Changes to this policy",
+          "body": "If we change how we handle your information, we will update this page and change the date above."
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of use",
+      "intro": "The terms that apply when you use the Pin Pin Café website and order from us online.",
+      "sections": [
+        {
+          "title": "About these terms",
+          "body": "By using this website you accept these terms. If you do not agree with them, please do not use the site."
+        },
+        {
+          "title": "Menu and store information",
+          "body": "We try to keep menus, prices, opening hours, and store details accurate and current, but they can change without notice, and not every item is available at every store.\n\nPrices are shown in New Taiwan dollars for our Taiwan stores and in Japanese yen for our Japan store."
+        },
+        {
+          "title": "Allergies and ingredients",
+          "body": "Our eggcakes contain egg, wheat, and dairy, and are made in kitchens that also handle nuts and other allergens, so we cannot guarantee any item is free of a given allergen. If you have a food allergy, please ask our staff before you order."
+        },
+        {
+          "title": "Online orders and pickup",
+          "body": "Where online pickup ordering is available, your order is a request to buy that becomes final when payment is confirmed and you receive a pickup number.\n\nPlease collect your order at the store and time you chose. Food quality suffers if it sits, and we may not be able to hold an uncollected order.\n\nIf we cannot fulfil an order, for example when an item sells out or a store closes unexpectedly, we will cancel it and refund you."
+        },
+        {
+          "title": "Payment",
+          "body": "Online payments are handled by our payment provider, not by this website. Refunds are returned through the same method you paid with."
+        },
+        {
+          "title": "Our content",
+          "body": "The Pin Pin Café name, logo, photography, and text on this site belong to us. Please do not copy or reuse them commercially without our written permission."
+        },
+        {
+          "title": "Liability",
+          "body": "We provide this website as it is, and we cannot promise it will always be available or free of errors. Nothing in these terms limits any rights you have under consumer protection law."
+        },
+        {
+          "title": "Governing law",
+          "body": "These terms are governed by the laws of Taiwan."
+        }
+      ]
+    }
   }
 }
