@@ -111,6 +111,10 @@ export default function MenuOverviewPage({
             );
           })}
         </div>
+
+        <p className="mt-12 border-t border-dotted border-warm-gold/40 pt-6 text-sm text-charcoal-muted">
+          {t('combo_note')}
+        </p>
       </div>
     </div>
   );

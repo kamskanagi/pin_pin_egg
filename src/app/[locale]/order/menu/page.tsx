@@ -11,6 +11,7 @@ import { useCart } from '@/lib/order/CartContext';
 
 export default function OrderMenuPage() {
   const t = useTranslations('order');
+  const tMenu = useTranslations('menu');
   const router = useRouter();
   const { storeId, hydrated } = useCart();
   const sections = useOrderMenuSections();
@@ -34,7 +35,8 @@ export default function OrderMenuPage() {
               text={t('menu_title')}
               className="font-serif italic text-4xl md:text-5xl font-light leading-[1.05] [:lang(ja)_&]:leading-[1.3] [:lang(zh-TW)_&]:leading-[1.3] mb-5"
             />
-            <p className="text-charcoal-muted leading-relaxed mb-8 max-w-sm">{t('menu_intro')}</p>
+            <p className="text-charcoal-muted leading-relaxed mb-3 max-w-sm">{t('menu_intro')}</p>
+            <p className="text-sm text-charcoal-muted mb-8 max-w-sm">{tMenu('combo_note')}</p>
 
             <OrderContextBar />
 

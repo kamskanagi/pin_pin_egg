@@ -44,9 +44,7 @@ export function MenuHighlights() {
               imageAlt={getTitle(card)}
               caption={
                 <p className="text-sm tracking-wide font-medium text-warm-gold-dark">
-                  {tMenu('from_price', {
-                    price: locale === 'ja' ? card.priceJpy : card.priceTwd,
-                  })}
+                  {tMenu('from_price', { price: card.priceTwd })}
                 </p>
               }
               link={{

@@ -38,6 +38,16 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
     };
   }, [open]);
 
+  // A modal dialog should close on Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open, onClose]);
+
   return (
     <AnimatePresence>
       {open && (

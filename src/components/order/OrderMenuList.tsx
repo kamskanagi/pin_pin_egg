@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { WavyDivider } from '@/components/ui/WavyDivider';
-import { eggcakeItems, teaItems, coffeeItems, seasonalItems } from '@/lib/placeholder-data';
+import { eggcakeItems, teaItems, caffeineFreeItems, milkItems } from '@/lib/placeholder-data';
 import type { MenuCardItem } from '@/components/menu/MenuCard';
 import { OrderMenuItem } from './OrderMenuItem';
 
@@ -17,8 +17,8 @@ export function useOrderMenuSections(): OrderMenuSection[] {
   return [
     { key: 'eggcakes', label: t('eggcakes'), items: eggcakeItems },
     { key: 'drinks-tea', label: t('tea_collection'), items: teaItems },
-    { key: 'drinks-coffee', label: t('coffee_selection'), items: coffeeItems },
-    { key: 'seasonal', label: t('seasonal'), items: seasonalItems },
+    { key: 'drinks-milk', label: t('milk_series'), items: milkItems },
+    { key: 'drinks-caffeine-free', label: t('caffeine_free'), items: caffeineFreeItems },
   ];
 }
 

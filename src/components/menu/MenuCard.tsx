@@ -19,6 +19,8 @@ interface MenuCardItem {
   priceTwd: number;
   priceJpy?: number;
   badges: MenuBadge[];
+  /** Which printed-menu series the eggcake belongs to. */
+  series?: 'classic' | 'rich' | 'luxe';
   image?: string;
   /** Present only for orderable drinks (size/sweetness/ice/toppings); absent items are order-as-is. */
   optionGroups?: OptionGroup[];

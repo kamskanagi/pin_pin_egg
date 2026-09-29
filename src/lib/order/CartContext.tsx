@@ -3,7 +3,9 @@
 import { createContext, useContext, useEffect, useMemo, useReducer, type ReactNode } from 'react';
 import type { CartItem, CartLineOptions } from '@/types/order';
 
-const STORAGE_KEY = 'pinpin-order-cart-v1';
+// Bump the suffix whenever menu ids or prices change, so stale baskets are dropped
+// instead of showing prices the stores no longer charge.
+const STORAGE_KEY = 'pinpin-order-cart-v2';
 
 interface CartState {
   storeId: string | null;

@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import type { Metadata } from 'next';
 import { MenuPageLayout } from '@/components/menu/MenuPageLayout';
 import { MenuPriceList } from '@/components/menu/MenuPriceList';
-import { teaItems, coffeeItems } from '@/lib/placeholder-data';
+import { teaItems, caffeineFreeItems, milkItems } from '@/lib/placeholder-data';
 
 export async function generateMetadata({
   params: { locale },
@@ -35,10 +35,15 @@ export default function DrinksPage({
     >
       <MenuPriceList
         sections={[
-          { title: t('tea_short'), items: teaItems },
-          { title: t('coffee_short'), items: coffeeItems },
+          { title: t('tea_collection'), items: teaItems },
+          { title: t('milk_series'), items: milkItems },
+          { title: t('caffeine_free'), items: caffeineFreeItems },
         ]}
       />
+
+        <p className="mt-12 border-t border-dotted border-warm-gold/40 pt-6 text-sm text-charcoal-muted">
+          {t('combo_note')}
+        </p>
     </MenuPageLayout>
   );
 }

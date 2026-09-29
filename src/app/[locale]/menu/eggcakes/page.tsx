@@ -25,9 +25,8 @@ export default function EggcakesPage({
   setRequestLocale(locale);
   const t = useTranslations('menu');
 
-  // Signature and unbadged flavors are the year-round lineup; everything else is new, seasonal, or limited.
-  const classic = eggcakeItems.filter((item) => item.badges.length === 0 || item.badges.includes('signature'));
-  const special = eggcakeItems.filter((item) => !classic.includes(item));
+  const bySeries = (series: 'classic' | 'rich' | 'luxe') =>
+    eggcakeItems.filter((item) => item.series === series);
 
   return (
     <MenuPageLayout
@@ -40,10 +39,16 @@ export default function EggcakesPage({
       <MenuPriceList
         showDescriptions
         sections={[
-          { title: t('filter_classic'), items: classic },
-          { title: t('eggcakes_special'), items: special },
+          { title: t('series_classic'), items: bySeries('classic') },
+          { title: t('series_rich'), items: bySeries('rich') },
+          { title: t('series_luxe'), items: bySeries('luxe') },
         ]}
       />
+
+        <p className="mt-12 border-t border-dotted border-warm-gold/40 pt-6 text-sm text-charcoal-muted">
+          {t('box_note')}
+        </p>
+      <p className="mt-3 text-sm text-charcoal-muted">{t('combo_note')}</p>
     </MenuPageLayout>
   );
 }
