@@ -1,21 +1,36 @@
 'use client';
 
-import { type ReactNode } from 'react';
+import { createElement, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { DURATION, EASE } from '@/lib/motion';
+import { DURATION, EASE, STAGGER, VIEWPORT, staggerContainer } from '@/lib/motion';
+
+type RevealTag = 'div' | 'li' | 'section' | 'article' | 'span';
 
 interface ScrollRevealProps {
   children: ReactNode;
   delay?: number;
-  direction?: 'up' | 'left' | 'right';
+  direction?: 'up' | 'down' | 'left' | 'right';
   className?: string;
+  /** Element to render. Use `li` inside a `ul` so the wrapper stays valid markup. */
+  as?: RevealTag;
+  /** Travel distance in px. */
+  distance?: number;
+  /** Override the entrance duration, in seconds. */
+  duration?: number;
+  /**
+   * Opt in to driving children instead of animating itself. Children must carry
+   * `variants={fadeUp()}` and inherit their timing from this parent.
+   */
+  stagger?: number;
 }
 
+/** Unit vectors; multiplied by `distance` at render. */
 const directionOffset = {
-  up: { x: 0, y: 30 },
-  left: { x: -30, y: 0 },
-  right: { x: 30, y: 0 },
+  up: { x: 0, y: 1 },
+  down: { x: 0, y: -1 },
+  left: { x: -1, y: 0 },
+  right: { x: 1, y: 0 },
 };
 
 export function ScrollReveal({
@@ -23,23 +38,44 @@ export function ScrollReveal({
   delay = 0,
   direction = 'up',
   className,
+  as = 'div',
+  distance = 30,
+  duration = DURATION.entrance,
+  stagger,
 }: ScrollRevealProps) {
   const prefersReducedMotion = useReducedMotion();
-  const offset = directionOffset[direction];
 
   if (prefersReducedMotion) {
-    return <div className={className}>{children}</div>;
+    return createElement(as, { className }, children);
   }
 
+  const MotionTag = motion[as];
+
+  if (stagger !== undefined) {
+    return (
+      <MotionTag
+        initial="hidden"
+        whileInView="visible"
+        viewport={VIEWPORT}
+        variants={staggerContainer(stagger || STAGGER.base, delay)}
+        className={cn(className)}
+      >
+        {children}
+      </MotionTag>
+    );
+  }
+
+  const offset = directionOffset[direction];
+
   return (
-    <motion.div
-      initial={{ opacity: 0, x: offset.x, y: offset.y }}
+    <MotionTag
+      initial={{ opacity: 0, x: offset.x * distance, y: offset.y * distance }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px 200px 0px', amount: 0 }}
-      transition={{ duration: DURATION.entrance, delay, ease: EASE }}
+      viewport={VIEWPORT}
+      transition={{ duration, delay, ease: EASE }}
       className={cn(className)}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   );
 }

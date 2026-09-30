@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/lib/i18n/navigation';
@@ -18,6 +18,7 @@ export function Navbar() {
   const t = useTranslations('nav');
   const tOrder = useTranslations('order');
   const pathname = usePathname();
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   const ctaHref = orderingEnabled ? '/order' : '/locations';
   const ctaLabel = orderingEnabled ? tOrder('nav_cta') : t('find_store');
@@ -25,13 +26,19 @@ export function Navbar() {
   // Only use transparent/white navbar on the homepage (which has a dark hero)
   const isHomepage = pathname === '/' || pathname === '/en' || pathname === '/ja';
 
+  // A sentinel at the top of the document replaces a scroll listener: the nav
+  // flips exactly when the sentinel leaves the viewport, and the work happens
+  // off the main thread instead of on every scroll frame.
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
-    };
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, []);
 
   // On non-homepage pages, always use the "scrolled" (dark text) style
@@ -39,6 +46,13 @@ export function Navbar() {
 
   return (
     <>
+      {/* No positioned ancestor, so this resolves against the initial containing
+          block: it sits at the document origin and scrolls away with the page. */}
+      <div
+        ref={sentinelRef}
+        aria-hidden="true"
+        className="absolute top-0 left-0 h-20 w-px pointer-events-none"
+      />
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-400',

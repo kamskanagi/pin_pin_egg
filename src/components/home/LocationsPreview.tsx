@@ -1,8 +1,10 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
+import { DottedLeader } from '@/components/home/DottedLeader';
 import { TextLink } from '@/components/ui/TextLink';
 import { storeLocations, type PlaceholderStore } from '@/lib/placeholder-data';
+import { STAGGER } from '@/lib/motion';
 
 export function LocationsPreview() {
   const t = useTranslations('home');
@@ -27,17 +29,15 @@ export function LocationsPreview() {
 
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">
           {storeLocations.map((store, i) => (
-            <ScrollReveal key={store.id} delay={i * 0.1}>
-              <li>
-                <div className="flex items-baseline gap-3">
-                  <span className="font-serif text-xl text-white">{localized(store, 'name')}</span>
-                  <span aria-hidden="true" className="flex-1 min-w-4 border-b border-dotted border-warm-gold-light/30" />
-                  <span className="text-[11px] tracking-[2px] uppercase text-warm-gold-light">
-                    {store.country === 'japan' ? tLoc('japan') : tLoc('taiwan')}
-                  </span>
-                </div>
-                <p className="mt-1 text-sm text-white/50 leading-relaxed">{localized(store, 'address')}</p>
-              </li>
+            <ScrollReveal as="li" key={store.id} delay={i * STAGGER.base}>
+              <div className="flex items-baseline gap-3">
+                <span className="font-serif text-xl text-white">{localized(store, 'name')}</span>
+                <DottedLeader delay={i * STAGGER.base + STAGGER.loose} />
+                <span className="text-[11px] tracking-[2px] uppercase text-warm-gold-light">
+                  {store.country === 'japan' ? tLoc('japan') : tLoc('taiwan')}
+                </span>
+              </div>
+              <p className="mt-1 text-sm text-white/50 leading-relaxed">{localized(store, 'address')}</p>
             </ScrollReveal>
           ))}
         </ul>
