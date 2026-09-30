@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
+import { DURATION, EASE } from '@/lib/motion';
 
 export function Hero() {
   const t = useTranslations('home');
@@ -32,7 +33,7 @@ export function Hero() {
           className="font-serif-tc text-[clamp(80px,12vw,140px)] font-light tracking-[6px] leading-none"
           initial={animate ? { opacity: 0, y: 20 } : undefined}
           animate={animate ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: 1, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: DURATION.hero, delay: 0.2, ease: EASE }}
         >
           品品
         </motion.h1>
@@ -41,7 +42,7 @@ export function Hero() {
           className="mt-6 font-serif text-lg md:text-xl tracking-[4px] text-white/80"
           initial={animate ? { opacity: 0, y: 15 } : undefined}
           animate={animate ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: DURATION.entrance, delay: 0.5, ease: EASE }}
         >
           {t('hero_tagline')}
         </motion.p>
@@ -50,7 +51,7 @@ export function Hero() {
           className="w-12 h-px bg-warm-gold mx-auto mt-6"
           initial={animate ? { scaleX: 0 } : undefined}
           animate={animate ? { scaleX: 1 } : undefined}
-          transition={{ duration: 0.8, delay: 0.8, ease: [0.23, 1, 0.32, 1] }}
+          transition={{ duration: DURATION.entrance, delay: 0.8, ease: EASE }}
         />
 
         <motion.p

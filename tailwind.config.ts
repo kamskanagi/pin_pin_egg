@@ -25,6 +25,23 @@ const config: Config = {
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.23, 1, 0.32, 1)',
       },
+      transitionDuration: {
+        // Spec §4.5 nav transition. Not a Tailwind default, so `duration-400`
+        // silently emitted nothing before this entry existed.
+        400: '400ms',
+      },
+      keyframes: {
+        // The track renders its children twice, so translating by half its
+        // width lands exactly on the duplicate and the loop is seamless.
+        marquee: {
+          from: { transform: 'translate3d(0, 0, 0)' },
+          to: { transform: 'translate3d(-50%, 0, 0)' },
+        },
+      },
+      animation: {
+        // Linear on purpose: easing a continuous loop makes it visibly pulse.
+        marquee: 'marquee 40s linear infinite',
+      },
     },
   },
   plugins: [],

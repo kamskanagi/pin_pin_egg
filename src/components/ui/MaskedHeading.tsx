@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { DURATION, EASE, STAGGER } from '@/lib/motion';
 
 interface MaskedHeadingProps {
   as?: 'h1' | 'h2' | 'h3';
@@ -9,8 +10,6 @@ interface MaskedHeadingProps {
   text: string;
   className?: string;
 }
-
-const EASE = [0.23, 1, 0.32, 1] as const;
 
 export function MaskedHeading({ as: Tag = 'h2', text, className }: MaskedHeadingProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -44,7 +43,7 @@ export function MaskedHeading({ as: Tag = 'h2', text, className }: MaskedHeading
           <motion.span
             className="block"
             variants={{ hidden: { y: '100%' }, visible: { y: '0%' } }}
-            transition={{ duration: 0.8, delay: i * 0.15, ease: EASE }}
+            transition={{ duration: DURATION.entrance, delay: i * STAGGER.loose, ease: EASE }}
           >
             {line}
           </motion.span>

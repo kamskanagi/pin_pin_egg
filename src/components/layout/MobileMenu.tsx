@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { WavyDivider } from '@/components/ui/WavyDivider';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { isActiveHref, navItems } from './navItems';
+import { EASE } from '@/lib/motion';
 
 interface MobileMenuProps {
   open: boolean;
@@ -16,7 +17,6 @@ interface MobileMenuProps {
 }
 
 const orderingEnabled = isOrderingEnabled();
-const EASE = [0.23, 1, 0.32, 1] as const;
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const t = useTranslations('nav');

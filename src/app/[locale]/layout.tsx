@@ -7,6 +7,8 @@ import { locales, type Locale } from '@/lib/i18n/config';
 import { colors } from '@/lib/theme';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { MotionProvider } from '@/components/layout/MotionProvider';
+import { PageTransition } from '@/components/layout/PageTransition';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
@@ -80,15 +82,19 @@ export default async function LocaleLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-warm-gold focus:text-white focus:rounded-sm"
-          >
-            {t('skip_to_content')}
-          </a>
-          <Navbar />
-          <main id="main-content">{children}</main>
-          <Footer />
+          <MotionProvider>
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-warm-gold focus:text-white focus:rounded-sm"
+            >
+              {t('skip_to_content')}
+            </a>
+            <Navbar />
+            <main id="main-content">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

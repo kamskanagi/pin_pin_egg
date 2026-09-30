@@ -3,6 +3,7 @@
 import { type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { DURATION, EASE } from '@/lib/motion';
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -35,7 +36,7 @@ export function ScrollReveal({
       initial={{ opacity: 0, x: offset.x, y: offset.y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: '0px 0px 200px 0px', amount: 0 }}
-      transition={{ duration: 0.8, delay, ease: [0.23, 1, 0.32, 1] }}
+      transition={{ duration: DURATION.entrance, delay, ease: EASE }}
       className={cn(className)}
     >
       {children}

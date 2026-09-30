@@ -39,5 +39,17 @@
     html {
       scroll-behavior: auto;
     }
+
+    /* Safety net for CSS-driven motion that `useReducedMotion()` can't reach
+       (the marquee keyframes). Only collapses durations — end states, the
+       paper grain and focus outlines are untouched. */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

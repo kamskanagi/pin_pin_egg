@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { PriceDisplay } from './PriceDisplay';
 import type { MenuBadge } from '@/types/menu';
 import type { OptionGroup } from '@/types/order';
+import { DURATION, EASE } from '@/lib/motion';
 
 interface MenuCardItem {
   id: string;
@@ -55,7 +56,7 @@ export function MenuCard({ item }: MenuCardProps) {
           ? undefined
           : { y: -8, boxShadow: '0 20px 40px rgba(42, 37, 32, 0.08)' }
       }
-      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+      transition={{ duration: DURATION.layout, ease: EASE }}
     >
       <div className="aspect-[4/3] rounded-xl bg-cream-dark mb-5 overflow-hidden relative group">
         {item.image ? (
