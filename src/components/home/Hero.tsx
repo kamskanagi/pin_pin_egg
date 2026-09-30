@@ -3,7 +3,10 @@
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
-import { DURATION, EASE } from '@/lib/motion';
+import { DURATION, EASE, STAGGER } from '@/lib/motion';
+
+/** The wordmark, split so each glyph rises on its own beat. */
+const WORDMARK = ['品', '品'];
 
 export function Hero() {
   const t = useTranslations('home');
@@ -14,35 +17,63 @@ export function Hero() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-charcoal">
-        <Image
-          src="/images/hero/hero-cafe.jpg"
-          alt={t('hero_image_alt')}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+      {/* Background with gradient overlay. The mask animates, not the <Image>,
+          so the priority image still paints immediately and LCP is unaffected. */}
+      <motion.div
+        className="absolute inset-0 bg-charcoal"
+        initial={animate ? { clipPath: 'inset(0 0 100% 0)' } : undefined}
+        animate={animate ? { clipPath: 'inset(0 0 0% 0)' } : undefined}
+        transition={{ duration: 1.4, ease: EASE }}
+      >
+        <motion.div
+          className="absolute inset-0"
+          initial={animate ? { scale: 1.08 } : undefined}
+          animate={animate ? { scale: 1 } : undefined}
+          transition={{ duration: 2.2, ease: EASE }}
+        >
+          <Image
+            src="/images/hero/hero-cafe.jpg"
+            alt={t('hero_image_alt')}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/80" />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-6">
-        <motion.h1
-          className="font-serif-tc text-[clamp(80px,12vw,140px)] font-light tracking-[6px] leading-none"
-          initial={animate ? { opacity: 0, y: 20 } : undefined}
-          animate={animate ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: DURATION.hero, delay: 0.2, ease: EASE }}
+        <h1
+          className="font-serif-tc text-[clamp(80px,12vw,140px)] font-light tracking-[6px] leading-none flex justify-center"
+          aria-label={WORDMARK.join('')}
         >
-          品品
-        </motion.h1>
+          {WORDMARK.map((glyph, i) => (
+            // pb/-mb keeps the mask clear of the glyph's descender box without
+            // adding to the line height.
+            <span key={i} aria-hidden="true" className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+              <motion.span
+                className="block"
+                initial={animate ? { y: '110%' } : undefined}
+                animate={animate ? { y: '0%' } : undefined}
+                transition={{
+                  duration: DURATION.hero,
+                  delay: 0.6 + i * STAGGER.loose,
+                  ease: EASE,
+                }}
+              >
+                {glyph}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
 
         <motion.p
           className="mt-6 font-serif text-lg md:text-xl tracking-[4px] text-white/80"
           initial={animate ? { opacity: 0, y: 15 } : undefined}
           animate={animate ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: DURATION.entrance, delay: 0.5, ease: EASE }}
+          transition={{ duration: DURATION.entrance, delay: 1.0, ease: EASE }}
         >
           {t('hero_tagline')}
         </motion.p>
@@ -51,14 +82,14 @@ export function Hero() {
           className="w-12 h-px bg-warm-gold mx-auto mt-6"
           initial={animate ? { scaleX: 0 } : undefined}
           animate={animate ? { scaleX: 1 } : undefined}
-          transition={{ duration: DURATION.entrance, delay: 0.8, ease: EASE }}
+          transition={{ duration: DURATION.entrance, delay: 1.25, ease: EASE }}
         />
 
         <motion.p
           className="mt-6 font-serif-tc text-sm tracking-[2px] text-white/60"
           initial={animate ? { opacity: 0 } : undefined}
           animate={animate ? { opacity: 1 } : undefined}
-          transition={{ duration: 0.8, delay: 1.0 }}
+          transition={{ duration: DURATION.entrance, delay: 1.45 }}
         >
           {t('hero_philosophy')}
         </motion.p>
@@ -69,7 +100,7 @@ export function Hero() {
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={animate ? { opacity: 0 } : undefined}
         animate={animate ? { opacity: 1 } : undefined}
-        transition={{ duration: 0.8, delay: 1.4 }}
+        transition={{ duration: DURATION.entrance, delay: 1.8 }}
       >
         <span className="text-[10px] tracking-[3px] uppercase text-white/40 font-sans" aria-hidden="true">
           {tCommon('scroll')}

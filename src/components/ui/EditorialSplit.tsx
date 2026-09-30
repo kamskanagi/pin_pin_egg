@@ -13,6 +13,8 @@ interface EditorialSplitProps {
   caption?: ReactNode;
   link?: { href: string; label: string };
   headingLevel?: 'h2' | 'h3';
+  /** Stagger delay in seconds, when several splits share a section. */
+  delay?: number;
 }
 
 /**
@@ -29,6 +31,7 @@ export function EditorialSplit({
   caption,
   link,
   headingLevel = 'h2',
+  delay = 0,
 }: EditorialSplitProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 py-16 md:py-24">
@@ -41,7 +44,7 @@ export function EditorialSplit({
           text={title}
           className="font-serif text-4xl md:text-5xl md:[:lang(ja)_&]:text-[34px] md:[:lang(zh-TW)_&]:text-[34px] font-light leading-[1.05] [:lang(ja)_&]:leading-[1.3] [:lang(zh-TW)_&]:leading-[1.3] mb-6"
         />
-        <ScrollReveal>
+        <ScrollReveal delay={delay}>
           <p className="text-charcoal-muted leading-relaxed max-w-sm">{intro}</p>
         </ScrollReveal>
       </div>
@@ -53,11 +56,13 @@ export function EditorialSplit({
           aspect="aspect-[3/4]"
           sizes="(max-width: 768px) 100vw, 360px"
           className="rounded-sm"
+          reveal
+          revealDelay={delay}
         />
       </div>
 
       {(caption || link) && (
-        <ScrollReveal delay={0.15} className="md:col-span-4 md:self-end">
+        <ScrollReveal delay={delay + 0.15} className="md:col-span-4 md:self-end">
           {caption && <div className="text-charcoal-muted leading-relaxed mb-5 max-w-xs">{caption}</div>}
           {link && <TextLink href={link.href}>{link.label}</TextLink>}
         </ScrollReveal>

@@ -2,6 +2,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { EditorialSplit } from '@/components/ui/EditorialSplit';
+import { STAGGER } from '@/lib/motion';
 import { Button } from '@/components/ui/Button';
 import { menuHighlights, type MenuHighlight } from '@/lib/placeholder-data';
 
@@ -33,9 +34,10 @@ export function MenuHighlights() {
         </ScrollReveal>
 
         <div className="divide-y divide-warm-gold/15 border-t border-warm-gold/15">
-          {menuHighlights.map((card) => (
+          {menuHighlights.map((card, i) => (
             <EditorialSplit
               key={card.titleEn}
+              delay={i * STAGGER.base}
               headingLevel="h3"
               label={locale !== 'zh-TW' ? card.titleZh : undefined}
               title={getTitle(card)}
