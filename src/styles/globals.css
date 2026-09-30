@@ -40,16 +40,34 @@
       scroll-behavior: auto;
     }
 
-    /* Safety net for CSS-driven motion that `useReducedMotion()` can't reach
-       (the marquee keyframes). Only collapses durations — end states, the
-       paper grain and focus outlines are untouched. */
+    /* Safety net for CSS-driven motion that `useReducedMotion()` can't reach:
+       the marquee keyframes.
+
+       Deliberately NOT `transition-duration`. WCAG 2.3.3 is about motion, and a
+       background-colour crossfade is not motion: collapsing transitions here
+       would undo the navbar's 400ms state swap and every button hover, which
+       reads as broken rather than calm. */
     *,
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+    }
+
+    /* framer-motion serialises a component's `initial` state into the markup as
+       an inline style during SSR, and React 18 does not patch mismatched
+       `style` attributes on hydration — so an `opacity: 0` can outlive the
+       animation meant to clear it. An inline style can only be beaten by
+       `!important`, so these hooks are the guarantee.
+
+       Scoped by data attribute on purpose: a blanket `* { transform: none }`
+       would break every layout transform on the site — the hero's scroll cue
+       and the navbar's `-translate-x-1/2` centring, and the mobile menu panel,
+       which is parked off-canvas by a transform. */
+    [data-motion-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
     }
   }
 }

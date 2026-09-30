@@ -29,7 +29,9 @@
     "instagram_label": "Follow along",
     "instagram_title": "On Instagram",
     "explore_category": "Explore {category}",
-    "philosophy_link": "Our story"
+    "philosophy_link": "Our story",
+    "marquee_label": "In every cup",
+    "marquee_title": "Made to order, every day"
   },
   "menu": {
     "filter_all": "All",

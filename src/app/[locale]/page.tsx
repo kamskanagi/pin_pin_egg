@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { Hero } from '@/components/home/Hero';
 import { PhilosophyStrip } from '@/components/home/PhilosophyStrip';
+import { ProductMarquee } from '@/components/home/ProductMarquee';
 import { MenuHighlights } from '@/components/home/MenuHighlights';
 import { LocationsPreview } from '@/components/home/LocationsPreview';
 import { InstagramFeed } from '@/components/home/InstagramFeed';
@@ -32,6 +33,7 @@ export default function HomePage({
       <Hero />
       <PhilosophyStrip />
       <MenuHighlights />
+      <ProductMarquee />
       <LocationsPreview />
       <InstagramFeed />
       <CtaBanner />

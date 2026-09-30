@@ -8,9 +8,6 @@ import type { Variants } from 'framer-motion';
  */
 export const EASE = [0.23, 1, 0.32, 1] as const;
 
-/** Same curve for CSS-driven animation (inline styles, keyframes). */
-export const EASE_CSS = 'cubic-bezier(0.23, 1, 0.32, 1)';
-
 /** Seconds, by purpose. Exits should run at ~75% of their entrance. */
 export const DURATION = {
   feedback: 0.15,
@@ -28,14 +25,18 @@ export const STAGGER = {
 } as const;
 
 /**
- * Scroll-trigger contract from the project spec (§4.5): fire once, slightly
- * before the element is fully in view.
+ * Two scroll triggers, on purpose.
+ *
+ * `EARLY` starts the reveal 200px before the element enters, so a fast scroll
+ * never lands on blank space. It is the historical default across the ~34
+ * `ScrollReveal` call sites and stays the default.
+ *
+ * `PRECISE` is the spec §4.5 trigger: the reveal begins just *after* the
+ * element enters, so it is actually witnessed. Use it for choreographed
+ * sections where the motion is the point.
  */
-export const VIEWPORT = {
-  once: true,
-  margin: '0px 0px -40px 0px',
-  amount: 0.15,
-} as const;
+export const VIEWPORT_EARLY = { once: true, margin: '0px 0px 200px 0px', amount: 0 } as const;
+export const VIEWPORT_PRECISE = { once: true, margin: '0px 0px -40px 0px', amount: 0.15 } as const;
 
 /** Fade and rise. `distance` is the travel in px. */
 export function fadeUp(distance = 30): Variants {
@@ -58,21 +59,3 @@ export function staggerContainer(stagger: number = STAGGER.base, delayChildren =
     },
   };
 }
-
-/** Inner line of a clip-masked heading; the parent supplies `overflow-hidden`. */
-export const maskLine: Variants = {
-  hidden: { y: '100%' },
-  visible: {
-    y: '0%',
-    transition: { duration: DURATION.entrance, ease: EASE },
-  },
-};
-
-/** Bottom-up reveal of a bounded box. `inset()` clip-paths composite cheaply. */
-export const clipWipe: Variants = {
-  hidden: { clipPath: 'inset(0 0 100% 0)' },
-  visible: {
-    clipPath: 'inset(0 0 0% 0)',
-    transition: { duration: DURATION.entrance, ease: EASE },
-  },
-};

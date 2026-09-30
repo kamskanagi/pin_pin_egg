@@ -81,6 +81,12 @@ export default async function LocaleLayout({
       className={`${cormorant.variable} ${notoSerifTC.variable} ${dmSans.variable}`}
     >
       <body>
+        {/* framer-motion serialises each component's `initial` state into the
+            markup; with no JS to run the animations, those elements would stay
+            invisible. App Router strips a custom <head>, so this lives here. */}
+        <noscript>
+          <style>{`[data-motion-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}`}</style>
+        </noscript>
         <NextIntlClientProvider messages={messages}>
           <MotionProvider>
             <a

@@ -3,7 +3,14 @@
 import { createElement, type ReactNode } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { DURATION, EASE, STAGGER, VIEWPORT, staggerContainer } from '@/lib/motion';
+import {
+  DURATION,
+  EASE,
+  STAGGER,
+  VIEWPORT_EARLY,
+  VIEWPORT_PRECISE,
+  staggerContainer,
+} from '@/lib/motion';
 
 type RevealTag = 'div' | 'li' | 'section' | 'article' | 'span';
 
@@ -23,6 +30,8 @@ interface ScrollRevealProps {
    * `variants={fadeUp()}` and inherit their timing from this parent.
    */
   stagger?: number;
+  /** See `VIEWPORT_EARLY` / `VIEWPORT_PRECISE` in `@/lib/motion`. */
+  trigger?: 'early' | 'precise';
 }
 
 /** Unit vectors; multiplied by `distance` at render. */
@@ -42,6 +51,7 @@ export function ScrollReveal({
   distance = 30,
   duration = DURATION.entrance,
   stagger,
+  trigger = 'early',
 }: ScrollRevealProps) {
   const prefersReducedMotion = useReducedMotion();
 
@@ -50,13 +60,15 @@ export function ScrollReveal({
   }
 
   const MotionTag = motion[as];
+  const viewport = trigger === 'precise' ? VIEWPORT_PRECISE : VIEWPORT_EARLY;
 
   if (stagger !== undefined) {
     return (
       <MotionTag
+        data-motion-reveal=""
         initial="hidden"
         whileInView="visible"
-        viewport={VIEWPORT}
+        viewport={viewport}
         variants={staggerContainer(stagger || STAGGER.base, delay)}
         className={cn(className)}
       >
@@ -69,9 +81,10 @@ export function ScrollReveal({
 
   return (
     <MotionTag
+      data-motion-reveal=""
       initial={{ opacity: 0, x: offset.x * distance, y: offset.y * distance }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={VIEWPORT}
+      viewport={viewport}
       transition={{ duration, delay, ease: EASE }}
       className={cn(className)}
     >

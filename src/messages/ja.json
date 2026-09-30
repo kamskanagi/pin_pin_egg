@@ -29,7 +29,9 @@
     "instagram_label": "フォローする",
     "instagram_title": "Instagram",
     "explore_category": "{category}を見る",
-    "philosophy_link": "ブランドストーリー"
+    "philosophy_link": "ブランドストーリー",
+    "marquee_label": "一杯一杯に",
+    "marquee_title": "毎日、つくりたてを"
   },
   "menu": {
     "filter_all": "すべて",

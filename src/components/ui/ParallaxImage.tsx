@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { DURATION, EASE, VIEWPORT } from '@/lib/motion';
+import { DURATION, EASE, VIEWPORT_PRECISE } from '@/lib/motion';
 
 interface ParallaxImageProps {
   src: string;
@@ -50,9 +50,10 @@ export function ParallaxImage({
       className={cn('relative overflow-hidden bg-cream-dark', aspect, className)}
       initial={wipe ? 'hidden' : undefined}
       whileInView={wipe ? 'visible' : undefined}
-      viewport={wipe ? VIEWPORT : undefined}
+      viewport={wipe ? VIEWPORT_PRECISE : undefined}
     >
       <motion.div
+        data-motion-reveal=""
         className="absolute inset-0"
         variants={
           wipe
