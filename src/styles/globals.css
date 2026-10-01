@@ -64,10 +64,25 @@
        would break every layout transform on the site — the hero's scroll cue
        and the navbar's `-translate-x-1/2` centring, and the mobile menu panel,
        which is parked off-canvas by a transform. */
-    [data-motion-reveal] {
+    [data-motion-reveal],
+    [data-motion-scrub] {
       opacity: 1 !important;
       transform: none !important;
       clip-path: none !important;
+    }
+
+    /* The philosophy strip's pinned column exists only to give the scroll scrub
+       somewhere to happen. With no scrub it is a tall empty column, so unpin it
+       and collapse the extra height back to normal section rhythm. In CSS
+       rather than a conditional className because `useReducedMotion()` returns
+       null on the server, which would make the branch a hydration mismatch. */
+    [data-motion-sticky] {
+      position: static !important;
+      height: auto !important;
+    }
+
+    [data-motion-spacer] {
+      min-height: 0 !important;
     }
   }
 }
