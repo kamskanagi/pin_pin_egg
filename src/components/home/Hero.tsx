@@ -17,14 +17,11 @@ export function Hero() {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with gradient overlay. The mask animates, not the <Image>,
-          so the priority image still paints immediately and LCP is unaffected. */}
-      <motion.div
-        className="absolute inset-0 bg-charcoal"
-        initial={animate ? { clipPath: 'inset(0 0 100% 0)' } : undefined}
-        animate={animate ? { clipPath: 'inset(0 0 0% 0)' } : undefined}
-        transition={{ duration: 1.4, ease: EASE }}
-      >
+      {/* Background. Only a transform touches the image — a clip-path here would
+          collapse its area to zero at first paint, and Chrome will not score a
+          zero-area element as an LCP candidate, so the whole wipe duration would
+          be added to LCP. */}
+      <div className="absolute inset-0 bg-charcoal">
         <motion.div
           className="absolute inset-0"
           initial={animate ? { scale: 1.08 } : undefined}
@@ -41,7 +38,19 @@ export function Hero() {
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/80" />
-      </motion.div>
+      </div>
+
+      {/* The wipe is a solid panel lifting off the photo rather than a clip on
+          the photo itself. LCP ignores occlusion by a later-painted sibling, so
+          the image is scored on its own first paint and the reveal is free. */}
+      <motion.div
+        aria-hidden="true"
+        data-motion-reveal=""
+        className="absolute inset-0 z-[5] origin-top bg-charcoal"
+        initial={animate ? { scaleY: 1 } : undefined}
+        animate={animate ? { scaleY: 0 } : undefined}
+        transition={{ duration: 1.3, ease: EASE }}
+      />
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-6">
