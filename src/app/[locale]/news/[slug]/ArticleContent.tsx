@@ -9,12 +9,6 @@ import { ParallaxImage } from '@/components/ui/ParallaxImage';
 import { WavyDivider } from '@/components/ui/WavyDivider';
 import type { PlaceholderNewsPost } from '@/lib/placeholder-data';
 
-const newsImages = [
-  '/images/news/news-01.jpg',
-  '/images/news/news-02.jpg',
-  '/images/news/news-03.jpg',
-];
-
 interface ArticleContentProps {
   post: PlaceholderNewsPost;
 }
@@ -85,7 +79,7 @@ export function ArticleContent({ post }: ArticleContentProps) {
         />
 
         <ParallaxImage
-          src={newsImages[post.slug.length % newsImages.length]}
+          src={post.image}
           alt={title}
           aspect="aspect-[16/9]"
           sizes="(max-width: 768px) 100vw, 768px"

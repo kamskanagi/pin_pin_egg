@@ -528,6 +528,7 @@ export interface PlaceholderNewsPost {
   bodyZh: string;
   category: NewsCategory;
   publishedAt: string;
+  image: string;
 }
 
 export const newsPosts: PlaceholderNewsPost[] = [
@@ -543,6 +544,7 @@ export const newsPosts: PlaceholderNewsPost[] = [
     bodyZh: '我們很高興宣布品品 Café 在東京中目黒的第一家日本門市盛大開幕。這標誌著品品 Café 國際擴展的重要里程碑，將我們招牌外酥內軟QQ的雞蛋仔帶給日本美食愛好者。\n\n中目黒店採用溫馨現代的室內設計，融合台灣溫暖與日本極簡風格。提供完整的雞蛋仔、精品茶飲和特調咖啡菜單，以及日本限定的季節口味。\n\n請追蹤 @pinpinnakameguro 的 Instagram 獲取最新消息和開幕優惠。',
     category: 'store-opening',
     publishedAt: '2026-03-15',
+    image: '/images/news/nakameguro-opening.webp',
   },
   {
     slug: 'spring-strawberry-collection',
@@ -556,6 +558,7 @@ export const newsPosts: PlaceholderNewsPost[] = [
     bodyZh: '隨著櫻花開始綻放，我們很高興推出春季草莓系列。本季陣容包含兩款限定商品：\n\n**草莓雞蛋仔** — 新鮮草莓果醬與奶油內餡，搭配我們招牌外酥內軟QQ的雞蛋仔麵糊。每一口都是春天的味道。\n\n**櫻花拿鐵** — 細緻的櫻花糖漿與蒸汽鮮奶調和，點綴一抹櫻花花瓣。\n\n全台灣及日本門市供應，售完為止。別錯過這些季節限定美味！',
     category: 'new-flavor',
     publishedAt: '2026-03-01',
+    image: '/images/news/spring-strawberry.webp',
   },
   {
     slug: 'nangang-lalaport-opening',
@@ -569,6 +572,7 @@ export const newsPosts: PlaceholderNewsPost[] = [
     bodyZh: '我們很高興宣布品品 Café 最新門市在台北南港 LaLaport 開幕。位於B1美食街，這家店首次將我們心愛的雞蛋仔和飲品帶到台北都會區。\n\n鄰近南港站，交通便利，非常適合在購物途中來一份雞蛋仔。',
     category: 'store-opening',
     publishedAt: '2026-02-10',
+    image: '/images/news/nangang-opening.webp',
   },
   {
     slug: 'year-of-the-snake-limited',
@@ -582,5 +586,6 @@ export const newsPosts: PlaceholderNewsPost[] = [
     bodyZh: '為慶祝農曆新年蛇年，我們特別推出限定版金箔蜂蜜雞蛋仔。淋上頂級龍眼蜜，點綴食用金箔，這款節慶點心象徵繁榮與新生。',
     category: 'event',
     publishedAt: '2026-01-25',
+    image: '/images/news/snake-year-honey.webp',
   },
 ];

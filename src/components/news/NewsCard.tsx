@@ -4,12 +4,6 @@ import { Link } from '@/lib/i18n/navigation';
 import { TextLinkLabel } from '@/components/ui/TextLink';
 import type { PlaceholderNewsPost } from '@/lib/placeholder-data';
 
-const newsImages = [
-  '/images/news/news-01.jpg',
-  '/images/news/news-02.jpg',
-  '/images/news/news-03.jpg',
-];
-
 interface NewsCardProps {
   post: PlaceholderNewsPost;
   /** Preload the image; set on the cards in the first row. */
@@ -33,9 +27,9 @@ export function NewsCard({ post, priority = false }: NewsCardProps) {
   return (
     <Link href={`/news/${post.slug}`} className="group block">
       <article>
-        <div className="aspect-[16/10] rounded-sm bg-cream-dark relative overflow-hidden mb-6">
+        <div className="aspect-[16/10] rounded-2xl bg-cream-dark relative overflow-hidden mb-6">
           <Image
-            src={newsImages[post.slug.length % newsImages.length]}
+            src={post.image}
             alt={title}
             fill
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
