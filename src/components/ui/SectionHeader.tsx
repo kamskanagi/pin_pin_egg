@@ -2,7 +2,8 @@ import { MaskedHeading } from '@/components/ui/MaskedHeading';
 import { cn } from '@/lib/utils';
 
 interface SectionHeaderProps {
-  label: string;
+  /** Optional eyebrow. Most sections read better without one. */
+  label?: string;
   title: string;
   alignment?: 'center' | 'left';
   theme?: 'light' | 'dark';
@@ -23,14 +24,16 @@ export function SectionHeader({
         alignment === 'center' && 'text-center'
       )}
     >
-      <p
-        className={cn(
-          'text-xs tracking-[4px] uppercase mb-4',
-          theme === 'light' ? 'text-warm-gold' : 'text-warm-gold-light'
-        )}
-      >
-        {label}
-      </p>
+      {label && (
+        <p
+          className={cn(
+            'text-xs tracking-[4px] uppercase mb-4',
+            theme === 'light' ? 'text-warm-gold-dark' : 'text-warm-gold-light'
+          )}
+        >
+          {label}
+        </p>
+      )}
       <MaskedHeading
         as={as}
         text={title}

@@ -34,32 +34,50 @@ pnpm dev              # Start dev server (localhost:3000)
 pnpm build            # Production build
 pnpm lint             # ESLint
 pnpm type-check       # TypeScript check (tsc --noEmit)
-pnpm sanity:dev       # Start Sanity Studio
 ```
 
 ---
 
-## Project structure rules
+## Project structure
 
-All source code lives under `src/`. Follow this layout exactly:
+All source code lives under `src/`. Current layout:
 
 ```
-src/app/[locale]/          → Pages (route segments)
-src/components/            → React components, grouped by feature
-src/components/ui/         → Reusable primitives (Button, Badge, etc.)
-src/components/layout/     → Navbar, Footer, LanguageSwitcher
-src/components/home/       → Homepage-specific sections
-src/components/menu/       → Menu page components
-src/components/locations/  → Location page components
-src/components/news/       → News page components
-src/components/contact/    → Contact form components
-src/lib/sanity/            → Sanity client, queries, schemas, image helpers
-src/lib/i18n/              → next-intl config, navigation helpers
-src/lib/utils.ts           → Shared utilities (cn, formatPrice, etc.)
-src/messages/              → Translation JSON files (zh-TW.json, en.json, ja.json)
-src/styles/globals.css     → Tailwind directives, @font-face, CSS custom properties
-src/types/                 → TypeScript type definitions
+src/app/[locale]/                    → Pages (route segments)
+  page.tsx                           → Homepage
+  about/page.tsx                     → About page
+  about/craft/page.tsx               → Our Craft sub-page
+  menu/page.tsx                      → Menu overview
+  menu/eggcakes/page.tsx             → Eggcakes sub-category
+  menu/drinks/page.tsx               → Drinks sub-category
+  menu/seasonal/page.tsx             → Seasonal items sub-category
+  locations/page.tsx                 → Store locator
+  news/page.tsx                      → News listing
+  news/[slug]/page.tsx               → News article detail
+  contact/page.tsx                   → Contact + franchise inquiry forms
+src/app/api/contact/route.ts         → Contact form handler (Resend)
+src/app/api/revalidate/route.ts      → Sanity ISR webhook handler
+src/components/                      → React components, grouped by feature
+src/components/ui/                   → Reusable primitives (Button, Badge, etc.)
+src/components/layout/               → Navbar, Footer, LanguageSwitcher, MobileMenu
+src/components/home/                 → Hero, MenuHighlights, LocationsPreview, etc.
+src/components/menu/                 → MenuCard, MenuGrid, CategoryFilter, PriceDisplay
+src/components/locations/            → StoreCard, StoreMap, CountryFilter
+src/components/news/                 → NewsCard, NewsGrid
+src/components/contact/              → ContactForm, FranchiseForm
+src/lib/sanity/                      → client.ts, queries.ts, image.ts, schemas/
+src/lib/i18n/                        → config.ts, navigation.ts, request.ts
+src/lib/schemas/contact.ts           → Zod schemas for contact/franchise forms
+src/lib/placeholder-data.ts          → Static data used until Sanity is connected
+src/lib/utils.ts                     → Shared utilities
+src/messages/                        → Translation JSON files (zh-TW.json, en.json, ja.json)
+src/styles/globals.css               → Tailwind directives, CSS custom properties
+src/types/                           → TypeScript type definitions
 ```
+
+### Current data source
+
+Pages currently render from `src/lib/placeholder-data.ts` (flat objects with `nameZh/nameEn/nameJa` fields), not from Sanity. Sanity integration is wired but requires env vars to activate. Migrate a page to Sanity by replacing placeholder imports with `sanityFetch()` calls using queries from `src/lib/sanity/queries.ts`.
 
 ---
 
@@ -106,10 +124,9 @@ src/types/                 → TypeScript type definitions
 - Fallback chain for CMS content: requested locale → `en` → `zh`
 
 ### Data fetching
-- Use Server Components for Sanity data (no client-side fetching for initial loads)
+- Use `sanityFetch<T>(query, params?)` from `src/lib/sanity/client.ts` — never call `client.fetch()` directly
 - GROQ queries live in `src/lib/sanity/queries.ts`
-- Use ISR with on-demand revalidation via Sanity webhook
-- Cache Sanity responses with `next: { revalidate: 60 }` as default, webhook for instant updates
+- ISR default: `revalidate: 60` (set inside `sanityFetch`); on-demand via `POST /api/revalidate` webhook
 - Google Maps loads client-side only
 
 ### Animations
@@ -196,32 +213,18 @@ Transition happens when hero section scrolls past the nav height. Use Intersecti
 
 ---
 
-## Common utilities to implement
+## Shared utilities (`src/lib/utils.ts`)
+
+All four utilities are implemented — import directly, don't re-implement:
 
 ```typescript
-// src/lib/utils.ts
-
-// Class name merger (install clsx + tailwind-merge)
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-// Price formatter
-export function formatPrice(amount: number, currency: 'TWD' | 'JPY' = 'TWD'): string {
-  if (currency === 'JPY') return `¥${amount}`;
-  return `NT$${amount}`;
-}
-
-// Locale-aware content getter
-export function getLocalizedValue<T>(
-  obj: { zh: T; en: T; ja: T },
-  locale: string
-): T {
-  return obj[locale as keyof typeof obj] ?? obj.en ?? obj.zh;
-}
+cn(...inputs)                           // clsx + tailwind-merge
+formatPrice(amount, currency?)          // NT$60 or ¥300
+getLocalizedValue(obj, locale)          // { zh, en, ja } → T (for placeholder data)
+getLocalizedString(obj: LocaleString, locale)  // Sanity LocaleString → string
 ```
+
+`LocaleString` (from `src/types/sanity.ts`) is the Sanity field shape `{ zh: string; en: string; ja: string }`. `getLocalizedString` maps `zh-TW` locale to the `zh` key.
 
 ---
 
@@ -261,19 +264,12 @@ If a key is missing, the related feature should degrade gracefully (no crash). S
 
 ---
 
-## Development order
+## Build status
 
-Work through these phases sequentially. Each phase should result in a working, viewable state.
+Phases 1–6 are complete (scaffolding, homepage, menu, locations, news, contact). Remaining work is phase 7:
 
-1. **Scaffolding** — Project init, Tailwind config, fonts, i18n setup, layout shell
-2. **Homepage** — All 6 homepage sections with static/placeholder data
-3. **Menu pages** — Menu grid, cards, filters, Sanity integration
-4. **Locations** — Map, store cards, country filter
-5. **News** — Article listing, individual article pages, Portable Text
-6. **Contact** — Forms, validation, API route, email sending
-7. **Polish** — Page transitions, responsive QA, a11y audit, SEO, performance
-
-Within each phase, build components bottom-up (primitives first, then compositions, then page assembly).
+- **Polish** — Page transitions, responsive QA, a11y audit, SEO metadata per-page, performance
+- **Sanity migration** — Replace `src/lib/placeholder-data.ts` usage with live `sanityFetch()` calls once Sanity is configured
 
 ---
 

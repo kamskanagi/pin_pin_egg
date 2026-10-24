@@ -36,7 +36,7 @@ export function LanguageSwitcher({ scrolled = true }: LanguageSwitcherProps) {
               scrolled
                 ? active
                   ? 'text-charcoal decoration-warm-gold'
-                  : 'text-charcoal-muted hover:text-charcoal'
+                  : 'text-charcoal-light hover:text-charcoal'
                 : active
                   ? 'text-white decoration-warm-gold-light'
                   : 'text-white/60 hover:text-white'

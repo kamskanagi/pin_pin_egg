@@ -41,7 +41,7 @@ export function PhilosophyStrip() {
     <section
       ref={sectionRef}
       data-motion-spacer
-      className="relative bg-cream-dark/50 min-h-[150vh] md:min-h-[180vh]"
+      className="relative bg-cream-dark/50 min-h-[120vh] md:min-h-[140vh]"
     >
       <div
         data-motion-sticky
@@ -57,14 +57,14 @@ export function PhilosophyStrip() {
                   ? undefined
                   : { scale: glyphScale, opacity: glyphOpacity, y: glyphY }
               }
-              className="font-serif-tc text-[clamp(120px,20vw,240px)] font-light text-warm-gold-light/40 leading-none select-none will-change-transform"
+              className="font-serif-tc text-[clamp(120px,20vw,240px)] font-light text-warm-gold/50 leading-none select-none will-change-transform"
             >
               品
             </motion.span>
           </div>
 
           <div>
-            <p className="text-xs tracking-[4px] uppercase text-warm-gold mb-4">
+            <p className="text-xs tracking-[4px] uppercase text-warm-gold-dark mb-4">
               {t('philosophy_label')}
             </p>
             <MaskedHeading
@@ -72,7 +72,7 @@ export function PhilosophyStrip() {
               className="font-serif italic text-4xl md:text-5xl font-light mb-6"
             />
             <ScrollReveal delay={0.15}>
-              <p className="text-charcoal-muted leading-relaxed mb-8">{t('philosophy_body')}</p>
+              <p className="text-charcoal-light leading-relaxed max-w-[52ch] mb-8">{t('philosophy_body')}</p>
               <TextLink href="/about">{t('philosophy_link')}</TextLink>
             </ScrollReveal>
           </div>

@@ -51,7 +51,8 @@ export default function AboutPage({
             label={tAbout('taste_label')}
             title={tAbout('taste_title')}
             intro={tAbout('taste_body_1')}
-            image="/images/about/craft-01.jpg"
+            image="/images/about/craft-finish.webp"
+            priority
             imageAlt={tAbout('craft_link')}
             caption={<p>{tAbout('taste_body_2')}</p>}
             link={{ href: '/about/craft', label: tAbout('craft_link') }}

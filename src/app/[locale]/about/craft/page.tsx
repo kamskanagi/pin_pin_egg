@@ -18,10 +18,10 @@ export async function generateMetadata({
 }
 
 const steps = [
-  { key: 'batter', number: '01', image: '/images/about/craft-01.jpg' },
-  { key: 'pour', number: '02', image: '/images/about/craft-02.jpg' },
-  { key: 'flip', number: '03', image: '/images/about/craft-03.jpg' },
-  { key: 'finish', number: '04', image: '/images/about/craft-04.jpg' },
+  { key: 'batter', number: '01', image: '/images/about/craft-batter.webp' },
+  { key: 'pour', number: '02', image: '/images/about/craft-pour.webp' },
+  { key: 'flip', number: '03', image: '/images/about/craft-flip.webp' },
+  { key: 'finish', number: '04', image: '/images/about/craft-finish.webp' },
 ] as const;
 
 const promises = ['low_sugar', 'made_to_order', 'ingredients'] as const;
@@ -41,7 +41,7 @@ export default function CraftPage({
           <PageIntro label={t('label')} title={t('title')} intro={t('intro')} />
 
           <div className="divide-y divide-warm-gold/15">
-            {steps.map((step) => (
+            {steps.map((step, i) => (
               <EditorialSplit
                 key={step.key}
                 headingLevel="h2"
@@ -49,6 +49,7 @@ export default function CraftPage({
                 title={t(`steps.${step.key}.title`)}
                 intro={t(`steps.${step.key}.body`)}
                 image={step.image}
+                priority={i === 0}
                 imageAlt={t(`steps.${step.key}.title`)}
                 caption={
                   <span

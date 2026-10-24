@@ -20,7 +20,7 @@ const variantStyles: Record<string, string> = {
     'border border-charcoal text-charcoal hover:bg-charcoal hover:text-white',
   solid: 'bg-charcoal text-white hover:bg-charcoal-light',
   white: 'bg-white text-charcoal hover:bg-cream-dark',
-  gold: 'bg-warm-gold text-white hover:bg-warm-gold-dark',
+  gold: 'bg-warm-gold-dark text-cream hover:bg-charcoal',
 };
 
 const sizeStyles: Record<string, string> = {

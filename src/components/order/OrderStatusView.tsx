@@ -80,7 +80,7 @@ export function OrderStatusView({ token }: OrderStatusViewProps) {
   return (
     <div>
       <div className="text-center mb-10">
-        <p className="text-xs tracking-[4px] uppercase text-warm-gold mb-4">{t('status_title')}</p>
+        <p className="text-xs tracking-[4px] uppercase text-warm-gold-dark mb-4">{t('status_title')}</p>
         <span className="font-serif text-[clamp(56px,10vw,96px)] font-light tracking-[4px] text-charcoal block leading-none">
           {order.pickupNumber}
         </span>

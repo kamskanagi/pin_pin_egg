@@ -15,23 +15,46 @@
     "hero_tagline": "Eggcake × Tea × Coffee",
     "hero_philosophy": "Taste the food · Taste the tea · Taste the life",
     "hero_image_alt": "Inside a Pin Pin Café store",
-    "menu_section_label": "Signature selections",
+    "hero_seq_label": "Pin Pin · Eggcake",
+    "hero_seq_title": "Scroll into the bubble.",
+    "hero_seq_body": "Every eggcake is poured, baked and folded by hand: crisp outside, soft as custard within. Watch one come together.",
+    "hero_seq_cta": "Taste the eggcakes",
+    "hero_seq_video_label": "A miniature baker making a Pin Pin eggcake, step by step",
+    "hero_seq_steps_label": "Eggcake steps",
+    "hero_seq_prev": "Previous step",
+    "hero_seq_next": "Next step",
+    "hero_step_1_name": "Pour",
+    "hero_step_1_caption": "Fresh batter, straight into the iron",
+    "hero_step_2_name": "Bake",
+    "hero_step_2_caption": "Closed, baked, opened golden",
+    "hero_step_3_name": "Fold",
+    "hero_step_3_caption": "Rolled into the Pin Pin cone",
+    "hero_step_4_name": "Finish",
+    "hero_step_4_caption": "A shower of pink sprinkles",
     "menu_section_title": "Our Menu",
-    "locations_section_label": "Find us",
     "locations_section_title": "Our Locations",
     "cta_title": "Find your nearest Pin Pin Café",
-    "cta_subtitle": "From Taichung to Tokyo — your next eggcake moment awaits.",
+    "cta_subtitle": "From Taichung to Tokyo, your next eggcake is waiting.",
     "view_locations": "View locations",
     "view_full_menu": "View full menu",
     "philosophy_label": "Our philosophy",
     "philosophy_title": "Taste, and taste again",
-    "philosophy_body": "At Pin Pin Café, every bite is an invitation to slow down and savor. Our name \"品品\" means to taste and taste again — a philosophy we pour into every eggcake, every cup of tea, and every moment shared at our cafés.",
-    "instagram_label": "Follow along",
+    "philosophy_body": "At Pin Pin Café, every bite is an invitation to slow down and savor. Our name \"品品\" means to taste and taste again. It is a philosophy we pour into every eggcake, every cup of tea, and every moment shared at our cafés.",
     "instagram_title": "On Instagram",
     "explore_category": "Explore {category}",
     "philosophy_link": "Our story",
-    "marquee_label": "In every cup",
-    "marquee_title": "Made to order, every day"
+    "instagram_alt_strawberry": "Strawberry eggcakes held up under cherry blossoms by a canal",
+    "instagram_alt_nangang": "The Pin Pin Café counter at Nangang, lit up and open",
+    "instagram_alt_halloween": "Two Halloween eggcakes with chocolate and cereal toppings",
+    "instagram_alt_float": "An eggcake topped with soft-serve beside a layered iced drink",
+    "instagram_alt_birthday": "A birthday eggcake with candles in a Pin Pin cone",
+    "toppings_label": "Make it yours",
+    "toppings_title": "Eight ways to top it",
+    "toppings_body": "Every eggcake comes plain, golden and crisp. Then it's your call: pick a topping and we finish it right at the counter.",
+    "toppings_ghost": "Toppings",
+    "toppings_price": "+{price}",
+    "toppings_show": "Show {name}",
+    "toppings_card_alt": "Eggcake topped with {name}"
   },
   "menu": {
     "filter_all": "All",
@@ -70,7 +93,7 @@
     "series_rich": "Rich",
     "series_luxe": "Refined",
     "combo_note": "Any drink with any eggcake: NT$10 off.",
-    "box_note": "Gift boxes: M — 15 pieces, 3 flavors · L — 28 pieces, 4 flavors."
+    "box_note": "Gift boxes: M, 15 pieces in 3 flavors · L, 28 pieces in 4 flavors."
   },
   "locations": {
     "taiwan": "Taiwan",
@@ -133,7 +156,7 @@
       "country_required": "Please enter your country",
       "too_long": "This field is too long"
     },
-    "intro": "Questions, feedback, or interest in bringing Pin Pin Café to your city — we would love to hear from you."
+    "intro": "Questions, feedback, or interest in bringing Pin Pin Café to your city? We would love to hear from you."
   },
   "order": {
     "nav_cta": "Order online",
@@ -154,7 +177,7 @@
     "cart_title": "Review your order",
     "pickup_time_title": "Choose a pickup time",
     "slot_full": "Full",
-    "no_slots": "No pickup slots left today — please check with the store or try again later.",
+    "no_slots": "No pickup slots left today. Please check with the store or try again later.",
     "remove": "Remove",
     "subtotal": "Subtotal",
     "total": "Total",
@@ -177,7 +200,7 @@
     "status_title": "Order confirmed",
     "pickup_number_label": "Pickup number",
     "status_pending_payment": "Payment processing",
-    "status_paid": "Paid — preparing your order",
+    "status_paid": "Paid, preparing your order",
     "status_ready": "Ready for pickup",
     "status_completed": "Picked up",
     "status_store": "Pickup store",
@@ -242,7 +265,7 @@
       },
       "pour": {
         "title": "The pour",
-        "body": "Each mold is carefully preheated to the perfect temperature. The batter is poured with practiced precision — not too much, not too little — ensuring every egg in the waffle is perfectly formed."
+        "body": "Each mold is carefully preheated to the perfect temperature. The batter is poured with practiced precision, not too much and not too little, so every egg in the waffle is perfectly formed."
       },
       "flip": {
         "title": "The flip",
@@ -261,7 +284,7 @@
       },
       "made_to_order": {
         "title": "Made to order",
-        "body": "Every eggcake is made fresh when you order. No pre-made, no reheated — just fresh."
+        "body": "Every eggcake is made fresh when you order. Nothing pre-made, nothing reheated. Just fresh."
       },
       "ingredients": {
         "title": "Premium ingredients",

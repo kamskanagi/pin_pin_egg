@@ -55,7 +55,7 @@ export function StorePicker() {
                 </div>
 
                 <div className="mb-2 flex items-center justify-between gap-3">
-                  <p className="text-[11px] tracking-[3px] uppercase text-warm-gold">
+                  <p className="text-[11px] tracking-[3px] uppercase text-warm-gold-dark">
                     {tLocations('taiwan')} · {city}
                   </p>
                   {open !== null && (

@@ -34,7 +34,7 @@ export default function SeasonalPage({
       label={t('seasonal')}
       title={t('explore_seasonal')}
       tagline={t('seasonal_tagline')}
-      image="/images/menu/seasonal.jpg"
+      image="/images/menu/eggcake-brown-sugar-mochi.webp"
       imageAlt={t('seasonal')}
     >
       <MenuPriceList

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: '品品Café — Eggcake × Tea × Coffee',
     template: '%s | 品品Café',
   },
-  description: 'Pin Pin Café — Taiwanese eggcake, premium tea, and specialty coffee. From Taichung to Tokyo.',
+  description: 'Pin Pin Café — eggcake, premium tea, and specialty coffee. From Taichung to Tokyo.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://pinpincafe.com'),
   icons: {
     icon: '/favicon.svg',

@@ -12,10 +12,12 @@ const newsImages = [
 
 interface NewsCardProps {
   post: PlaceholderNewsPost;
+  /** Preload the image; set on the cards in the first row. */
+  priority?: boolean;
 }
 
 
-export function NewsCard({ post }: NewsCardProps) {
+export function NewsCard({ post, priority = false }: NewsCardProps) {
   const locale = useLocale();
   const t = useTranslations('news');
 
@@ -38,16 +40,17 @@ export function NewsCard({ post }: NewsCardProps) {
             fill
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 50vw"
+            priority={priority}
           />
         </div>
 
-        <p className="text-[11px] tracking-[3px] uppercase text-warm-gold mb-3">
+        <p className="text-[11px] tracking-[3px] uppercase text-warm-gold-dark mb-3">
           {categoryLabel} · <time dateTime={post.publishedAt}>{date}</time>
         </p>
 
-        <h3 className="font-serif italic text-3xl font-light leading-tight mb-3 transition-colors duration-300 group-hover:text-warm-gold-dark">
+        <h2 className="font-serif italic text-3xl font-light leading-tight mb-3 transition-colors duration-300 group-hover:text-warm-gold-dark">
           {title}
-        </h3>
+        </h2>
         <p className="text-sm text-charcoal-muted leading-relaxed line-clamp-2 mb-5">
           {excerpt}
         </p>

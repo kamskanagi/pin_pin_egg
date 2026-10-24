@@ -29,7 +29,7 @@ export default function OrderMenuPage() {
       <div className="max-w-content mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <aside className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <p className="text-xs tracking-[4px] uppercase text-warm-gold mb-4">{t('page_label')}</p>
+            <p className="text-xs tracking-[4px] uppercase text-warm-gold-dark mb-4">{t('page_label')}</p>
             <MaskedHeading
               as="h1"
               text={t('menu_title')}

@@ -73,7 +73,7 @@ export function ArticleContent({ post }: ArticleContentProps) {
         </Link>
 
         {/* Meta */}
-        <p className="text-[11px] tracking-[3px] uppercase text-warm-gold mb-4">
+        <p className="text-[11px] tracking-[3px] uppercase text-warm-gold-dark mb-4">
           {categoryLabel} · <time dateTime={post.publishedAt}>{date}</time>
         </p>
 

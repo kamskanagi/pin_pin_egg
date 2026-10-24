@@ -20,11 +20,7 @@ export function LocationsPreview() {
     <section className="py-24 px-6 md:px-12 bg-charcoal">
       <div className="max-w-content mx-auto">
         <ScrollReveal>
-          <SectionHeader
-            label={t('locations_section_label')}
-            title={t('locations_section_title')}
-            theme="dark"
-          />
+          <SectionHeader title={t('locations_section_title')} theme="dark" />
         </ScrollReveal>
 
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 max-w-4xl mx-auto">

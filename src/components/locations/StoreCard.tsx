@@ -23,7 +23,7 @@ export function StoreCard({ store }: StoreCardProps) {
 
   return (
     <article>
-      <div className="aspect-[16/10] rounded-sm bg-cream-dark mb-6 overflow-hidden relative group">
+      <div className="aspect-[16/10] rounded-2xl bg-cream-dark mb-6 overflow-hidden relative group">
         <ImageWithFallback
           src={`/images/locations/${store.id}.jpg`}
           alt={name}
@@ -34,11 +34,11 @@ export function StoreCard({ store }: StoreCardProps) {
         />
       </div>
 
-      <p className="text-[11px] tracking-[3px] uppercase text-warm-gold mb-2">
+      <p className="text-[11px] tracking-[3px] uppercase text-warm-gold-dark mb-2">
         {store.country === 'japan' ? t('japan') : t('taiwan')} · {city}
       </p>
 
-      <h3 className="font-serif italic text-3xl font-light mb-4">{name}</h3>
+      <h2 className="font-serif italic text-3xl font-light mb-4">{name}</h2>
 
       <p className="text-sm text-charcoal-muted leading-relaxed mb-4">{address}</p>
 
@@ -76,7 +76,7 @@ export function StoreCard({ store }: StoreCardProps) {
         </p>
       )}
       {store.instagramHandle && (
-        <p className="text-xs text-warm-gold mb-2">{store.instagramHandle}</p>
+        <p className="text-xs text-warm-gold-dark mb-2">{store.instagramHandle}</p>
       )}
 
       <TextLink href={store.googleMapsUrl} className="mt-4">

@@ -1,8 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
-import { Hero } from '@/components/home/Hero';
+import { EggcakeHero } from '@/components/home/EggcakeHero';
 import { PhilosophyStrip } from '@/components/home/PhilosophyStrip';
-import { ProductMarquee } from '@/components/home/ProductMarquee';
+import { ToppingOrbit } from '@/components/home/ToppingOrbit';
 import { MenuHighlights } from '@/components/home/MenuHighlights';
 import { LocationsPreview } from '@/components/home/LocationsPreview';
 import { InstagramFeed } from '@/components/home/InstagramFeed';
@@ -30,10 +30,10 @@ export default function HomePage({
 
   return (
     <>
-      <Hero />
+      <EggcakeHero />
+      <ToppingOrbit />
       <PhilosophyStrip />
       <MenuHighlights />
-      <ProductMarquee />
       <LocationsPreview />
       <InstagramFeed />
       <CtaBanner />

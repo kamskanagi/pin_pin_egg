@@ -11,12 +11,14 @@ export const colors = {
   'warm-gold': {
     DEFAULT: '#C8A96E',
     light: '#E8D5B0',
-    dark: '#A68B52',
+    // Deepened from #A68B52 so small gold labels pass WCAG AA on cream (5.3:1).
+    dark: '#7E6234',
   },
   charcoal: {
     DEFAULT: '#2A2520',
     light: '#4A4440',
-    muted: '#7A756F',
+    // Deepened from #7A756F so captions pass WCAG AA on cream-dark too.
+    muted: '#68635D',
   },
   'accent-matcha': '#8BA888',
   'accent-coral': '#D4856A',

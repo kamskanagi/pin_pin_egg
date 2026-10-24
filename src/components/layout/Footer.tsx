@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/lib/i18n/navigation';
 import { TextLink } from '@/components/ui/TextLink';
-import { WavyDivider } from '@/components/ui/WavyDivider';
 import { navItems } from './navItems';
 
 const socialLinks = [
@@ -31,11 +30,11 @@ export function Footer() {
           </p>
         </div>
 
-        <WavyDivider className="my-12 text-warm-gold-light/30" />
+        <div className="my-12 border-t border-white/10" />
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-16">
           <nav aria-label={t('footer.nav_label')}>
-            <p className="font-serif italic text-2xl font-light mb-5">{t('footer.explore')}</p>
+            <p className="text-xs tracking-[3px] uppercase text-white/60 mb-5">{t('footer.explore')}</p>
             <ul className="space-y-3">
               {navItems.map((item) => (
                 <li key={item.key}>
@@ -48,7 +47,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <p className="font-serif italic text-2xl font-light mb-5">{t('footer.follow')}</p>
+            <p className="text-xs tracking-[3px] uppercase text-white/60 mb-5">{t('footer.follow')}</p>
             <ul className="space-y-3">
               {socialLinks.map((link) => (
                 <li key={link.label}>
@@ -61,7 +60,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-serif italic text-2xl font-light mb-5">{t('footer.visit')}</p>
+            <p className="text-xs tracking-[3px] uppercase text-white/60 mb-5">{t('footer.visit')}</p>
             <p className="text-sm text-white/60 leading-relaxed mb-5">{t('footer.visit_body')}</p>
             <TextLink href="/locations" tone="light">
               {t('footer.find_store')}
@@ -71,14 +70,14 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-dotted border-white/15 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[11px] text-white/40 tracking-wide">
+          <p className="text-xs text-white/60 tracking-wide">
             {t('footer.rights', { year: String(year) })}
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-[11px] text-white/40 tracking-wide hover:text-white/70 transition-colors">
+            <Link href="/privacy" className="text-xs text-white/60 tracking-wide hover:text-white transition-colors">
               {t('footer.privacy')}
             </Link>
-            <Link href="/terms" className="text-[11px] text-white/40 tracking-wide hover:text-white/70 transition-colors">
+            <Link href="/terms" className="text-xs text-white/60 tracking-wide hover:text-white transition-colors">
               {t('footer.terms')}
             </Link>
           </div>

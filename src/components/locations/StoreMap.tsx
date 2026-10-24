@@ -13,6 +13,8 @@ interface StoreMapProps {
 export function StoreMap({ stores, activeCountry }: StoreMapProps) {
   const t = useTranslations('locations');
   const tCommon = useTranslations('common');
+  // Inlined at build time, so server and client agree and nothing flashes.
+  const hasMapsKey = Boolean(process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapError, setMapError] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -23,10 +25,13 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
 
   useEffect(() => {
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-    if (!apiKey || !mapRef.current) {
-      setMapError(true);
+    if (!apiKey) {
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is not set; the store map is hidden.');
+      }
       return;
     }
+    if (!mapRef.current) return;
 
     async function initMap() {
       try {
@@ -82,19 +87,10 @@ export function StoreMap({ stores, activeCountry }: StoreMapProps) {
     initMap();
   }, [filteredStores]);
 
-  if (mapError) {
-    // Graceful fallback without API key
-    return (
-      <div className="aspect-[21/9] rounded-sm bg-cream-dark flex items-center justify-center mb-12">
-        <div className="text-center">
-          <span className="font-serif-tc text-4xl text-charcoal-muted/20 block mb-2">📍</span>
-          <p className="text-sm text-charcoal-muted">
-            {t('map_store_count', { count: filteredStores.length })}
-          </p>
-        </div>
-      </div>
-    );
-  }
+  // No key, or the API failed to load: leave the map out entirely. An empty
+  // beige box reading "4 locations" looked broken, and the store cards below
+  // already carry every address.
+  if (!hasMapsKey || mapError) return null;
 
   return (
     <div className="relative mb-12">

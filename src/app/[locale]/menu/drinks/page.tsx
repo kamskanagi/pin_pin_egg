@@ -30,7 +30,7 @@ export default function DrinksPage({
       label={t('drinks')}
       title={t('explore_drinks')}
       tagline={t('drinks_tagline')}
-      image="/images/menu/matcha.jpg"
+      image="/images/menu/tea-luye-ruby-oolong.webp"
       imageAlt={t('tea_collection')}
     >
       <MenuPriceList

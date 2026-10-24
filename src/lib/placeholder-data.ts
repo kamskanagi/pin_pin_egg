@@ -5,7 +5,7 @@ import type { OptionGroup } from '@/types/order';
 
 // Option groups mirror the printed menu at the stores.
 // Eggcakes take toppings; drinks come in a fixed cup size, hot or iced.
-const toppingsGroup: OptionGroup = {
+export const toppingsGroup: OptionGroup = {
   key: 'toppings',
   labelZh: '加料',
   labelEn: 'Toppings',
@@ -104,7 +104,7 @@ export const menuHighlights: MenuHighlight[] = [
     descriptionJa: '純生乳とバターで焼き上げる、糖分控えめのエッグケーキ。定番・濃厚・上質の三シリーズ。',
     badge: 'signature',
     priceTwd: 98,
-    image: '/images/menu/eggcake.jpg',
+    image: '/images/menu/eggcake-original.webp',
     href: '/menu/eggcakes',
   },
   {
@@ -116,7 +116,7 @@ export const menuHighlights: MenuHighlight[] = [
     descriptionJa: '台湾産の茶葉を一杯ずつ抽出。鹿野紅韻ウーロンから極品玉山金萱まで。',
     badge: 'signature',
     priceTwd: 80,
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/tea-luye-ruby-oolong.webp',
     href: '/menu/drinks',
   },
   {
@@ -128,7 +128,7 @@ export const menuHighlights: MenuHighlight[] = [
     descriptionJa: '香港式ミルクティー、蜂蜜紅ウーロンラテ、厚抹茶ラテ。',
     badge: 'new',
     priceTwd: 80,
-    image: '/images/menu/coffee.jpg',
+    image: '/images/menu/milk-matcha.webp',
     href: '/menu/drinks',
   },
 ];
@@ -145,7 +145,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 98,
     badges: [],
     series: 'classic',
-    image: '/images/menu/eggcake.jpg',
+    image: '/images/menu/eggcake-original.webp',
     optionGroups: [toppingsGroup],
   },
   {
@@ -159,7 +159,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 108,
     badges: ['signature'],
     series: 'classic',
-    image: '/images/menu/eggcake.jpg',
+    image: '/images/menu/eggcake-chocolate.webp',
     optionGroups: [toppingsGroup],
   },
   {
@@ -173,7 +173,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 108,
     badges: ['signature'],
     series: 'classic',
-    image: '/images/menu/eggcake.jpg',
+    image: '/images/menu/eggcake-oreo.webp',
     optionGroups: [toppingsGroup],
   },
   {
@@ -187,7 +187,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 118,
     badges: ['limited'],
     series: 'rich',
-    image: '/images/menu/seasonal.jpg',
+    image: '/images/menu/eggcake-brown-sugar-mochi.webp',
     optionGroups: [toppingsGroup],
   },
   {
@@ -201,7 +201,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 118,
     badges: ['signature'],
     series: 'rich',
-    image: '/images/menu/eggcake.jpg',
+    image: '/images/menu/eggcake-cheese.webp',
     optionGroups: [toppingsGroup],
   },
   {
@@ -215,7 +215,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 118,
     badges: [],
     series: 'luxe',
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/eggcake-matcha.webp',
     optionGroups: [toppingsGroup],
   },
   {
@@ -229,7 +229,7 @@ export const eggcakeItems: MenuCardItem[] = [
     priceTwd: 108,
     badges: ['signature'],
     series: 'luxe',
-    image: '/images/menu/eggcake.jpg',
+    image: '/images/menu/eggcake-sesame.webp',
     optionGroups: [toppingsGroup],
   },
 ];
@@ -246,7 +246,7 @@ export const teaItems: MenuCardItem[] = [
     descriptionJa: '台東・鹿野産。蜜のような香りとすっきりした甘い余韻。20 oz。',
     priceTwd: 80,
     badges: ['signature'],
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/tea-luye-ruby-oolong.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -259,7 +259,7 @@ export const teaItems: MenuCardItem[] = [
     descriptionJa: '炭火で焙煎した、厚みのある落ち着いたウーロン。20 oz。',
     priceTwd: 80,
     badges: [],
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/tea-roasted-guanyin.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -272,7 +272,7 @@ export const teaItems: MenuCardItem[] = [
     descriptionJa: '熟成によるまろやかな果実香。ホットでもアイスでも。20 oz。',
     priceTwd: 80,
     badges: [],
-    image: '/images/menu/coffee.jpg',
+    image: '/images/menu/tea-aged-black.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -285,7 +285,7 @@ export const teaItems: MenuCardItem[] = [
     descriptionJa: '玉山高地の金萱。自然なミルクのような香り。20 oz。',
     priceTwd: 130,
     badges: ['signature'],
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/tea-jinxuan.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -298,7 +298,7 @@ export const teaItems: MenuCardItem[] = [
     descriptionJa: '花のような香りと軽やかな口当たりの包種茶。20 oz。',
     priceTwd: 130,
     badges: ['signature'],
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/tea-pouchong.webp',
     optionGroups: [temperatureGroup],
   },
 ];
@@ -315,7 +315,7 @@ export const caffeineFreeItems: MenuCardItem[] = [
     descriptionJa: '柚子の果皮とはちみつ。爽やかな甘酸っぱさ。16 oz。',
     priceTwd: 80,
     badges: [],
-    image: '/images/menu/strawberry.jpg',
+    image: '/images/menu/drink-honey-citron.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -328,7 +328,7 @@ export const caffeineFreeItems: MenuCardItem[] = [
     descriptionJa: 'カットしたフルーツを煮出したカフェインレス。20 oz。',
     priceTwd: 80,
     badges: ['signature'],
-    image: '/images/menu/strawberry.jpg',
+    image: '/images/menu/drink-fruit-tea.webp',
     optionGroups: [temperatureGroup],
   },
 ];
@@ -345,7 +345,7 @@ export const milkItems: MenuCardItem[] = [
     descriptionJa: '濃いお茶に生乳を合わせた香港式。厚みのある口当たり。16 oz。',
     priceTwd: 80,
     badges: ['signature'],
-    image: '/images/menu/coffee.jpg',
+    image: '/images/menu/milk-hk-style.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -358,7 +358,7 @@ export const milkItems: MenuCardItem[] = [
     descriptionJa: '紅ウーロンにはちみつと生乳を合わせた一杯。16 oz。',
     priceTwd: 80,
     badges: ['signature'],
-    image: '/images/menu/coffee.jpg',
+    image: '/images/menu/milk-oolong-honey.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -371,7 +371,7 @@ export const milkItems: MenuCardItem[] = [
     descriptionJa: '生乳に黒糖・はちみつ・キャラメルからお好みの一種を。16 oz。',
     priceTwd: 80,
     badges: [],
-    image: '/images/menu/coffee.jpg',
+    image: '/images/menu/milk-fresh.webp',
     optionGroups: [milkSyrupGroup, temperatureGroup],
   },
   {
@@ -384,7 +384,7 @@ export const milkItems: MenuCardItem[] = [
     descriptionJa: '濃厚なカカオを生乳でまろやかに。16 oz。',
     priceTwd: 90,
     badges: [],
-    image: '/images/menu/coffee.jpg',
+    image: '/images/menu/milk-chocolate.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -397,7 +397,7 @@ export const milkItems: MenuCardItem[] = [
     descriptionJa: '抹茶を倍量に。ミルクに負けないお茶の存在感。16 oz。',
     priceTwd: 90,
     badges: [],
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/milk-matcha.webp',
     optionGroups: [temperatureGroup],
   },
   {
@@ -410,7 +410,7 @@ export const milkItems: MenuCardItem[] = [
     descriptionJa: '宝山黒糖を煮詰め、紅茶と生乳に合わせた濃厚ラテ。16 oz。',
     priceTwd: 90,
     badges: [],
-    image: '/images/menu/coffee.jpg',
+    image: '/images/menu/milk-brown-sugar-black-tea.webp',
     optionGroups: [temperatureGroup],
   },
 ];
@@ -536,9 +536,9 @@ export const newsPosts: PlaceholderNewsPost[] = [
     titleZh: '東京中目黒店盛大開幕',
     titleEn: 'Tokyo Nakameguro Grand Opening',
     titleJa: '東京中目黒店グランドオープン',
-    excerptZh: '品品 Café 正式登陸日本！中目黒店將帶來最道地的台灣雞蛋仔體驗。',
-    excerptEn: 'Pin Pin Café officially lands in Japan! Our Nakameguro store brings the most authentic Taiwanese eggcake experience to Tokyo.',
-    excerptJa: '品品カフェが日本に上陸！中目黒店で本場台湾のエッグケーキ体験をお届けします。',
+    excerptZh: '品品 Café 正式登陸日本！中目黒店將帶來最道地的品品雞蛋仔體驗。',
+    excerptEn: 'Pin Pin Café officially lands in Japan! Our Nakameguro store brings the authentic Pin Pin eggcake experience to Tokyo.',
+    excerptJa: '品品カフェが日本に上陸！中目黒店で本場・品品のエッグケーキ体験をお届けします。',
     bodyEn: 'We are thrilled to announce the grand opening of our first Japan location in the heart of Nakameguro, Tokyo. This marks a milestone in Pin Pin Café\'s international expansion, bringing our signature crispy-outside, QQ-soft-inside eggcakes to Japanese food lovers.\n\nThe Nakameguro store features a cozy, modern interior that blends Taiwanese warmth with Japanese minimalism. Our full menu of eggcakes, premium teas, and specialty coffee is available, along with Japan-exclusive seasonal flavors.\n\nFollow @pinpinnakameguro on Instagram for updates and special opening promotions.',
     bodyZh: '我們很高興宣布品品 Café 在東京中目黒的第一家日本門市盛大開幕。這標誌著品品 Café 國際擴展的重要里程碑，將我們招牌外酥內軟QQ的雞蛋仔帶給日本美食愛好者。\n\n中目黒店採用溫馨現代的室內設計，融合台灣溫暖與日本極簡風格。提供完整的雞蛋仔、精品茶飲和特調咖啡菜單，以及日本限定的季節口味。\n\n請追蹤 @pinpinnakameguro 的 Instagram 獲取最新消息和開幕優惠。',
     category: 'store-opening',

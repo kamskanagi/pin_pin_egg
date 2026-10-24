@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
 
 interface MagneticButtonProps {
@@ -29,10 +29,12 @@ export function MagneticButton({ children, strength = 8, className }: MagneticBu
   const springX = useSpring(x, { stiffness: 180, damping: 18, mass: 0.4 });
   const springY = useSpring(y, { stiffness: 180, damping: 18, mass: 0.4 });
 
-  const enabled =
-    !prefersReducedMotion &&
-    typeof window !== 'undefined' &&
-    window.matchMedia('(pointer: fine)').matches;
+  // Resolved after mount: reading matchMedia during render gave the server
+  // (no window) and the client different `style` props — a hydration mismatch.
+  const [enabled, setEnabled] = useState(false);
+  useEffect(() => {
+    setEnabled(!prefersReducedMotion && window.matchMedia('(pointer: fine)').matches);
+  }, [prefersReducedMotion]);
 
   const handleMove = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!enabled || !ref.current) return;

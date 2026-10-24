@@ -42,7 +42,7 @@ export function TextLinkLabel({ children, tone = 'dark' }: TextLinkLabelProps) {
       className={cn(
         'inline-flex items-center gap-2 text-[13px] tracking-[1.5px] uppercase underline decoration-dotted underline-offset-8 transition-colors duration-300',
         tone === 'dark'
-          ? 'text-charcoal decoration-warm-gold/50 group-hover:text-warm-gold group-hover:decoration-warm-gold'
+          ? 'text-charcoal decoration-warm-gold/50 group-hover:text-warm-gold-dark group-hover:decoration-warm-gold-dark'
           : 'text-white decoration-warm-gold-light/60 group-hover:text-warm-gold-light group-hover:decoration-warm-gold-light'
       )}
     >

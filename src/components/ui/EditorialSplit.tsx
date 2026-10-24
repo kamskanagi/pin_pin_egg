@@ -15,6 +15,8 @@ interface EditorialSplitProps {
   headingLevel?: 'h2' | 'h3';
   /** Stagger delay in seconds, when several splits share a section. */
   delay?: number;
+  /** Preload the image; set on the split that sits above the fold. */
+  priority?: boolean;
 }
 
 /**
@@ -32,12 +34,13 @@ export function EditorialSplit({
   link,
   headingLevel = 'h2',
   delay = 0,
+  priority = false,
 }: EditorialSplitProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 py-16 md:py-24">
       <div className="md:col-span-4 md:self-center">
         {label && (
-          <p className="font-serif-tc text-sm tracking-[3px] text-warm-gold mb-3">{label}</p>
+          <p className="font-serif-tc text-sm tracking-[3px] text-warm-gold-dark mb-3">{label}</p>
         )}
         <MaskedHeading
           as={headingLevel}
@@ -58,6 +61,7 @@ export function EditorialSplit({
           className="rounded-sm"
           reveal
           revealDelay={delay}
+          priority={priority}
         />
       </div>
 

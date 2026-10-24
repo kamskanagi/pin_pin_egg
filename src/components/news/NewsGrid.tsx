@@ -24,7 +24,7 @@ export function NewsGrid({ posts }: NewsGridProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
       {posts.map((post, i) => (
         <ScrollReveal key={post.slug} delay={i * 0.1}>
-          <NewsCard post={post} />
+          <NewsCard post={post} priority={i < 2} />
         </ScrollReveal>
       ))}
     </div>

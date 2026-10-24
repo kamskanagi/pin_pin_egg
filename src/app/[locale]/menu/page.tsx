@@ -27,7 +27,7 @@ const categories = [
     taglineKey: 'eggcakes_tagline',
     ctaKey: 'view_eggcakes',
     titleZh: '雞蛋仔',
-    image: '/images/menu/eggcake.jpg',
+    image: '/images/menu/eggcake-original.webp',
   },
   {
     href: '/menu/drinks',
@@ -35,7 +35,7 @@ const categories = [
     taglineKey: 'drinks_tagline',
     ctaKey: 'view_drinks',
     titleZh: '茶 × 咖啡',
-    image: '/images/menu/matcha.jpg',
+    image: '/images/menu/tea-luye-ruby-oolong.webp',
   },
   {
     href: '/menu/seasonal',
@@ -43,7 +43,7 @@ const categories = [
     taglineKey: 'seasonal_tagline',
     ctaKey: 'view_seasonal',
     titleZh: '季節限定',
-    image: '/images/menu/seasonal.jpg',
+    image: '/images/menu/eggcake-brown-sugar-mochi.webp',
   },
 ] as const;
 
@@ -59,7 +59,7 @@ export default function MenuOverviewPage({
     <div className="pt-32 pb-24 px-6 md:px-12">
       <div className="max-w-content mx-auto">
         <ScrollReveal>
-          <SectionHeader label={t('overview_label')} title={t('overview_title')} />
+          <SectionHeader as="h1" label={t('overview_label')} title={t('overview_title')} />
         </ScrollReveal>
 
         <div className="border-t border-warm-gold/15 divide-y divide-warm-gold/15">
@@ -94,7 +94,7 @@ export default function MenuOverviewPage({
                     )}
                   >
                     {locale !== 'zh-TW' && (
-                      <p className="font-serif-tc text-sm tracking-[3px] text-warm-gold mb-3">
+                      <p className="font-serif-tc text-sm tracking-[3px] text-warm-gold-dark mb-3">
                         {cat.titleZh}
                       </p>
                     )}

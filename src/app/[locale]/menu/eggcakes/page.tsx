@@ -33,7 +33,7 @@ export default function EggcakesPage({
       label={t('eggcakes')}
       title={t('explore_eggcakes')}
       tagline={t('eggcakes_tagline')}
-      image="/images/menu/eggcake.jpg"
+      image="/images/menu/eggcake-original.webp"
       imageAlt={t('eggcakes')}
     >
       <MenuPriceList
